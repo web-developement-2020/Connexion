@@ -103,7 +103,7 @@ router.post(
   }
 );
 
-//@route POST /api/profile/experience
+//@route POST /api/profile/education
 //@desc Add experience to profile
 //@access Private
 
