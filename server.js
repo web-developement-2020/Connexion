@@ -18,7 +18,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-const port = 7000;
+const port = 7200;
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
 //Db config
@@ -26,6 +26,6 @@ const db = require('./config/keys').mongoURI;
 
 //Connect to MongoDB
 mongoose
-  .connect(db)
-  .then(() => console.log('MongoDb Connected'))
-  .catch(err => console.log(err));
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDb Connected"))
+  .catch((err) => console.log(err));
