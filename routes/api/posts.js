@@ -33,7 +33,7 @@ router.get('/:id', (req,res) =>{
 //@access...... Private
 
 router.post('/',
-             passoprt.authenticate('jwt',{session:false}),
+             passport.authenticate('jwt',{session:false}),
              (req,res) => {
                const { errors,isValid } = validatePostInput(req.body);
                 if(!isValid){
@@ -118,9 +118,9 @@ router.post('/unlike/:id',
                            .map(item => item.user.toString())
                            .indexOf(req.user.id);
          post.likes.splice(removeIndex,1);
-         post.save().then(post => res.json.(post)) ;                  
+         post.save().then(post => res.json(post)) ;                  
         })    
-        .catch(err => res.status(404).json({postnotfound:'No post found'});)    
+        .catch(err => res.status(404).json({postnotfound:'No post found'}));    
         });            
             }
 );
