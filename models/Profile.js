@@ -107,6 +107,9 @@ const ProfileSchema = Schema({
       type: String,
     },
   },
+  following: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'users'
+  }]
 });
 
 module.exports = Profile = mongoose.model('profiles', ProfileSchema);
