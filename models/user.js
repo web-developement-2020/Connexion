@@ -21,7 +21,7 @@ required: true
   avatar: {
     type: String,
   },
-  data: {
+  date: {
     type: Date,
     default: Date.now,
   },
