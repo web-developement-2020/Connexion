@@ -226,24 +226,27 @@ router.get("/user/:user_id", (req, res) => {
 router.post(
   '/user/:user_id/follow', 
   passport.authenticate('jwt', { session: false }), (req, res) => {
-    const
-  // User.findOne({user: req.params.user_id})
-  //   .then(user =>{
-   Profile.findById({user: req.user.id})
-      .populate("user", ["name", "avatar"])
+
+    const errors = {};
+Profile.findOne({user: req.params.user_id})
+    .then(profile =>{
+   Profile.findOne({user: req.user.id})
       .then((profile) => {
-          if(profile.following.filter(users => following.users.toString() === req.params.user_id).length > 0)
-          {return res.status(400).json({alreadyfollowing: 'User is already following this user'});
-          }
-          profile.following.unshift({user: req.params.user.id});
-          this.post.save().then(profile => res.json(profile));
-          })
+        if (!profile)
+        res.status(404).json({ profilenotfound: 'Cannot find your profile' });
+
+        if(profile.following.filter((following) => following.user_id.toString() === req.params.user_id).length > 0)
+        return res.status(400).json({alreadyfollowing:'User is already following this user'});
+        
+        profile.following.unshift({user_id: req.params.user_id});
+        profile.save().then((profile) => res.json(profile)); 
+        
+    })
         .catch(err => res.status(404).json({profilenotfound: 'Cannot find your profile'}));
     })
-    // .catch(err => res.status(400).json({profilenotfound: "Cannot find the profile you are trying to follow"}));   
-
-// }
-// );
+    .catch(err => console.log(err));
+  }
+)
 
 //@route  DELETE  api/profile/user/:id/follow
 //@desc   Remove user to current user's 'following' list
