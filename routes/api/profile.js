@@ -258,7 +258,21 @@ router.post(
       .catch((err) => console.log(err));
   }
 );
+//@route .....DELETE api/profile
+//@desc ..... delete profile
+//@access........private
 
+router.delete("/",
+              passport.authenticate("jwt",{session: false}),
+              (req,res) => {
+                Profile.findOneAndRemove({ user:req.user.id})
+                .then(() => {
+                  User.findOneAndRemove({
+                    _id:req.user.id})
+                    .then(() => res.json({success:true}))
+                  });
+                });
+              
 //@route  DELETE  api/profile/user/:id/follow
 //@desc   Remove user to current user's 'following' list
 //@access Private
