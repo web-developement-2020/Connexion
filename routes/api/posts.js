@@ -73,6 +73,7 @@ router.delete('/:id',
                         });
                }
              );
+
 //@route....... POST/api/posts/like/:id
 //@desc ....... like post
 //@access...... Private
@@ -86,7 +87,6 @@ router.post('/like/:id',
                               if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0)
                              {
                                return res.status(400).json({alreadyliked:'User already liked this post' });
-
                              }
                              post.likes.unshift({ user: req.user.id});
                              post.save().then(post => res.json(post)); 
@@ -176,7 +176,16 @@ router.delete('/comment/:id/:comment_id',
               }
 );
 
+//@route    GET /api/posts/following
+//@desc     get posts for followers
+//@access   private
 
+router.get('/following', (req, res) => {
+  Post.find({'handle': { $in: req.body.followers[any].handle}})
+    .sort({ date: -1})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ nopostsfound : 'No posts found'}))
+})
 
 
 module.exports = router;

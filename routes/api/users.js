@@ -116,6 +116,7 @@ router.get(
     return res.json(req.user);
   }
 );
+
 // @route   POST /api/users/forgotPassword
 // @desc    Reset user's password
 // @access  Public
