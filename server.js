@@ -3,8 +3,13 @@ const app = express();
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+
+const sendMail = require('./routes/api/sendMails')
+
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+
+const nodemailer = require("nodemailer");
 
 //Body parser configuration
 app.use(bodyparser.urlencoded({extended: false}));
@@ -17,6 +22,8 @@ app.get('/', (req, res) => res.send('Hello'));
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
+
+app.use('./api/sendMails, sendMails');
 
 const port = 7200;
 app.listen(port, () => console.log(`Server running on port ${port}`));
