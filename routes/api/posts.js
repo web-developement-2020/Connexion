@@ -1,7 +1,12 @@
-const express = require("express");
+
+
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const Post = require('../../models/Post');
+const Profile = require('../../models/Profile');
+const validatePostInput = require('../../validation/post');
 const router = express.Router();
-const mongoose = require("mongoose");
-const passport = require("passport");
 
 // Post model
 const Post = require("../../models/Post");
@@ -44,6 +49,7 @@ router.post(
     if (!isValid) {
       // If any errors, send 400 with errors object
       return res.status(400).json(errors);
+
     }
 
     const newPost = new Post({
@@ -53,16 +59,18 @@ router.post(
       user: req.user.id,
     });
 
+
     newPost.save().then((post) => res.json(post));
   }
 );
 
-// @route   DELETE api/posts/:id
-// @desc    Delete post
-// @access  Private
+//@route....... DELETE /api/posts/:id
+//@desc ....... delete post
+//@access...... Private
+
 router.delete(
-  "/:id",
-  passport.authenticate("jwt", { session: false }),
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
       Post.findById(req.params.id)
@@ -79,6 +87,7 @@ router.delete(
         })
         .catch((err) =>
           res.status(404).json({ postnotfound: "No post found" })
+
         );
     });
   }
@@ -90,6 +99,7 @@ router.delete(
 router.post(
   "/like/:id",
   passport.authenticate("jwt", { session: false }),
+
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
       Post.findById(req.params.id)
@@ -110,6 +120,7 @@ router.post(
         })
         .catch((err) =>
           res.status(404).json({ postnotfound: "No post found" })
+
         );
     });
   }
@@ -121,6 +132,7 @@ router.post(
 router.post(
   "/unlike/:id",
   passport.authenticate("jwt", { session: false }),
+
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
       Post.findById(req.params.id)
@@ -147,6 +159,7 @@ router.post(
         })
         .catch((err) =>
           res.status(404).json({ postnotfound: "No post found" })
+
         );
     });
   }
@@ -166,6 +179,7 @@ router.post(
       // If any errors, send 400 with errors object
       return res.status(400).json(errors);
     }
+
 
     Post.findById(req.params.id)
       .then((post) => {
@@ -198,25 +212,40 @@ router.delete(
         // Check to see if comment exists
         if (
           post.comments.filter(
+
             (comment) => comment._id.toString() === req.params.comment_id
           ).length === 0
         ) {
           return res
             .status(404)
-            .json({ commentnotexists: "Comment does not exist" });
+            .json({ commentnotexist: 'Comment does not exist' });
         }
-
-        // Get remove index
         const removeIndex = post.comments
           .map((item) => item._id.toString())
           .indexOf(req.params.comment_id);
-
-        // Splice comment out of array
         post.comments.splice(removeIndex, 1);
-
         post.save().then((post) => res.json(post));
       })
-      .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
+      .catch((err) => res.status(404).json({ postnotfound: ' No post found' }));
+  }
+);
+
+//@route    GET /api/posts/following/lists
+//@desc     get posts for users you are following
+//@access   private
+
+
+router.get(
+  '/following/lists',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+
+    Profile.findOne({ user: req.user.id })
+      .then((profile) => {
+        if (!profile) res.status(404).json({ profile: 'No profile exists' });
+        res.json({profiles: profile.following}); 
+      })
+      .catch((err) => console.log(err));
   }
 );
 
