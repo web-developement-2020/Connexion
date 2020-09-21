@@ -212,7 +212,7 @@ router.delete(
 );
 
 //@route    GET /api/posts/following/lists
-//@desc     get posts for followers
+//@desc     get posts for users you are following
 //@access   private
 
 router.get(
