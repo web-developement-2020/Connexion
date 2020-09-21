@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const gravatar = require('gravatar');
 const keys = require('../../config/keys');
-const nodemailer = require("nodemailer");
-const lodash = require("lodash");
+const nodemailer = require('nodemailer');
+const lodash = require('lodash');
 const validateRegisterInput = require('../../validation/register');
 
 const router = express.Router();
@@ -25,7 +25,6 @@ router.post('/register', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
 
   User.findOne({ email: req.body.email }).then((user) => {
     console.log('user: ', user);
@@ -116,10 +115,11 @@ router.get(
     return res.json(req.user);
   }
 );
+
 // @route   POST /api/users/forgotPassword
 // @desc    Reset user's password
 // @access  Public
-router.post("/forgotPassword", (req, res) => {
+router.post('/forgotPassword', (req, res) => {
   const email = req.body.email;
   let newPassword = JSON.stringify(
     Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000
@@ -128,7 +128,7 @@ router.post("/forgotPassword", (req, res) => {
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        return res.status(404).json({ email: "User not found" });
+        return res.status(404).json({ email: 'User not found' });
       } else {
         bcrypt.genSalt(10, (err, salt) => {
           if (err) throw err;
@@ -149,19 +149,19 @@ router.post("/forgotPassword", (req, res) => {
         var mailOptions = {
           from: req.body.name + req.body.email, // sender address
           to: email, // list of receivers
-          subject: "Temporary password", // Subject line
-          text: "Temporary Password :" + newPassword,
+          subject: 'Temporary password', // Subject line
+          text: 'Temporary Password :' + newPassword,
         };
 
         // send mail with defined transport object
         transporter.sendMail(mailOptions, function (error, info) {
           if (!error) {
-            res.send("Email sent");
+            res.send('Email sent');
           } else {
-            res.send("Failed, error : ");
+            res.send('Failed, error : ');
           }
           transporter.close();
-          console.log("Message sent: " + info.response);
+          console.log('Message sent: ' + info.response);
         });
       }
     })
@@ -171,17 +171,17 @@ router.post("/forgotPassword", (req, res) => {
 //@desc    change user's password
 //@access  Private
 router.post(
-  "/changePassword",
-  passport.authenticate("jwt", { session: false }),
+  '/changePassword',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const email = req.body.email;
     const oldPassword = req.body.password;
     let newPassword = req.body.newPassword;
-    
+
     User.findOne({ email })
       .then((user) => {
         if (!user) {
-          return res.status(404).json({ email: "User not found" });
+          return res.status(404).json({ email: 'User not found' });
         }
         // Check password
         var ID = user.id;
