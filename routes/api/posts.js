@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 //@route....... GET /api/posts/:id
-//@desc ....... get post by id
+//@desc ....... get post by Post id
 //@access...... Public
 
 router.get('/:id', (req, res) => {
@@ -27,6 +27,26 @@ router.get('/:id', (req, res) => {
       res.status(404).json({ nopostfound: 'No post found with that ID ' })
     );
 });
+
+//@route....... GET /api/posts/user/id
+//@desc ....... get post by current user
+//@access...... Private
+
+router.get(
+  '/user/id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Post.find({ user: req.user.id })
+      .then((post) => {
+        if (!post) res.status(404).json({ noPost: 'No post exists' });
+
+        res.json(post);
+      })
+      .catch((err) =>
+        res.status(404).json({ nopostfound: 'No post found with that ID ' })
+      );
+  }
+);
 
 //@route....... POST /api/posts
 //@desc ....... create posts
@@ -83,6 +103,7 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
+      console.log(profile);
       Post.findById(req.params.id)
         .then((post) => {
           if (
@@ -168,10 +189,11 @@ router.delete(
   '/comment/:id/:comment_id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+
     Post.findById(req.params.id)
       .then((post) => {
         if (
-          post.comment.filter(
+          post.comments.filter(
             (comment) => comment._id.toString() === req.params.comment_id
           ).length === 0
         ) {
@@ -193,16 +215,14 @@ router.delete(
 //@desc     get posts for followers
 //@access   private
 
-
 router.get(
   '/following/lists',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-
     Profile.findOne({ user: req.user.id })
       .then((profile) => {
         if (!profile) res.status(404).json({ profile: 'No profile exists' });
-        res.json({profiles: profile.following}); 
+        res.json({ following: profile.following });
       })
       .catch((err) => console.log(err));
   }
