@@ -25,10 +25,18 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ nopostsfound: "No posts found" }));
 });
 
+<<<<<<< HEAD
 // @route   GET api/posts/:id
 // @desc    Get post by id
 // @access  Public
 router.get("/:id", (req, res) => {
+=======
+//@route....... GET /api/posts/:id
+//@desc ....... get post by Post id
+//@access...... Public
+
+router.get('/:id', (req, res) => {
+>>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
   Post.findById(req.params.id)
     .then((post) => res.json(post))
     .catch((err) =>
@@ -36,9 +44,36 @@ router.get("/:id", (req, res) => {
     );
 });
 
+<<<<<<< HEAD
 // @route   POST api/posts
 // @desc    Create post
 // @access  Private
+=======
+//@route....... GET /api/posts/user/id
+//@desc ....... get post by current user
+//@access...... Private
+
+router.get(
+  '/user/id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Post.find({ user: req.user.id })
+      .then((post) => {
+        if (!post) res.status(404).json({ noPost: 'No post exists' });
+
+        res.json(post);
+      })
+      .catch((err) =>
+        res.status(404).json({ nopostfound: 'No post found with that ID ' })
+      );
+  }
+);
+
+//@route....... POST /api/posts
+//@desc ....... create posts
+//@access...... Private
+
+>>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -102,6 +137,7 @@ router.post(
 
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
+      console.log(profile);
       Post.findById(req.params.id)
         .then((post) => {
           if (
@@ -207,12 +243,16 @@ router.delete(
   "/comment/:id/:comment_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+
     Post.findById(req.params.id)
       .then((post) => {
         // Check to see if comment exists
         if (
           post.comments.filter(
+<<<<<<< HEAD
 
+=======
+>>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
             (comment) => comment._id.toString() === req.params.comment_id
           ).length === 0
         ) {
@@ -234,16 +274,14 @@ router.delete(
 //@desc     get posts for users you are following
 //@access   private
 
-
 router.get(
   '/following/lists',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-
     Profile.findOne({ user: req.user.id })
       .then((profile) => {
         if (!profile) res.status(404).json({ profile: 'No profile exists' });
-        res.json({profiles: profile.following}); 
+        res.json({ following: profile.following });
       })
       .catch((err) => console.log(err));
   }
