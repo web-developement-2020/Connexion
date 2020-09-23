@@ -419,19 +419,7 @@ Profile.findOne({user: req.params.user_id})
     })
     .catch(err => console.log(err));
   }
-<<<<<<< HEAD
 );
-//@route  DELETE  api/profile/user/:id/follow
-//@desc   Remove user to current user's 'following' list
-//@access Private
-// router.delete('/:id/follow', passport.authenticate('jwt', { session: false }), (req, res) => {
-// UserSchema.methods.unfollow = function(id){
-//   this.following.remove(id);
-//   return this.save();
-// };
-// })
-=======
-)
 
 // @route  DELETE  api/profile/user/:user_id/unfollow
 // @desc   Remove user from current user's 'following' list
@@ -466,6 +454,5 @@ Profile.findOne({user: req.params.user_id})
     .catch(err => console.log(err));
   }
 )
->>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
 
 module.exports = router;

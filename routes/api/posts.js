@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -8,13 +6,7 @@ const Profile = require('../../models/Profile');
 const validatePostInput = require('../../validation/post');
 const router = express.Router();
 
-// Post model
-const Post = require("../../models/Post");
-// Profile model
-const Profile = require("../../models/Profile");
 
-// Validation
-const validatePostInput = require("../../validation/post");
 // @route   GET api/posts
 // @desc    Get posts
 // @access  Public
@@ -25,18 +17,11 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ nopostsfound: "No posts found" }));
 });
 
-<<<<<<< HEAD
 // @route   GET api/posts/:id
 // @desc    Get post by id
 // @access  Public
 router.get("/:id", (req, res) => {
-=======
-//@route....... GET /api/posts/:id
-//@desc ....... get post by Post id
-//@access...... Public
 
-router.get('/:id', (req, res) => {
->>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
   Post.findById(req.params.id)
     .then((post) => res.json(post))
     .catch((err) =>
@@ -44,11 +29,6 @@ router.get('/:id', (req, res) => {
     );
 });
 
-<<<<<<< HEAD
-// @route   POST api/posts
-// @desc    Create post
-// @access  Private
-=======
 //@route....... GET /api/posts/user/id
 //@desc ....... get post by current user
 //@access...... Private
@@ -73,7 +53,6 @@ router.get(
 //@desc ....... create posts
 //@access...... Private
 
->>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -216,7 +195,6 @@ router.post(
       return res.status(400).json(errors);
     }
 
-
     Post.findById(req.params.id)
       .then((post) => {
         const newComment = {
@@ -249,10 +227,6 @@ router.delete(
         // Check to see if comment exists
         if (
           post.comments.filter(
-<<<<<<< HEAD
-
-=======
->>>>>>> b18eb00d93c794ad5507e3b337eac52876eb94a3
             (comment) => comment._id.toString() === req.params.comment_id
           ).length === 0
         ) {
