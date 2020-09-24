@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 class Navbar extends Component {
   render() {
     return (
-      <nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-4'>
+      <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            DevConnector
+            <object type="image/svg+xml" data="../../img/connexion-app.svg"></object>
           </Link>
           <button
             className='navbar-toggler'
@@ -17,20 +17,10 @@ class Navbar extends Component {
             <span className='navbar-toggler-icon'></span>
           </button>
 
-          <div className='collapse navbar-collapse' id='mobile-nav'>
-            <ul className='navbar-nav mr-auto'>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/profiles'>
-                  {' '}
-                  Developers
-                </Link>
-              </li>
-            </ul>
-
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item'>
                 <Link className='nav-link' to='/register'>
-                  Sign Up
+                  Register
                 </Link>
               </li>
               <li className='nav-item'>
@@ -39,8 +29,11 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
           </div>
-        </div>
       </nav>
     );
   }
