@@ -1,6 +1,5 @@
-
-const express = require('express');
-const passport = require('passport');
+const express = require("express");
+const passport = require("passport");
 const router = express.Router();
 const mongoose = require("mongoose");
 
@@ -313,9 +312,9 @@ router.delete(
 //@desc     Get current user profile
 //@access   Private
 router.get(
-  '/',
-  passport.authenticate('jwt', {session: false}),
-  (req,res) => {
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
     const errors = {};
 
     Profile.findOne({ user: req.user.id })
@@ -334,13 +333,13 @@ router.get(
 //@route    GET api/profile/all
 //@desc     Get all profiles
 //@access   Public
-router.get('/all', (req, res) =>{
+router.get("/all", (req, res) => {
   const errors = {};
 
   Profile.find()
     .populate("user", ["name", "avatar"])
     .then((profiles) => {
-      if(!profiles) {
+      if (!profiles) {
         errors.noprofile = "There are no profiles";
         return res.status(404).json(errors);
       }
@@ -391,7 +390,6 @@ router.get("/user/:user_id", (req, res) => {
     );
 });
 
-
 //@route  POST  api/profile/user/:user_id/follow
 //@desc   Add user to current user's 'following' list
 //@access Private
@@ -419,40 +417,51 @@ Profile.findOne({user: req.params.user_id})
     })
     .catch(err => console.log(err));
   }
-);
+)
 
 // @route  DELETE  api/profile/user/:user_id/unfollow
 // @desc   Remove user from current user's 'following' list
 // @access Private
 router.delete(
-  '/user/:user_id/unfollow', 
-  passport.authenticate('jwt', { session: false }), (req, res) => {
-
+  "/user/:user_id/unfollow",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
     const errors = {};
 
-Profile.findOne({user: req.params.user_id})
-    .then(profile =>{
-   Profile.findOne({user: req.user.id})
+    Profile.findOne({ user: req.params.user_id })
       .then((profile) => {
+        Profile.findOne({ user: req.user.id })
+          .then((profile) => {
+            if (!profile)
+              res
+                .status(404)
+                .json({ profilenotfound: "Cannot find your profile" });
 
-        if (!profile)
-        res.status(404).json({ profilenotfound: 'Cannot find your profile' });
+            if (
+              profile.following.filter(
+                (following) =>
+                  following.user_id.toString() === req.params.user_id
+              ).length === 0
+            ) {
+              return res.status(400).json({
+                notfollowing: "Cannot unfollow user you are not following",
+              });
+            }
 
-        if(profile.following.filter((following) => following.user_id.toString() === req.params.user_id).length === 0)
-        {
-        return res.status(400).json({notfollowing:'Cannot unfollow user you are not following'});
-        }
-
-        const removeIndex = profile.following
-                            .map(item => item.user_id.toString())
-                            .indexOf(req.params.user_id);
-        profile.following.splice(removeIndex,1);
-        profile.save().then((profile) => res.json(profile));
-        })
-        .catch(err => res.status(404).json({profilenotfound: 'Cannot find your profile'}));
-    })
-    .catch(err => console.log(err));
+            const removeIndex = profile.following
+              .map((item) => item.user_id.toString())
+              .indexOf(req.params.user_id);
+            profile.following.splice(removeIndex, 1);
+            profile.save().then((profile) => res.json(profile));
+          })
+          .catch((err) =>
+            res
+              .status(404)
+              .json({ profilenotfound: "Cannot find your profile" })
+          );
+      })
+      .catch((err) => console.log(err));
   }
-)
+);
 
 module.exports = router;
