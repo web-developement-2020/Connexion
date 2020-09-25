@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import logo from '../../img/connexion-app.svg';
+
 class Navbar extends Component {
   render() {
     return (
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            <object type="image/svg+xml" data="../../img/connexion-app.svg"></object>
+            <img src={logo} width="auto" height="100%" alt="connexion logo"/>
           </Link>
           <button
             className='navbar-toggler'

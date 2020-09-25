@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+// import Register from './Register';
 
 class Login extends Component {
   render() {
-    return 
+    return (
     <div class="login">
     <div class="container">
       <div class="row">
@@ -21,7 +22,8 @@ class Login extends Component {
         </div>
       </div>
     </div>
-  </div>;
+  </div>
+    )
   }
 }
 
