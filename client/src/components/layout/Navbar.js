@@ -21,20 +21,20 @@ class Navbar extends Component {
 
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item'>
-                <Link className='nav-link' to='/register'>
-                  Register
+                <Link className='nav-link' to='/register' id="nav-link">
+                  Sign Up
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/login'>
+                <Link className='nav-link' to='/login' id="nav-link2">
                   Login
                 </Link>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            {/* <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> */}
           </div>
       </nav>
     );

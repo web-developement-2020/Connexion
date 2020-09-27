@@ -37,6 +37,30 @@
   }
 } */
 
+.navbar-nav .nav-item .nav-link{
+  color: #e69138;
+  font-family: abel;
+  font-size: 1.8em;
+  /* border: 1px black solid; */
+  border-radius: 5px;
+  margin-left: 1em;
+}
+
+#signup-link{
+  background-color: #10206b;
+  border: #10206b 1px solid;
+}
+
+/* #nav-link, #nav-link2 {
+  background-color: #737373;
+  border: #737373;
+  color: #fcfcfc;
+} */
+
+#nav-link:hover, #nav-link2:hover {
+  color: #8b5822;
+}
+
 img {
   width: 100%;
 }
