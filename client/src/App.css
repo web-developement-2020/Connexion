@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Abel Sans;
 }
 
 /* .App-logo {
@@ -92,6 +93,7 @@ img {
   opacity: 0.9;
 }
 
+/***********  Profile beginning ************/
 .latest-profiles-img {
   width: 40px;
   height: 40px;
@@ -100,3 +102,86 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.card-header {
+  background: #dddddd;
+}
+.card-head:hover{
+  background: #444444;
+
+}
+
+.btn-link {
+  color: #363636;
+}
+.btn-link:hover {
+  color: white;
+  text-decoration: none;
+}
+.btn-link.focus,
+.btn-link:focus {
+  text-decoration: none;
+}
+.btn.focus,
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn {
+  padding: 0px;
+  /* background-color: #e69138; */
+}
+
+.btn-secondary{
+  width:50px;
+}
+
+
+.profile-img {
+  width: 90px;
+}
+#profile-mini {
+  width: 40px;
+}
+
+.input-group {
+  padding-bottom: 10px;
+}
+.input-group-text {
+  background-color: #dddddd;
+  font-size: 0.7rem;
+}
+.comment {
+  padding-left: 30px;
+  padding-top: 5px;
+  /* margin-left:auto; */
+  /* margin-right:auto; */
+}
+
+#post{
+  max-width: 30%;
+  height:auto;
+}
+.post-img{
+margin-top:15px;
+}
+.post-img-card{
+
+  border: 1px solid #bbbbbb;
+  /* border-style:ridge; */
+  box-shadow:3px 3px 5px 1px #eeeeee
+}
+
+
+.comment-body{
+  margin-top:5px;
+  margin-bottom:18px;
+}
+.followers-following{
+  margin-bottom: 15px;
+}
+.comment-form{
+  margin-top: 13px;
+}
+
+/*********** Profile ending *************/
