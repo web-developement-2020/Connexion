@@ -64,8 +64,9 @@ router.post(
     }
 
     const newPost = new Post({
-      text: req.body.text,
-      name: req.body.name,
+      caption: req.body.caption,
+      image: req.body.imageURL,
+      handle: req.user.handle,
       avatar: req.body.avatar,
       user: req.user.id,
     });
