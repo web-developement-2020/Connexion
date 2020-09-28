@@ -9,12 +9,12 @@ class CreateProfile extends Component {
     this.state = {
       handle:'',
       bio:'',
-      status:'',
-      skills:[],
-      company:'',
+      
+    
+      
       website:'',
       location:'',
-      githubusername:'',
+    
       social:{},
       
       errors: {}
@@ -33,12 +33,12 @@ class CreateProfile extends Component {
     const newUser = {
       handle: this.state.handle,
       bio: this.state.bio,
-      status: this.state.status,
-      skills: this.state.skills,
-      company: this.state.company,
+      
+      
+      
       website: this.state.website,
       location: this.state.location,
-      githubusername:  this.state.githubusername,
+      
       social: this.state.social
     
     };
@@ -63,7 +63,7 @@ class CreateProfile extends Component {
             <h1 className="display-4 text-center">Create Your Profile</h1>
           
             <small className="d-block pb-3">* = required field</small>
-            <form action="add-experience.html">
+            <form >
               <div className="form-group">
                 <input type="text" className="form-control form-control-lg" placeholder="* Profile handle" name="handle" required />
                 <small className="form-text text-muted">A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)</small>
@@ -72,18 +72,9 @@ class CreateProfile extends Component {
                 <textarea className="form-control form-control-lg" placeholder="A short bio of yourself" name="bio"></textarea>
                 <small className="form-text text-muted">Tell us a little about yourself</small>
               </div>
-              <div className="form-group">
-              <input type="text" className="form-control form-control-lg" placeholder="* Status" name="status" required />
-                <small className="form-text text-muted">Give us an idea of where you are at in your career</small>
-              </div>
-        <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="* Skills" name="skills" required />
-                <small className="form-text text-muted">Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)</small>
-              </div>
-              <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Company" name="company" />
-                <small className="form-text text-muted">Could be your own company or one you work for</small>
-              </div>
+              
+        
+              
               <div className="form-group">
                 <input type="text" className="form-control form-control-lg" placeholder="Website" name="website" />
                 <small className="form-text text-muted">Could be your own or a company website</small>
@@ -93,10 +84,6 @@ class CreateProfile extends Component {
                 <small className="form-text text-muted">City & state suggested (eg. Boston, MA)</small>
               </div>
               
-              <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Github Username" name="githubusername" />
-                <small className="form-text text-muted">If you want your latest repos and a Github link, include your username</small>
-              </div>
               
   
               <div className="mb-3">
