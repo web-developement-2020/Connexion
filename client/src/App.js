@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import CreatePost from './components/auth/CreatePost';
-
+import CreateProfile from './components/auth/CreateProfile';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path="/post" component={CreatePost} />
-
+        <Route exact path="/profile" component={CreateProfile} />
         <Footer />
       </div>
     </Router>
