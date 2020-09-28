@@ -7,6 +7,7 @@ import Footer from './components/layout/Footer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import CreatePost from './components/auth/CreatePost';
+import Post from './components/auth/Post';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Route exact path='/' component={Landing} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
-        <Route exact path="/post" component={CreatePost} />
+        <Route exact path='/post' component={Post} />
+        <Route exact path='/create-post' component={CreatePost} />
 
         <Footer />
       </div>
