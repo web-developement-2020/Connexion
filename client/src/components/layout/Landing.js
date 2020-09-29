@@ -13,7 +13,7 @@ class landing extends Component {
                 <h1 className="display-3 mb-4"><img src={logo} width="auto" height="100%" alt="connexion logo"/></h1>
                 <p className="lead">
                   {" "}
-                  <span>SHARE.</span>  <span>CONNECT.</span>  <span>RELATE.</span>
+                  <span>SHARE.</span>  <span>CONNECT.</span>  <span>CREATE.</span>
                 </p>
                 <hr />
                 <div class="d-flex flex-row  justify-content-center">
