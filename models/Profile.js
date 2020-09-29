@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users',
+    ref: "users",
   },
   handle: {
     type: String,
@@ -20,6 +20,7 @@ const ProfileSchema = Schema({
   bio: {
     type: String,
   },
+
   social: {
     youtube: {
       type: String,
@@ -38,16 +39,17 @@ const ProfileSchema = Schema({
     },
   },
   following: [
-    {user_id:{
-      type: String,
-      required: true
+    {
+      user_id: {
+        type: String,
+        required: true,
       },
-      date:{
-        type:Date,
-        default:Date.now
-      }
-    }
-  ]
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 module.exports = Profile = mongoose.model('profiles', ProfileSchema);

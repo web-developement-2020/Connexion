@@ -8,7 +8,9 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
+
             <img src={logo} width="auto" height="100%" alt="connexion logo"/>
+
           </Link>
           <button
             className='navbar-toggler'

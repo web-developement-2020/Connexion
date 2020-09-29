@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import axios from 'axios';
@@ -5,18 +6,18 @@ import axios from 'axios';
 class Register extends Component {
   constructor() {
     super();
-
     //Local state
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      password2: '',
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
       errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -40,6 +41,7 @@ class Register extends Component {
     const {errors} = this.state;
 
     return (
+
       <div className='register'>
         <div className='container'>
           <div className='row'>
@@ -63,11 +65,13 @@ class Register extends Component {
                 <input type="email" className={classnames("form-control form-control-lg", {'is-invalid': errors.email})} 
                 placeholder="Email Address" name="email" value={this.state.email} onChange={this.onChange}/>
                   <small className='form-text text-muted'>
+
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
                   </small>
                   
                 </div>
+
 
                 <div className='form-group'>
                 <input type="password" className={classnames("form-control form-control-lg", {'is-invalid': errors.password})}placeholder="Password" name="password" value={this.state.password} onChange={this.onChange}/>
@@ -86,6 +90,7 @@ class Register extends Component {
                 )}
               </div>
                 <input type='submit' className='btn btn-info btn-block mt-4' />
+
               </form>
             </div>
           </div>
