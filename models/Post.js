@@ -18,7 +18,7 @@ const PostSchema = new Schema({
 
   name: {
     type: String,
-
+  }
   handle: {
     type:String
 
