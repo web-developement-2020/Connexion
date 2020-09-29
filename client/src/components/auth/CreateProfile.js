@@ -30,7 +30,7 @@ class CreateProfile extends Component {
 
   onSubmit(e){
     e.preventDefault();
-    const newUser = {
+    const profile = {
       handle: this.state.handle,
       bio: this.state.bio,
       
