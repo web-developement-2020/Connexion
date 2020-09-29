@@ -20,7 +20,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/post' component={Post} />
-        <Route exact path='/create-post' component={CreatePost} />
+        <Route exact path='/addpost' component={CreatePost} />
         <Route exact path="/profile" component={CreateProfile} />
         <Footer />
       </div>
