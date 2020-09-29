@@ -6,7 +6,7 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            <object type="image/svg+xml" data="../../img/connexion-app.svg"></object>
+            <object  type="image/svg+xml" data="../../img/connexion-app.svg"></object>
           </Link>
           <button
             className='navbar-toggler'
