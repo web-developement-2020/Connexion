@@ -8,9 +8,7 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-
-            <img src={logo} width="auto" height="100%" alt="connexion logo"/>
-
+            <img src={logo} width="auto" height="100%" alt="connexion logo" id="logo"/>
           </Link>
           <button
             className='navbar-toggler'
@@ -20,11 +18,11 @@ class Navbar extends Component {
           >
             <span className='navbar-toggler-icon'></span>
           </button>
-
+          <div class="collapse navbar-collapse" id="mobile-nav">
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item'>
                 <Link className='nav-link' to='/register' id="nav-link">
-                  Sign Up
+                  Register
                 </Link>
               </li>
               <li className='nav-item'>
@@ -37,6 +35,7 @@ class Navbar extends Component {
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form> */}
+          </div>
           </div>
       </nav>
     );

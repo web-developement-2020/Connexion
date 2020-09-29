@@ -1,31 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import logo from '../../img/connexion-app.svg';
+
 class landing extends Component {
   render() {
     return (
       <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
+        <div className="lt-overlay landing-inner text-dark">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Developer Connector</h1>
+                <h1 className="display-3 mb-4"><img src={logo} width="auto" height="100%" alt="connexion logo"/></h1>
                 <p className="lead">
                   {" "}
-                  Create a developer profile/portfolio, share posts and get help
-                  from other developers
+                  <span>SHARE.</span>  <span>CONNECT.</span>  <span>RELATE.</span>
                 </p>
                 <hr />
-
-                <Link to='/register' className='btn btn-lg btn-info mr-2' id="signup-link">
-
-                  Sign Up
+                <div class="d-flex flex-row  justify-content-center">
+                <Link to='/register' className='btn btn-lg btn-light mr-2 bg-light' id="signup-link">
+                  Register
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
+                <Link to="/login" className="btn btn-lg btn-light bg-light" id="login-link">
                   Login
                 </Link>
-                <Link to="/forgotPassword" className="btn btn-lg btn-light">
-                  ForgotPassword
-                </Link>
+                </div>
               </div>
             </div>
           </div>

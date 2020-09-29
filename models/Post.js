@@ -15,23 +15,18 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
-
   name: {
     type: String,
-
+  },
   handle: {
     type:String
-
   },
   avatar: {
     type: String,
   },
-
   image:{
     type : String,
   },
-  
-
   likes: [
     {
       user: {
@@ -40,11 +35,7 @@ const PostSchema = new Schema({
       },
     },
   ],
-
-
-  
   comments:[
-
     {
       user: {
         type: Schema.Types.ObjectId,

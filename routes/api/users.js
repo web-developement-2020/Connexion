@@ -167,6 +167,7 @@ router.post('/forgotPassword', (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
 //@route   POST /api/users/changePassword
 //@desc    change user's password
 //@access  Private

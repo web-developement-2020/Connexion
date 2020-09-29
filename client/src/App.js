@@ -26,9 +26,8 @@ function App() {
         <Route exact path='/post' component={Post} />
         <Route exact path='/addpost' component={CreatePost} />
         <Route exact path="/profile" component={CreateProfile} />
-     <Route exact path="/forgotPassword" component={ForgotPassword} />
-        <p>Facebook Authentication</p>
-        <Facebook />
+        <Route exact path="/forgotPassword" component={ForgotPassword} />
+        
 
         <Footer />
       </div>

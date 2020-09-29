@@ -1,7 +1,11 @@
 
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Facebook from "../Facebook";
+import ForgotPassword from "./ForgotPassword";
+
 
 
 class Login extends Component {
@@ -63,6 +67,12 @@ class Login extends Component {
                 )}
             </div>
             <input type="submit" className="btn btn-info btn-block mt-4" />
+
+            <Link to="/forgotPassword" className="btn btn-lg btn-light">
+                  ForgotPassword
+            </Link>
+            <p>Facebook Authentication</p>
+            <Facebook />
           </form>
         </div>
       </div>
