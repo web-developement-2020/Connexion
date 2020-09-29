@@ -38,5 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:7200"
+  "proxy": "http://localhost:7200",
+  "devDependencies": {
+    "file-loader": "^6.1.0"
+  }
 }
