@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import CreatePost from './components/auth/CreatePost';
 import Post from './components/auth/Post';
 
+import CreateProfile from './components/auth/CreateProfile';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/post' component={Post} />
         <Route exact path='/create-post' component={CreatePost} />
-
+        <Route exact path="/profile" component={CreateProfile} />
         <Footer />
       </div>
     </Router>
