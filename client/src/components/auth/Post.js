@@ -21,6 +21,9 @@ class Post extends Component {
                   </Link>
                 </div>
                 <div className='col-md-10'>
+                  <h2 align='right' class="header">
+                    <i class='fas fa-photo-video'></i> Post
+                  </h2>
                   <h6 className='card-title'>Michael Dam</h6>
                   <p className='card-text'>
                     This is a wider card with supporting text below as a natural
