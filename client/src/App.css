@@ -167,7 +167,7 @@ img {
   font-size: 1.5em;
 }
 
-/* Profile */
+/* Profile beginning*/
 .profile {
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -205,11 +205,11 @@ img {
 .media-link:hover{
   text-decoration: none;
   color: #777777;
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 .media-link{
   color:#222222;
-  font-size: 0.7em;
+  font-size: 0.8em;
 
 }
 .fa-youtube{
@@ -235,3 +235,5 @@ img {
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+/* Profile ending */
