@@ -21,13 +21,17 @@ function App() {
       <div className="App">
         <Route exact path='/NavBarUser' component={NavbarUser} />
         <Navbar />
-        <Route exact path='/' component={Landing} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/post' component={Post} />
-        <Route exact path='/addpost' component={CreatePost} />
-        <Route exact path="/profile" component={CreateProfile} />
-        <Route exact path="/forgotPassword" component={ForgotPassword} />
+
+        <main class="site-content">
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/post' component={Post} />
+          <Route exact path='/addpost' component={CreatePost} />
+          <Route exact path="/profile" component={CreateProfile} />
+          <Route exact path="/forgotPassword" component={ForgotPassword} />
+        </main>
+        
         <Footer />
       </div>
     </Router>
