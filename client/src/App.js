@@ -12,6 +12,7 @@ import Post from './components/auth/Post';
 import Facebook from "./components/Facebook";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import NavbarUser from './components/auth/NavbarUser'
+import Profile from './components/auth/Profile';
 
 import CreateProfile from './components/auth/CreateProfile';
 
@@ -28,7 +29,8 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/post' component={Post} />
           <Route exact path='/addpost' component={CreatePost} />
-          <Route exact path="/profile" component={CreateProfile} />
+          <Route exact path='/addprofile' component={CreateProfile} />
+          <Route exact path='/profile' component={Profile} />          
           <Route exact path="/forgotPassword" component={ForgotPassword} />
         </main>
         

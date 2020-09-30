@@ -10,13 +10,13 @@
 .site-content{
   flex: 1;
 }
-body{
+body {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
 }
-footer{
+footer {
   height: 8vh;
   margin-bottom: 0;
 }
@@ -27,8 +27,8 @@ img {
 
 /*NAVBAR*/
 
-@media only screen and (max-width: 400px){
-  #logo{
+@media only screen and (max-width: 400px) {
+  #logo {
     width: 50vw;
     height: auto;
   }
@@ -137,9 +137,8 @@ img {
 .card-header {
   background: #dddddd;
 }
-.card-head:hover{
+.card-head:hover {
   background: #444444;
-
 }
 .btn-link {
   color: #363636;
@@ -159,8 +158,8 @@ img {
 .btn {
   padding: 0px;
 }
-.btn-secondary{
-  width:50px;
+.btn-secondary {
+  width: 50px;
 }
 .profile-img {
   width: 90px;
@@ -179,41 +178,42 @@ img {
   padding-left: 30px;
   padding-top: 5px;
   text-align: center;
-
 }
-#post{
+#post {
   max-width: 30%;
-  height:auto;
+  height: auto;
 }
-.post-img{
-margin-top:15px;
+.post-img {
+  margin-top: 15px;
 }
-.post-img-card{
+.post-img-card {
   border: 1px solid #bbbbbb;
   /* border-style:ridge; */
-  box-shadow:0px 1px 5px 1px #4A4A4A
+  box-shadow: 0px 1px 5px 1px #4a4a4a;
 }
-.comment-body{
-  margin-top:5px;
-  margin-bottom:18px;
+.comment-body {
+  margin-top: 5px;
+  margin-bottom: 18px;
 }
-.comment-text{
-  padding-left:15px;
-  padding-right:15px;
+.comment-text {
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.followers-following{
+.followers-following {
   margin-bottom: 15px;
 }
-.comment-form{
+.comment-form {
   margin-top: 13px;
+}
+.fa-photo-video {
+  color: #e69138;
 }
 
 /*LANDING PAGE*/
 .landing {
   position: relative;
   background: url('./img/connexion-bkg4.png') no-repeat;
-  background-color: RGBA(252, 252, 252, .3)
-  ;
+  background-color: RGBA(252, 252, 252, 0.3);
   background-size: contain;
   background-position: center;
   height: 100vh;
@@ -223,9 +223,9 @@ margin-top:15px;
 }
 
 .landing-inner {
- padding-top: 5vh;
+  padding-top: 5vh;
 }
-.lead{
+.lead {
   font-weight: 500;
   width: 30vw;
   margin-left: auto;
@@ -235,7 +235,7 @@ margin-top:15px;
   flex-wrap: nowrap;
   justify-content: space-evenly;
 }
-.lead span{
+.lead span {
   display: flex;
   justify-content: space-around;
   font-size: 1.5em;
@@ -249,7 +249,8 @@ margin-top:15px;
   height: 100%;
 }
 
-#signup-link, #login-link{
+#signup-link,
+#login-link {
   margin: 2em;
   background-color: #fcfcfc;
   padding: 1em;
@@ -257,3 +258,73 @@ margin-top:15px;
   font-size: 1.5em;
 }
 
+/* Profile beginning*/
+.profile {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.profile-sub-title {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.profile-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+.profile-text {
+  font-size: 0.9em;
+  font-weight: normal;
+}
+.profile-header {
+  padding-left: 30px;
+  padding-top: 15px;
+  font-weight: bold;
+}
+.profile-content {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 0px;
+}
+
+.fa-user {
+  color: #e69138;
+}
+.header {
+  color: #777777;
+}
+.media-link:hover{
+  text-decoration: none;
+  color: #777777;
+  font-size: 0.8em;
+}
+.media-link{
+  color:#222222;
+  font-size: 0.8em;
+
+}
+.fa-youtube{
+  color:red;
+}
+.fa-twitter{
+  color:rgb(3, 118, 201);
+}
+.fa-facebook-square{
+  color:rgb(3, 118, 201);
+
+}
+
+.fa-linkedin{
+  color:rgb(3, 118, 201);
+
+}
+
+.fa-instagram {
+  color: transparent;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Profile ending */
