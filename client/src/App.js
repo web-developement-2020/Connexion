@@ -11,6 +11,7 @@ import CreatePost from './components/auth/CreatePost';
 import Post from './components/auth/Post';
 import Facebook from "./components/Facebook";
 import ForgotPassword from "./components/auth/ForgotPassword";
+import NavbarUser from './components/auth/NavbarUser'
 
 import CreateProfile from './components/auth/CreateProfile';
 
@@ -18,8 +19,8 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Route exact path='/NavBarUser' component={NavbarUser} />
         <Navbar />
-
         <Route exact path='/' component={Landing} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
@@ -27,8 +28,6 @@ function App() {
         <Route exact path='/addpost' component={CreatePost} />
         <Route exact path="/profile" component={CreateProfile} />
         <Route exact path="/forgotPassword" component={ForgotPassword} />
-        
-
         <Footer />
       </div>
     </Router>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../img/connexion-app.svg';
 
-class Navbar extends Component {
+class NavbarUser extends Component {
   render() {
     return (
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
@@ -20,16 +20,30 @@ class Navbar extends Component {
           </button>
           <div class="collapse navbar-collapse" id="mobile-nav">
             <ul className='navbar-nav ml-auto'>
+
+            <li>
+              <form id="searchbar" action="" class="nav">
+                <input id="search-input" type="search" />
+                <i className="fa fa-search" id="search-icon"></i>
+              </form>
+              </li>
+
               <li className='nav-item nav'>
-                <Link className='nav-link' to='/register' id="nav-link">
-                  Register
+                <Link className='nav-link d-md-block ' to='/settings' id="nav-link">
+                <i className="fa fa-cog"></i>
                 </Link>
               </li>
+              
               <li className='nav-item nav'>
-                <Link className='nav-link' to='/login' id="nav-link2">
-                  Login
+                <Link className='nav-link' to='/profile' id="nav-img">
+                    <img
+                      className='profile-img rounded-circle d-md-block'
+                      src='https:\/\/0.gravatar.com\/avatar\/b258c6a54d33a27183639ac972107a12=150'
+                      alt=''
+                    />
                 </Link>
               </li>
+
             </ul>
           </div>
           </div>
@@ -38,4 +52,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default NavbarUser;
