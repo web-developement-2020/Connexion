@@ -63,7 +63,7 @@ class CreateProfile extends Component {
             <h1 className="display-4 text-center">Create Your Profile</h1>
           
             <small className="d-block pb-3">* = required field</small>
-            <form >
+            <form onSubmit= {this.onSubmit}>
               <div className="form-group">
                 <input type="text" className="form-control form-control-lg" placeholder="* Profile handle" name="handle" value={this.state.name} onChange={this.onChange} required />
                 <small className="form-text text-muted">A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)</small>
