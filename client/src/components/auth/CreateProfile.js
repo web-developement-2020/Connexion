@@ -8,10 +8,7 @@ class CreateProfile extends Component {
     //Local state
     this.state = {
       handle:'',
-      bio:'',
-      
-    
-      
+      bio:'',      
       website:'',
       location:'',
     
@@ -33,14 +30,9 @@ class CreateProfile extends Component {
     const profile = {
       handle: this.state.handle,
       bio: this.state.bio,
-      
-      
-      
       website: this.state.website,
       location: this.state.location,
-      
       social: this.state.social
-    
     };
 
     axios

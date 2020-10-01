@@ -38,6 +38,7 @@ const ProfileSchema = Schema({
       type: String,
     },
   },
+
   following: [
     {
       user_id: {
@@ -50,6 +51,7 @@ const ProfileSchema = Schema({
       },
     },
   ],
+  
   followers: [
     {
       user_id: {

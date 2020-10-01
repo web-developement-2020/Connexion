@@ -44,7 +44,7 @@ class Login extends Component {
     const {errors} = this.state;
     return (
     <div class="login">
-    <div class="container">
+    <div class="container align-items-center mx-auto col-lg-6">
       <div class="row">
         <div class="col-md-8 m-auto">
           <h1 class="display-4 text-center">Log In</h1>
@@ -66,13 +66,19 @@ class Login extends Component {
                   </div>
                 )}
             </div>
-            <input type="submit" className="btn btn-info btn-block mt-4" />
 
-            <Link to="/forgotPassword" className="btn btn-lg btn-light">
-                  ForgotPassword
+            <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
+            <button type="submit" className="btn btn-lg btn-light bg-light btn-outline-dark align-self-center p-3 col-5">Submit</button>
+
+            <Link to="/forgotPassword">
+            <button className="btn btn-lg btn-light btn-outline-dark bg-light align-self-center p-3 col-12">
+                  Forgot Password
+            </button>
             </Link>
-            <p>Facebook Authentication</p>
-            <Facebook />
+            </div>
+            <div class="container mx-auto d-flex justify-content-around align-items-center mt-5 rounded-lg">
+             <Facebook />    
+            </div>    
           </form>
         </div>
       </div>

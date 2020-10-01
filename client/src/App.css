@@ -6,6 +6,7 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 .site-content{
   flex: 1;
@@ -23,6 +24,11 @@ footer {
 
 img {
   width: 100%;
+}
+
+{
+  text-align: center;
+  padding: 8px;
 }
 
 /*NAVBAR*/
@@ -214,12 +220,19 @@ img {
   position: relative;
   background: url('./img/connexion-bkg4.png') no-repeat;
   background-color: RGBA(252, 252, 252, 0.3);
+  background-attachment: fixed;
   background-size: contain;
   background-position: center;
   height: 100vh;
   width: auto;
   margin-top: -24px;
   margin-bottom: -50px;
+}
+
+@media only screen and (max-device-width: 1100px) {
+  .landing {
+    background-attachment: scroll;
+  }
 }
 
 .landing-inner {

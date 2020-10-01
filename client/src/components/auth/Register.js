@@ -45,7 +45,7 @@ class Register extends Component {
       <div className='register'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-8 m-auto'>
+            <div className='col-md-8 m-auto col-lg-5'>
               <h1 className='display-4 text-center'>Sign Up</h1>
               <p className='lead text-center'>
                 Create your Connexion account
@@ -89,8 +89,9 @@ class Register extends Component {
                   </div>
                 )}
               </div>
-                <input type='submit' className='btn btn-info btn-block mt-4' />
-
+              <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
+                <button type='submit' className="btn btn-lg btn-light btn-outline-dark bg-light mx-auto p-3 col-8 ">Sign Up</button>
+                </div>
               </form>
             </div>
           </div>
