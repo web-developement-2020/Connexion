@@ -60,9 +60,9 @@ class Login extends Component {
             </div>
             <div className="form-group">
               <input type="password"  className={classnames("form-control form-control-lg", {'is-invalid': errors.password})} placeholder="Password" name="password" value={this.state.password} onChange={this.onChange}/>
-              {errors.email && (
+              {errors.password && (
                   <div className="invalid-feedback">
-                    {errors.email}
+                    {errors.password}
                   </div>
                 )}
             </div>

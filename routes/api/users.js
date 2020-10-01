@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 const nodemailer = require('nodemailer');
 const lodash = require('lodash');
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 const router = express.Router();
 
@@ -65,6 +66,13 @@ router.post('/register', (req, res) => {
 // @access Public
 
 router.post('/login', (req, res) => {
+
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
   const email = req.body.email;
   const password = req.body.password;
 
