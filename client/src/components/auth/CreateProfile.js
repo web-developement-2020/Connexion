@@ -57,7 +57,7 @@ class CreateProfile extends Component {
             <small className="d-block pb-3">* = required field</small>
             <form onSubmit= {this.onSubmit}>
               <div className="form-group">
-                <input type="text" className={classnames("form-control form-control-lg" {"is-invalid":errors.handle , })} placeholder="* Profile handle" name="handle" value={this.state.name} onChange={this.onChange} required />
+                <input type="text" className={classnames("form-control form-control-lg" ,{"is-invalid":errors.handle, })} placeholder="* Profile handle" name="handle" value={this.state.name} onChange={this.onChange} required />
                 <small className="form-text text-muted">A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)</small>
              {errors.handle && (<div className="invalid-feedback">errors.handle</div>)}
               </div>
