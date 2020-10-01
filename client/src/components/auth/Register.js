@@ -111,14 +111,6 @@ class Register extends Component {
                   {errors.password2 && (
                     <div className='invalid-feedback'>{errors.password2}</div>
                   )}
-                </div>
-                <div className="form-group">
-                <input type="password" className={classnames("form-control form-control-lg", {'is-invalid': errors.password2})}placeholder="Confirm Password" name="password2" value={this.state.password2} onChange={this.onChange}/>
-                {errors.password2 && (
-                  <div className="invalid-feedback">
-                    {errors.password2}
-                  </div>
-                )}
               </div>
               <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
                 <button type='submit' className="btn btn-lg btn-light btn-outline-dark bg-light mx-auto p-3 col-8 ">Sign Up</button>
