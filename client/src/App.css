@@ -26,11 +26,6 @@ img {
   width: 100%;
 }
 
-{
-  text-align: center;
-  padding: 8px;
-}
-
 /*NAVBAR*/
 
 @media only screen and (max-width: 400px) {
