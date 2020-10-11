@@ -10,7 +10,6 @@ class landing extends Component {
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4">Developer Connector</h1>
                 <p className="lead">
-                  {" "}
                   Create a developer profile/portfolio, share posts and get help
                   from other developers
                 </p>
@@ -23,6 +22,9 @@ class landing extends Component {
                 </Link>
                 <Link to="/forgotPassword" className="btn btn-lg btn-light">
                   ForgotPassword
+                </Link>
+                <Link to="/loginUsingFacebook" className="btn btn-lg btn-light">
+                Login using facebook
                 </Link>
               </div>
             </div>
