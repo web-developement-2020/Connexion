@@ -14,7 +14,9 @@ class landing extends Component {
                   from other developers
                 </p>
                 <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
+
+                <Link to='/register' className='btn btn-lg btn-info mr-2' id="signup-link">
+
                   Sign Up
                 </Link>
                 <Link to="/login" className="btn btn-lg btn-light">

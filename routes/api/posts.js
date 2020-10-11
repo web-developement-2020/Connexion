@@ -5,6 +5,8 @@ const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 const validatePostInput = require('../../validation/post');
 const router = express.Router();
+const keys = require('../../config/keys');
+const cloudinary = require('cloudinary');
 
 
 // @route   GET api/posts
@@ -67,8 +69,9 @@ router.post(
     }
 
     const newPost = new Post({
-      text: req.body.text,
-      name: req.body.name,
+      caption: req.body.caption,
+      image: req.body.imageURL,
+      handle: req.user.handle,
       avatar: req.body.avatar,
       user: req.user.id,
     });
@@ -221,7 +224,6 @@ router.delete(
   "/comment/:id/:comment_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-
     Post.findById(req.params.id)
       .then((post) => {
         // Check to see if comment exists
@@ -258,6 +260,50 @@ router.get(
         res.json({ following: profile.following });
       })
       .catch((err) => console.log(err));
+  }
+);
+
+//@route    POST /api/posts
+//@desc     upload media
+//@access   private
+
+router.post(
+  '/media/upload',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    console.log(req.body.image);
+    const { errors, isValid } = validatePostInput(req.body);
+    if (!isValid) {
+      return res.json(400).json(errors);
+    }
+    cloudinary.config({
+      cloud_name: keys.cloudinary.cloud_name,
+      api_key: keys.cloudinary.api_key,
+      api_secret: keys.cloudinary.api_secret,
+    });
+
+    if (!req.body.image) {
+      return res.status(400).json('Please add an image');
+    }
+
+    cloudinary.v2.uploader.upload(
+      req.body.image,
+      { height: 400, crop: 'scale' },
+      (error, result) => {
+        console.log(result, error);
+        if (result) {
+          const newPost = new Post({
+            text: req.body.text,
+            name: req.body.name,
+            avatar: req.body.avatar,
+            user: req.user.id,
+            image: result.url,
+          });
+          console.log(newPost);
+          newPost.save().then((post) => res.json(post));
+        }
+      }
+    );
   }
 );
 

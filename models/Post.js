@@ -7,16 +7,31 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
-  text: {
+  imageURL:{
+    type: String,
+    required: true
+  },
+  caption: {
     type: String,
     required: true,
   },
+
   name: {
     type: String,
+  },
+  handle: {
+    type:String
+
   },
   avatar: {
     type: String,
   },
+
+  image:{
+    type : String,
+  },
+  
+
   likes: [
     {
       user: {
@@ -25,7 +40,11 @@ const PostSchema = new Schema({
       },
     },
   ],
-  comments: [
+
+
+  
+  comments:[
+
     {
       user: {
         type: Schema.Types.ObjectId,
@@ -50,7 +69,7 @@ const PostSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-  },
+  }
 });
 
 module.exports = Post = mongoose.model("post", PostSchema);

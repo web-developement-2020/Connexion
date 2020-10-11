@@ -1,8 +1,10 @@
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { registerUser } from "../../actions/authActions";
+
 
 class Register extends Component {
   constructor() {
@@ -24,12 +26,15 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+
   onSubmit(e) {
+
     e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
+
       password2: this.state.password2,
     };
 
@@ -120,6 +125,7 @@ class Register extends Component {
                   )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
+
               </form>
             </div>
           </div>
