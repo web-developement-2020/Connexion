@@ -184,8 +184,10 @@ img {
   max-width: 30%;
   height: auto;
 }
+
 .post-img {
   margin-top: 15px;
+
 }
 .post-img-card {
   border: 1px solid #bbbbbb;
@@ -337,5 +339,6 @@ img {
   background-clip: text;
   -webkit-background-clip: text;
 }
+
 
 /* Profile ending */

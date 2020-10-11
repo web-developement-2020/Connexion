@@ -12,8 +12,10 @@ class landing extends Component {
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4"><img src={logo} width="auto" height="100%" alt="connexion logo"/></h1>
                 <p className="lead">
+
                   {" "}
                   <span>SHARE.</span>  <span>CONNECT.</span>  <span>CREATE.</span>
+
                 </p>
                 <hr />
                 <div class="d-flex flex-row  justify-content-center">
@@ -23,6 +25,7 @@ class landing extends Component {
                 <Link to="/login" className="btn btn-lg btn-light bg-light" id="login-link">
                   Login
                 </Link>
+
 
                 </div>
               </div>

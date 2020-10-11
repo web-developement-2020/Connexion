@@ -24,19 +24,25 @@ class LoginFacebook extends Component {
         //picture: this.state.picture.data.url
       });
   };
+  
+
   render() {
     let facebookData;
 
     this.state.auth
       ? (facebookData = (
           <div>
-            <img src={this.state.picture} alt={this.state.name} />
+            <img
+             id = "img"
+               src={this.state.picture}
+              alt={this.state.name}
+            />
             <h2>Welcome {this.state.name}</h2>
           </div>
         ))
       : (facebookData = (
           <FacebookLoginBtn
-            appId="662615397775220"
+            appId="2728720434077580"
             autoLoad={true}
             fields="name,picture,email"
             onClick={this.componentClicked}

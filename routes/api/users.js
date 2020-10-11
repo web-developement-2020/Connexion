@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 const nodemailer = require('nodemailer');
 const lodash = require('lodash');
 const validateRegisterInput = require('../../validation/register');
+
 const validateLoginInput = require('../../validation/login');
 
 const router = express.Router();

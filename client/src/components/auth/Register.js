@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import axios from 'axios';
+
+
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import { registerUser } from "../../actions/authActions";
+
 
 class Register extends Component {
   constructor() {
@@ -13,6 +18,7 @@ class Register extends Component {
       password2: '',
       errors: {},
     };
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -21,100 +27,118 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+
   onSubmit(e) {
     e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
+
+
       password2: this.state.password2,
     };
 
-    axios
-      .post('/api/users/register', newUser)
-      .then((res) => console.log(res.data))
-      .catch((err) => this.setState({ errors: err.response.data }));
+    this.props.registerUser(newUser, this.props.history);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
 
   render() {
     const { errors } = this.state;
 
     return (
-      <div className='register'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-8 m-auto col-lg-5'>
-              <h1 className='display-4 text-center'>Sign Up</h1>
-              <p className='lead text-center'>Create your Connexion account</p>
+
+      <div className="register">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">Sign Up</h1>
+              <p className="lead text-center">
+                Create your FINSTAGRAM account
+              </p>
               <form noValidate onSubmit={this.onSubmit}>
-                <div className='form-group'>
+                <div className="form-group">
                   <input
-                    type='text'
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.name,
+                    type="text"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.name,
                     })}
-                    placeholder='Name'
-                    name='name'
+                    placeholder="Name"
+                    name="name"
+
                     value={this.state.name}
                     onChange={this.onChange}
                   />
                   {errors.name && (
-                    <div className='invalid-feedback'>{errors.name}</div>
+
+                    <div className="invalid-feedback">{errors.name}</div>
                   )}
                 </div>
-                <div className='form-group'>
+                <div className="form-group">
                   <input
-                    type='email'
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.email,
+                    type="email"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.email,
                     })}
-                    placeholder='Email Address'
-                    name='email'
+                    placeholder="Email Address"
+                    name="email"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  <small className='form-text text-muted'>
+                  <small className="form-text text-muted">
+
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
                   </small>
                   {errors.email && (
-                    <div className='invalid-feedback'>{errors.email}</div>
+
+                    <div className="invalid-feedback">{errors.email}</div>
                   )}
                 </div>
-
-                <div className='form-group'>
+                <div className="form-group">
                   <input
-                    type='password'
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.password,
+                    type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password,
                     })}
-                    placeholder='Password'
-                    name='password'
+                    placeholder="Password"
+                    name="password"
+
                     value={this.state.password}
                     onChange={this.onChange}
                   />
                   {errors.password && (
-                    <div className='invalid-feedback'>{errors.password}</div>
+
+                    <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
-                <div className='form-group'>
+                <div className="form-group">
                   <input
-                    type='password'
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.password2,
+                    type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password2,
                     })}
-                    placeholder='Confirm Password'
-                    name='password2'
+                    placeholder="Confirm Password"
+                    name="password2"
+
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
                   {errors.password2 && (
+
                     <div className='invalid-feedback'>{errors.password2}</div>
                   )}
               </div>
               <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
                 <button type='submit' className="btn btn-lg btn-light btn-outline-dark bg-light mx-auto p-3 col-8 ">Sign Up</button>
                 </div>
+
               </form>
             </div>
           </div>
@@ -123,4 +147,14 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { registerUser })(Register);
