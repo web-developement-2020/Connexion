@@ -9,8 +9,7 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 // Load Validation
 const validateProfileInput = require("../../validation/profile");
-const validateExperienceInput = require("../../validation/experience");
-const validateEducationInput = require("../../validation/education");
+
 
 // @route   GET api/profile
 // @desc    Get current users profile
@@ -113,7 +112,7 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
-    
+
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.bio) profileFields.bio = req.body.bio;
@@ -259,6 +258,12 @@ Profile.findOne({user: req.params.user_id})
         
         profile.following.unshift({user_id: req.params.user_id});
         profile.save().then((profile) => res.json(profile)); 
+
+      Profile.findOne({user: req.params.user_id})
+        .then(profile =>{
+          profile.followers.unshift({user_id: req.user.id });
+          profile.save().then((profile) => console.log(profile));
+        })
         
     })
         .catch(err => res.status(404).json({profilenotfound: 'Cannot find your profile'}));
@@ -309,6 +314,19 @@ router.delete(
           );
       })
       .catch((err) => console.log(err));
+  }
+);
+
+// @route   DELETE api/profile
+// @desc    Delete profile
+// @access  Private
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+        res.json({ success: true })
+    });
   }
 );
 

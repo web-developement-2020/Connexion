@@ -7,9 +7,12 @@ class LoginFacebook extends Component {
     name: "",
     picture: "",
   };
+
+  
   componentClicked = () => {
     console.log("Facebook btn clicked");
   };
+
   responseFacebook = (response) => {
     console.log(response);
     if (response.status !== "unknown")

@@ -9,12 +9,8 @@ class CreateProfile extends Component {
     this.state = {
       handle:'',
       bio:'',
-      
-    
-      
       website:'',
       location:'',
-    
       social:{},
       
       errors: {}
@@ -33,14 +29,9 @@ class CreateProfile extends Component {
     const profile = {
       handle: this.state.handle,
       bio: this.state.bio,
-      
-      
-      
       website: this.state.website,
       location: this.state.location,
-      
       social: this.state.social
-    
     };
 
     axios
@@ -63,24 +54,25 @@ class CreateProfile extends Component {
             <h1 className="display-4 text-center">Create Your Profile</h1>
           
             <small className="d-block pb-3">* = required field</small>
-            <form >
+            <form onSubmit= {this.onSubmit}>
               <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="* Profile handle" name="handle" required />
+                <input type="text" className={classnames("form-control form-control-lg" ,{"is-invalid":errors.handle, })} placeholder="* Profile handle" name="handle" value={this.state.name} onChange={this.onChange} required />
                 <small className="form-text text-muted">A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)</small>
+             {errors.handle && (<div className="invalid-feedback">errors.handle</div>)}
               </div>
         <div className="form-group">
-                <textarea className="form-control form-control-lg" placeholder="A short bio of yourself" name="bio"></textarea>
+                <textarea className="form-control form-control-lg" placeholder="A short bio of yourself" name="bio" value={this.state.bio}  onChange={this.onChange}></textarea>
                 <small className="form-text text-muted">Tell us a little about yourself</small>
               </div>
               
         
               
               <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Website" name="website" />
+                <input type="text" className="form-control form-control-lg" placeholder="Website" name="website" value={this.state.website}  onChange={this.onChange} />
                 <small className="form-text text-muted">Could be your own or a company website</small>
               </div>
               <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Location" name="location" />
+                <input type="text" className="form-control form-control-lg" placeholder="Location" name="location" value={this.state.location}   onChange={this.onChange}/>
                 <small className="form-text text-muted">City & state suggested (eg. Boston, MA)</small>
               </div>
               

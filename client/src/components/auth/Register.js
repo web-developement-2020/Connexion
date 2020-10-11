@@ -1,4 +1,5 @@
 
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -11,10 +12,10 @@ class Register extends Component {
     super();
     //Local state
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
       errors: {},
     };
 
@@ -28,12 +29,12 @@ class Register extends Component {
 
 
   onSubmit(e) {
-
     e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
+
 
       password2: this.state.password2,
     };
@@ -47,10 +48,12 @@ class Register extends Component {
     }
   }
 
+
   render() {
     const { errors } = this.state;
 
     return (
+
       <div className="register">
         <div className="container">
           <div className="row">
@@ -68,10 +71,12 @@ class Register extends Component {
                     })}
                     placeholder="Name"
                     name="name"
+
                     value={this.state.name}
                     onChange={this.onChange}
                   />
                   {errors.name && (
+
                     <div className="invalid-feedback">{errors.name}</div>
                   )}
                 </div>
@@ -87,10 +92,12 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   <small className="form-text text-muted">
+
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
                   </small>
                   {errors.email && (
+
                     <div className="invalid-feedback">{errors.email}</div>
                   )}
                 </div>
@@ -102,10 +109,12 @@ class Register extends Component {
                     })}
                     placeholder="Password"
                     name="password"
+
                     value={this.state.password}
                     onChange={this.onChange}
                   />
                   {errors.password && (
+
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
@@ -117,14 +126,18 @@ class Register extends Component {
                     })}
                     placeholder="Confirm Password"
                     name="password2"
+
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
                   {errors.password2 && (
-                    <div className="invalid-feedback">{errors.password2}</div>
+
+                    <div className='invalid-feedback'>{errors.password2}</div>
                   )}
+              </div>
+              <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
+                <button type='submit' className="btn btn-lg btn-light btn-outline-dark bg-light mx-auto p-3 col-8 ">Sign Up</button>
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
 
               </form>
             </div>

@@ -38,7 +38,21 @@ const ProfileSchema = Schema({
       type: String,
     },
   },
+
   following: [
+    {
+      user_id: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  
+  followers: [
     {
       user_id: {
         type: String,

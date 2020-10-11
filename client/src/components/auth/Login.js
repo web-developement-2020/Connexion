@@ -15,7 +15,11 @@ class Login extends Component {
 
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Facebook from "../Facebook";
+import ForgotPassword from "./ForgotPassword";
+
 
 
 class Login extends Component {
@@ -120,7 +124,7 @@ class Login extends Component {
     const {errors} = this.state;
     return (
     <div class="login">
-    <div class="container">
+    <div class="container align-items-center mx-auto col-lg-6">
       <div class="row">
         <div class="col-md-8 m-auto">
           <h1 class="display-4 text-center">Log In</h1>
@@ -136,13 +140,29 @@ class Login extends Component {
             </div>
             <div className="form-group">
               <input type="password"  className={classnames("form-control form-control-lg", {'is-invalid': errors.password})} placeholder="Password" name="password" value={this.state.password} onChange={this.onChange}/>
-              {errors.email && (
+              {errors.password && (
                   <div className="invalid-feedback">
-                    {errors.email}
+                    {errors.password}
                   </div>
                 )}
             </div>
-            <input type="submit" className="btn btn-info btn-block mt-4" />
+
+            <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
+            <button type="submit" className="btn btn-lg btn-light bg-light btn-outline-dark align-self-center p-3 col-5">Submit</button>
+
+            <Link to="/forgotPassword">
+            <button className="btn btn-lg btn-light btn-outline-dark bg-light align-self-center p-3 col-12">
+                  Forgot Password
+            </button>
+            </Link>
+            </div>
+
+            <div class="container mx-auto d-flex justify-content-around align-items-center mt-5 rounded-lg">
+             <button id="facebook-login">
+             <Facebook />
+             </button>  
+               
+            </div>    
           </form>
         </div>
       </div>

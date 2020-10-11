@@ -5,6 +5,11 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
 import ForgotPassword from "./components/auth/ForgotPassword";
+import NavbarUser from './components/auth/NavbarUser'
+import Profile from './components/auth/Profile';
+
+import CreateProfile from './components/auth/CreateProfile';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Register from "./components/auth/Register";
@@ -31,6 +36,7 @@ class App extends Component {
       </Provider>
     );
   }
+
 }
 export default App;
 
