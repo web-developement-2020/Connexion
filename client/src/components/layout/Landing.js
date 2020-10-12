@@ -18,7 +18,7 @@ class landing extends Component {
 
                 </p>
                 <hr />
-                <div class="d-flex flex-row  justify-content-center">
+                <div className="d-flex flex-row  justify-content-center">
                 <Link to='/register' className='btn btn-lg btn-light mr-2 bg-light' id="signup-link">
                   Register
                 </Link>
