@@ -135,7 +135,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.password2}</div>
                   )}
               </div>
-              <div class="container mx-auto d-flex justify-content-around align-items-center mt-4">
+              <div className="container mx-auto d-flex justify-content-around align-items-center mt-4">
                 <button type='submit' className="btn btn-lg btn-light btn-outline-dark bg-light mx-auto p-3 col-8 ">Sign Up</button>
                 </div>
 
