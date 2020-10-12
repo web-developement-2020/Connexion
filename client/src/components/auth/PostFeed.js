@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class PostFeed extends Component {
   render() {
-
     /* How to implement a foreach and perhaps limit number of posts rendered at a time?*/
 
     return (

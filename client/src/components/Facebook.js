@@ -1,21 +1,20 @@
-import React, { Component } from "react";
-import FacebookLoginBtn from "react-facebook-login";
+import React, { Component } from 'react';
+import FacebookLoginBtn from 'react-facebook-login';
 
 class LoginFacebook extends Component {
   state = {
     auth: false,
-    name: "",
-    picture: "",
+    name: '',
+    picture: '',
   };
 
-  
   componentClicked = () => {
-    console.log("Facebook btn clicked");
+    console.log('Facebook btn clicked');
   };
 
   responseFacebook = (response) => {
     console.log(response);
-    if (response.status !== "unknown")
+    if (response.status !== 'unknown')
       this.setState({
         auth: true,
         name: response.name,
@@ -24,7 +23,6 @@ class LoginFacebook extends Component {
         //picture: this.state.picture.data.url
       });
   };
-  
 
   render() {
     let facebookData;
@@ -32,19 +30,15 @@ class LoginFacebook extends Component {
     this.state.auth
       ? (facebookData = (
           <div>
-            <img
-             id = "img"
-               src={this.state.picture}
-              alt={this.state.name}
-            />
+            <img id='img' src={this.state.picture} alt={this.state.name} />
             <h2>Welcome {this.state.name}</h2>
           </div>
         ))
       : (facebookData = (
           <FacebookLoginBtn
-            appId="2728720434077580"
+            appId='2728720434077580'
             autoLoad={true}
-            fields="name,picture,email"
+            fields='name,picture,email'
             onClick={this.componentClicked}
             callback={this.responseFacebook}
           />
