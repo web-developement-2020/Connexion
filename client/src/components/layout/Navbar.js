@@ -43,11 +43,11 @@ class Navbar extends Component {
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div ClassName="collapse navbar-collapse" id="mobile-nav">
+        <div className="collapse navbar-collapse" id="mobile-nav">
           <ul className='navbar-nav ml-auto'>
 
           <li>
-            <form id="searchbar" action="" ClassName="nav">
+            <form id="searchbar" action="" className="nav">
               <input id="search-input" type="search" />
               <i className="fa fa-search" id="search-icon"></i>
             </form>
@@ -55,13 +55,13 @@ class Navbar extends Component {
 
             <li className='nav-item nav'>
               <Link className='nav-link d-md-block ' to='/PostFeed' id="nav-link">
-              <i ClassName="fas fa-home"></i>
+              <i className="fas fa-home"></i>
               </Link>
             </li>
 
             <li className='nav-item nav'>
               <Link className='nav-link d-md-block ' to='/createpost' id="nav-link">
-              <i ClassName="fas fa-pencil-alt"></i>
+              <i className="fas fa-pencil-alt"></i>
               </Link>
             </li>
 
