@@ -5,7 +5,6 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
 import ForgotPassword from "./components/auth/ForgotPassword";
-import NavbarUser from './components/auth/NavbarUser'
 import Profile from './components/auth/Profile';
 
 import CreateProfile from './components/auth/CreateProfile';
