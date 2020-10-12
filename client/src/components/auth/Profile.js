@@ -109,42 +109,41 @@ class Profile extends Component {
                     </div>
                     <div className='col-md-10'>
                       <div className='profile-content'>
-                        
-                          <p className='profile-title'>
-                            <i className='fab fa-youtube'></i>{' '}
-                            <span>
+                        <p className='profile-title'>
+                          <i className='fab fa-youtube'></i>{' '}
+                          <span>
                             <Link className='media-link' to='#'>
-                              https://www.mywebsite.com</Link>
-                            </span>
-                          </p>
-                        
-                        
-                          <p className='profile-title'>
-                            <i className='fab fa-twitter'></i>{' '}
-                            <span>
+                              https://www.mywebsite.com
+                            </Link>
+                          </span>
+                        </p>
+
+                        <p className='profile-title'>
+                          <i className='fab fa-twitter'></i>{' '}
+                          <span>
                             <Link className='media-link' to='#'>
-                              https://www.mywebsite.com</Link>
-                            </span>
-                          </p>
-                        
-                        
-                          <p className='profile-title'>
-                            <i className='fab fa-facebook-square'></i>{' '}
-                            <span>
+                              https://www.mywebsite.com
+                            </Link>
+                          </span>
+                        </p>
+
+                        <p className='profile-title'>
+                          <i className='fab fa-facebook-square'></i>{' '}
+                          <span>
                             <Link className='media-link' to='#'>
-                              https://www.mywebsite.com</Link>
-                            </span>
-                          </p>
-                        
-                        
-                          <p className='profile-title'>
-                            <i className='fab fa-linkedin'></i>{' '}
-                            <span>
+                              https://www.mywebsite.com
+                            </Link>
+                          </span>
+                        </p>
+
+                        <p className='profile-title'>
+                          <i className='fab fa-linkedin'></i>{' '}
+                          <span>
                             <Link className='media-link' to='#'>
-                              https://www.mywebsite.com</Link>
-                            </span>
-                          </p>
-                        
+                              https://www.mywebsite.com
+                            </Link>
+                          </span>
+                        </p>
 
                         <p className='profile-title'>
                           <i className='fab fa-instagram'></i>{' '}
