@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from "prop-types";
@@ -19,7 +18,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: {},
     };
 
     this.onChange = this.onChange.bind(this);
