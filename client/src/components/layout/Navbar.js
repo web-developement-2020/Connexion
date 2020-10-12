@@ -11,7 +11,7 @@ class Navbar extends Component {
     this.props.logoutUser();
   }
   render() {
-    const {isAuthenticated, user} = this.props;
+    const {isAuthenticated, user} = this.props.auth;
 
     const guestLinks = (
             <ul className='navbar-nav ml-auto'>
@@ -128,6 +128,7 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  auth:state.auth,
   errors: state.errors,
 });
 
