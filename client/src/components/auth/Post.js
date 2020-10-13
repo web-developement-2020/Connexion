@@ -21,8 +21,8 @@ class Post extends Component {
                   </Link>
                 </div>
                 <div className='col-md-10'>
-                  <h2 align='right' class='header'>
-                    <i class='fas fa-photo-video'></i> Post
+                  <h2 align='right' className='header'>
+                    <i className='fas fa-photo-video'></i> Post
                   </h2>
                   <h6 className='card-title'>Michael Dam</h6>
                   <p className='card-text'>
@@ -80,7 +80,7 @@ class Post extends Component {
                     />
 
                     <p>
-                      <i class='far fa-heart'></i> <small>3447 likes</small>
+                      <i className='far fa-heart'></i> <small>3447 likes</small>
                     </p>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ class Post extends Component {
                     <div className='input-group'>
                       <div className='input-group-prepend valign'>
                         <span className='input-group-text'>
-                          <i class='fas fa-comment-dots'></i>
+                          <i className='fas fa-comment-dots'></i>
                         </span>
                       </div>
                       <textarea

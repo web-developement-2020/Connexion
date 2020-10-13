@@ -18,9 +18,9 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <div class='container col-lg-6 col-md-9 col-sm-9'>
+      <div className='container col-lg-6 col-md-9 col-sm-9'>
         <form action='postfeed.html'>
-          <div class='form-group'>
+          <div className='form-group'>
 
             <img src={this.state.imageURL}
                 className="rounded mx-auto d-block col-11 mb-3"
@@ -30,7 +30,7 @@ class CreatePost extends Component {
             <label for='inputURL'>URL of image</label>
             <input
               type='text'
-              class='form-control'
+              className='form-control'
               id='inputURL'
               placeholder='http://www.thisiswheremyphotois.com/photo.jpg'
               name='imageURL'
@@ -38,11 +38,11 @@ class CreatePost extends Component {
               onChange={this.onChange}
             ></input>
           </div>
-          <div class='form-group'>
+          <div className='form-group'>
             <label for='inputCaption'>Caption</label>
             <input
               type='text'
-              class='form-control'
+              className='form-control'
               id='inputCaption'
               placeholder='Write a caption'
               name='caption'
@@ -51,8 +51,8 @@ class CreatePost extends Component {
             ></input>
           </div>
         </form>
-        <div class='container mx-auto d-flex justify-content-around align-items-center mt-4'>
-        <button type='submit' class='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'>
+        <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
+        <button type='submit' className='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'>
           Submit
         </button>
         </div>

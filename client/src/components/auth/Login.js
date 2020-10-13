@@ -54,12 +54,12 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div class='login'>
-        <div class='container align-items-center mx-auto col-lg-6'>
-          <div class='row'>
-            <div class='col-md-8 m-auto'>
-              <h1 class='display-4 text-center'>Log In</h1>
-              <p class='lead text-center'>Log In to Connexion</p>
+      <div className='login'>
+        <div className='container align-items-center mx-auto col-lg-6'>
+          <div className='row'>
+            <div className='col-md-8 m-auto'>
+              <h1 className='display-4 text-center'>Log In</h1>
+              <p className='lead text-center'>Log In to Connexion</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
@@ -92,7 +92,7 @@ class Login extends Component {
                   )}
                 </div>
 
-                <div class='container mx-auto d-flex justify-content-around align-items-center mt-4'>
+                <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
                   <button
                     type='submit'
                     className='btn btn-lg btn-light bg-light btn-outline-dark align-self-center p-3 col-5'
@@ -107,7 +107,7 @@ class Login extends Component {
                   </Link>
                 </div>
 
-                <div class='container mx-auto d-flex justify-content-around align-items-center mt-5 rounded-lg'>
+                <div className='container mx-auto d-flex justify-content-around align-items-center mt-5 rounded-lg'>
                   <button id='facebook-login' onClick='fbLogin()'>
                     Login with Facebook
                   </button>
