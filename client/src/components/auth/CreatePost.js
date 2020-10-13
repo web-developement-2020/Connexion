@@ -18,9 +18,15 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <div class='container'>
+      <div class='container col-lg-6 col-md-9 col-sm-9'>
         <form action='postfeed.html'>
           <div class='form-group'>
+
+            <img src={this.state.imageURL}
+                className="rounded mx-auto d-block col-11 mb-3"
+                alt={this.state.caption}
+                id="upload-preview"/>
+
             <label for='inputURL'>URL of image</label>
             <input
               type='text'
@@ -45,9 +51,11 @@ class CreatePost extends Component {
             ></input>
           </div>
         </form>
-        <button type='submit' class='btn btn-info btn-block mt-4'>
+        <div class='container mx-auto d-flex justify-content-around align-items-center mt-4'>
+        <button type='submit' class='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'>
           Submit
         </button>
+        </div>
       </div>
     );
   }

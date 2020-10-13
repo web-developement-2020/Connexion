@@ -9,15 +9,16 @@ import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
-
 import CreateProfile from './components/auth/CreateProfile';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Facebook from './components/Facebook';
 import store from './store';
+import CreatePost from './components/auth/CreatePost';
+import Post from './components/auth/Post';
+
 
 if (localStorage.jwtToken) {
   //decode
@@ -48,13 +49,17 @@ class App extends Component {
         <Router>
           <div className='App'>
             <Navbar />
-            <Route exact path='/' component={Landing} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/forgotPassword' component={ForgotPassword} />
-            <Route exact path='/LoginUsingFacebook' component={Facebook} />
-            {/* <p>Facebook Authentication</p>
-        <Facebook /> */}
+            <main className="site-content">
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/forgotPassword' component={ForgotPassword} />
+              <Route exact path='/createprofile' component={CreateProfile} />
+              <Route exact path='/post' component={Post} />
+              <Route exact path='/createpost' component={CreatePost} />
+              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/LoginUsingFacebook' component={Facebook} />
+            </main>
             <Footer />
           </div>
         </Router>
