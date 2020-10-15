@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Image, CloudinaryContext} from 'cloudinary-react';
 
 class CreatePost extends Component {
   constructor() {
@@ -9,17 +10,39 @@ class CreatePost extends Component {
       imageURL: '',
       caption: '',
       errors: {},
-    };
+    }
+
     this.onChange = this.onChange.bind(this);
+
+    this.widget = window.cloudinary.createUploadWidget({
+      cloudName: 'socialconnexion',
+      uploadPreset: 'default',
+      theme: 'minimal',
+      inlineContainer: document.getElementById('upload-widget')
+
+    }, (error, result) => {
+      if (!error && result && result.event === "success"){console.log('Done!  Here is the image info:', result.info)}
+    }
+    )
   }
+
+ 
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
+
+  
+
 
   render() {
     return (
       <div className='container col-lg-6 col-md-9 col-sm-9'>
-        <form action='postfeed.html'>
+        
+        <div id='upload-widget'></div>
+              <button id="upload_widget" className="cloudinary-button" onClick={() => this.widget.open()}>Upload files</button>
+
+        <form>
           <div className='form-group'>
 
             <img src={this.state.imageURL}
@@ -27,7 +50,7 @@ class CreatePost extends Component {
                 alt={this.state.caption}
                 id="upload-preview"/>
 
-            <label for='inputURL'>URL of image</label>
+            {/* <label for='inputURL'>URL of image</label>
             <input
               type='text'
               className='form-control'
@@ -36,14 +59,14 @@ class CreatePost extends Component {
               name='imageURL'
               value={this.state.imageURL}
               onChange={this.onChange}
-            ></input><span>Or</span>
-              <div className="form-group">
+            ></input><span>Or</span> */}
+              {/* <div className="form-group">
                 <label for="exampleFormControlFile1">Select an image on your device</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1" />
-              </div>
+              </div> */}
           </div>
           <div className='form-group'>
-            <label for='inputCaption'>Caption</label>
+            <label htmlFor='inputCaption'>Caption</label>
             <input
               type='text'
               className='form-control'
@@ -60,8 +83,16 @@ class CreatePost extends Component {
           Submit
         </button>
         </div>
+
+      
       </div>
+
+              
+
+
     );
   }
 }
+
+
 export default CreatePost;

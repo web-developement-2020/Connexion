@@ -10,15 +10,15 @@ import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
 import CreateProfile from './components/auth/CreateProfile';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Facebook from './components/Facebook';
 import store from './store';
-import CreatePost from './components/auth/CreatePost';
+import CreatePost from './components/createpost/CreatePost';
 import Post from './components/auth/Post';
-
+import PrivateRoute from './components/common/PrivateRoute';
+import PostFeed from './components/PostFeed/PostFeed';
 
 if (localStorage.jwtToken) {
   //decode
@@ -54,12 +54,33 @@ class App extends Component {
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
-              <Route exact path='/createprofile' component={CreateProfile} />
-              <Route exact path='/post' component={Post} />
-              <Route exact path='/createpost' component={CreatePost} />
+              <Route exact path='/profile/:handle' component={Profile} />
+              {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
               <Route exact path='/profile' component={Profile} />
-              <Route exact path='/LoginUsingFacebook' component={Facebook} />
-            </main>
+              <Route exact path='/post' component={Post} />
+              {/* END DEV ROUTES */}
+
+              <Switch>
+                <PrivateRoute exact path='/createprofile' component={CreateProfile} />
+              </Switch>
+              {/* <Switch>
+                <PrivateRoute exact path ='/editprofile' component={EditProfile} />
+              </Switch> */}
+              
+              <Switch>
+                <PrivateRoute exact path='/createpost' component={CreatePost} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/post/:id' component={Post} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/postfeed' component={PostFeed} />
+              </Switch>
+
+             {/* <Route exact path='/not-found' component={NotFound} /> */}
+              
+              
+              </main>
             <Footer />
           </div>
         </Router>
