@@ -51,7 +51,7 @@ export const getProfileByHandle = handle => dispatch => {
 export const createProfile = (profileData, history) => dispatch => {
   axios
     .post('/api/profile', profileData)
-    .then(res => history.push('/postfeed'))
+    .then(res => history.push('/Post'))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
