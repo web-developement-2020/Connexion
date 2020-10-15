@@ -1,5 +1,5 @@
 {
-  "name": "Connexion",
+  "name": "connexion",
   "version": "1.0.0",
   "description": "A photo sharing social network app.",
   "main": "server.js",
