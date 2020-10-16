@@ -26,11 +26,13 @@ class CreatePost extends Component {
       uploadSignature: this.state.user,
       theme: 'minimal',
       inlineContainer: document.getElementById('upload-widget')
-    }, (error, result) => {
-      if (!error && result && result.event === "success"){console.log(
-        result.info.secure_url)}
 
-    }
+    }, (error, result) => {
+      if (!error && result && result.event === "success"){
+        this.setState({ imageURL: result.info.secure_url })      
+        console.log(result.info.secure_url)
+       }
+     }
     )
   }
 
@@ -61,51 +63,53 @@ class CreatePost extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+
+
   
   render() {
 
     const { errors } = this.state;
 
     return (
-      <div className='container col-lg-6 col-md-9 col-sm-9'>
-        
-        <div id='upload-widget'></div>
-              <button id="upload_widget" className="cloudinary-button" onClick={() => this.widget.open()}>Upload files</button>
+
+      <div className='container'>
+
+        <div id="post-preview" className="">
+
+          {/* <div className='card card-body mb-3 col-12'> */}
+          
+          <p className='card-text mx-3'>
+           {this.state.caption}
+          </p>
+          <div className='row justify-content-center mx-3 mt-3'>
+
+            <img src={this.state.imageURL}
+                    className="rounded mx-auto d-block col-11 mb-3"
+                    alt={this.state.caption}
+                    id="upload-preview"
+                    />
+          </div>
+        {/* </div> */}
+        </div>
+        <div className='media-upload col-11 mx-auto'>
+
+            <div id='upload-widget'></div>
+            <button id="upload_widget" className="btn-light btn-lg bg-light btn-outline-dark btn-block col-3 mb-3 " onClick={() => this.widget.open()}>
+              Upload image
+            </button>
 
         <form>
           <div className='form-group'>
-
-            <img src={this.state.imageURL}
-                className="rounded mx-auto d-block col-11 mb-3"
-                alt={this.state.caption}
-                id="upload-preview"/>
-
-            {/* <label for='inputURL'>URL of image</label>
-            <input
-              type='text'
-              className='form-control'
-              id='inputURL'
-              placeholder='http://www.thisiswheremyphotois.com/photo.jpg'
-              name='imageURL'
-              value={this.state.imageURL}
-              onChange={this.onChange}
-            ></input><span>Or</span> */}
-              {/* <div className="form-group">
-                <label for="exampleFormControlFile1">Select an image on your device</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" />
-              </div> */}
-          </div>
-          <div className='form-group'>
             <label htmlFor='inputCaption'>Caption</label>
-            <input
-              type='text'
+            <textarea
               className='form-control'
               id='inputCaption'
               placeholder='Write a caption'
               name='caption'
+              rows= '4'
               value={this.state.caption}
               onChange={this.onChange}
-            ></input>
+            ></textarea>
           </div>
         </form>
         <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
@@ -113,8 +117,7 @@ class CreatePost extends Component {
           Submit
         </button>
         </div>
-
-      
+      </div>
       </div>
 
     );
