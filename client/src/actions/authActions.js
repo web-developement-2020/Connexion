@@ -51,3 +51,36 @@ export const logoutUser = () => (dispatch) => {
     payload: {},
   });
 };
+
+export const changePassword = (userData, history) => (dispatch) => {
+  axios
+    .post("/api/users/changePassword", userData)
+    .then((res) => {
+     
+      //Remove token from ls
+      localStorage.removeItem("jwtToken");
+      //Remove token from axios header
+      setAuthToken(false);
+      //Reset user in the redux store
+       history.push("/login");
+      dispatch({
+        type: SET_USER,
+        payload: {},
+      });
+    })
+    .catch();
+   
+};
+
+export const changeAvatar = (userData, history) => (dispatch) => {
+  axios
+    .post("/api/users/changeAvatar", userData)
+    .then((res) => history.push("/postfeed"))
+    .catch();
+  // .catch((err) =>
+  //   dispatch({
+  //     type: SET_ERROR,
+  //     payload: err.response.data,
+  //   })
+  // );
+};
