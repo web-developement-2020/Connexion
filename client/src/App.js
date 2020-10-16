@@ -21,7 +21,7 @@ import CreatePost from './components/auth/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
-import PostFeed from './components/PostFeed/Postfeed;
+import PostFeed from './components/PostFeed/Postfeed';
 
 if (localStorage.jwtToken) {
   //decode

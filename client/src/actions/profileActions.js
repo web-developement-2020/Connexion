@@ -84,6 +84,7 @@ export const getProfiles = () => (dispatch) => {
       dispatch({
         type: GET_PROFILES,
         payload: null,
+      }))}
 
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
