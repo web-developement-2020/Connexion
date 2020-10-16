@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../img/connexion-app.svg';
 
-class landing extends Component {
+class Landing extends Component {
   render() {
     return (
       <div className="landing">
@@ -48,4 +48,4 @@ class landing extends Component {
     );
   }
 }
-export default landing;
+export default Landing;

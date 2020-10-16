@@ -36,7 +36,11 @@ class CreatePost extends Component {
               name='imageURL'
               value={this.state.imageURL}
               onChange={this.onChange}
-            ></input>
+            ></input><span>Or</span>
+              <div className="form-group">
+                <label for="exampleFormControlFile1">Select an image on your device</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+              </div>
           </div>
           <div className='form-group'>
             <label for='inputCaption'>Caption</label>

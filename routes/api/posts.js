@@ -263,7 +263,7 @@ router.get(
   }
 );
 
-//@route    POST /api/posts
+//@route    POST /api/posts/media/upload
 //@desc     upload media
 //@access   private
 

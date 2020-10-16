@@ -38,13 +38,17 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/feedpost');
+
+      this.props.history.push('/CreateProfile');
+
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/feedpost');
+
+      this.props.history.push('/CreateProfile');
+
     }
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
