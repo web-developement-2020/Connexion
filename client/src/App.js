@@ -18,8 +18,7 @@ import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
-import CreateProfile from "./components/createProfile/CreateProfile";
-import EditProfile from "./components/editProfile/EditProfile";
+
 import CreatePost from './components/auth/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
@@ -80,13 +79,8 @@ class App extends Component {
                   component={ChangeAvatar}
                 />
               </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/deleteAccount"
-                  component={DeleteAccount}
-                />
-              </Switch>
+             
+             
             </main>
             <Footer />
           </div>
