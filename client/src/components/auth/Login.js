@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import Facebook from '../Facebook';
-import ForgotPassword from './ForgotPassword';
+
+//import Facebook from '../Facebook';
+//import ForgotPassword from './ForgotPassword';
 import { loginUser } from '../../actions/authActions';
 
 class Login extends Component {
@@ -38,13 +38,13 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/feedpost');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/feedpost');
     }
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
