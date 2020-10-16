@@ -17,11 +17,12 @@ import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
-import CreatePost from './components/auth/CreatePost';
+import CreatePost from './components/createpost/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
-import PostFeed from './components/PostFeed/Postfeed';
+import PostFeed from './components/postFeed/PostFeed';
+import CreateProfile from './components/auth/CreateProfile';
 
 if (localStorage.jwtToken) {
   //decode
