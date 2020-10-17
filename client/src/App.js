@@ -19,12 +19,13 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
 import CreatePost from './components/createpost/CreatePost';
-import Post from './components/auth/Post';
+import PostFeed from './components/PostFeed/PostFeed';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/editProfile/EditProfile';
+import Post from './components/auth/Post';
 
-import PostFeed from './components/postFeed/PostFeed';
+//import PostFeed from './components/postFeed/PostFeed';
 
 
 if (localStorage.jwtToken) {
