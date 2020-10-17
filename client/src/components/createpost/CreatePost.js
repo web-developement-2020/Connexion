@@ -13,7 +13,6 @@ class CreatePost extends Component {
     this.widget = window.cloudinary.createUploadWidget({
       cloudName: 'socialconnexion',
       uploadPreset: 'st8gcaqq',
-      // uploadSignature: this.state.user,
       theme: 'minimal',
       inlineContainer: document.getElementById('upload-widget')
 
@@ -49,6 +48,7 @@ class CreatePost extends Component {
     e.preventDefault();
 
     const { user } = this.props.auth;
+
     const newPost = {
       image: this.state.image,
       text: this.state.text,
@@ -69,27 +69,51 @@ class CreatePost extends Component {
   
   render() {
 
+    const postPreview = (        
+      <div id="post-preview" className="">
+        <div className='card card-body mb-3 col-md-10 mx-auto'>
+        <div className='row'>
+                <div className='col-md-2 profile-content'>
+                <img
+                      className='profile-img rounded-circle d-none d-md-block'
+                      src={this.props.auth.user.avatar}
+                      alt=''
+                    />
+                </div>
+          <div className='col-md-10'>
+                  <h2 align='right' className='header'>
+                    <i className='fas fa-photo-video'></i> Post
+                  </h2>
+                  <h6 className='card-title'>{this.props.user.name}</h6>
+                  <p className='card-text'>
+                    {this.state.text}
+                  </p>
+                </div>
+              </div>
+              <div className='container'>
+                <div className='row justify-content-center post-img-card'>
+                  <div className='col-8 post-img' align='center'>
+                    <img
+                      id='upload-preview'
+                      src={this.state.image}
+                      style={{width: '400px', maxWidth: '100%'}}
+                      className='card-img-bottom'
+                      alt={this.state.text}
+                    />
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        );
+
     const { errors } = this.state;
 
     return (
 
       <div className='container'>
+      {this.state.image || this.state.text? postPreview : null}
 
-        <div id="post-preview" className="">
-          {/* <div className='card card-body mb-3 col-12'> */}
-          <p className='card-text mx-3'>
-           {this.state.text}
-          </p>
-          <div className='row justify-content-center mx-3 mt-3'>
-
-            <img src={this.state.image}
-                    className="rounded mx-auto d-block col-11 mb-3"
-                    alt={this.state.text}
-                    id="upload-preview"
-            />
-          </div>
-        {/* </div> */}
-        </div>
         <div className='media-upload col-11 mx-auto'>
 
         <form onSubmit={this.onSubmit}>

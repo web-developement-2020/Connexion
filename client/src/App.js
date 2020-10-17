@@ -8,7 +8,6 @@ import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 // import Profile from './components/auth/Profile';
-import CreateProfile from './components/auth/CreateProfile';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import TempProfile from './components/auth/TempProfile';
 import Profile from './components/profile/Profile';
@@ -23,8 +22,6 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
 import CreatePost from './components/createpost/CreatePost';
-
-import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 // import PostFeed from './components/PostFeed/Postfeed';
