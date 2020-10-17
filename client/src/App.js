@@ -23,7 +23,7 @@ import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 import PostFeed from './components/PostFeed/PostFeed';
-import CreateProfile from './components/auth/CreateProfile';
+import EditProfile from './components/editProfile/EditProfile';
 
 if (localStorage.jwtToken) {
   //decode
