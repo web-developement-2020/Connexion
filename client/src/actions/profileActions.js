@@ -71,7 +71,6 @@ export const createProfile = (profileData, history) => dispatch => {
 // Get all profiles
 
 
-
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -87,12 +86,9 @@ export const getProfiles = () => dispatch => {
         type: GET_PROFILES,
         payload: null
 
-
       })
     );
 };
-
-
 
 // Delete account & profile
 
@@ -110,9 +106,9 @@ export const deleteAccount = () => (dispatch) => {
         dispatch({
           type: GET_ERRORS,
           payload: err.response.data,
+
         })
       );
-      window.location.href = "/register";
   }
 };
 
@@ -125,11 +121,11 @@ export const setProfileLoading = () => {
   };
 };
 
-// // Clear profile
-// export const clearCurrentProfile = () => {
-//   return {
+// Clear profile
+export const clearCurrentProfile = () => {
+  return {
 
-//     type: CLEAR_CURRENT_PROFILE,
+    type: CLEAR_CURRENT_PROFILE,
 
-//   };
-// };
+  };
+};
