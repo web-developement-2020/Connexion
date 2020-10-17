@@ -7,11 +7,12 @@ import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 import Profile from './components/auth/Profile';
+import CreateProfile from './components/auth/CreateProfile';
+import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
-//import CreateProfile from './components/auth/CreateProfile';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
@@ -21,8 +22,10 @@ import CreatePost from './components/createpost/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
+import EditProfile from './components/editProfile/EditProfile';
+
 import PostFeed from './components/postFeed/PostFeed';
-import CreateProfile from './components/auth/CreateProfile';
+
 
 if (localStorage.jwtToken) {
   //decode
@@ -54,6 +57,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <main className="site-content">
+
               <Route exact path='/' component={Landing} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
@@ -100,8 +104,20 @@ class App extends Component {
                   component={ChangeAvatar}
                 />
               </Switch>
-             
-             
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/deleteAccount"
+                  component={DeleteAccount}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/editProfile"
+                  component={EditProfile}
+                />
+              </Switch>
             </main>
             <Footer />
           </div>
