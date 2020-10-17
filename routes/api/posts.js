@@ -65,16 +65,14 @@ router.post(
     if (!isValid) {
       // If any errors, send 400 with errors object
       return res.status(400).json(errors);
-
     }
 
     const newPost = new Post({
+      user: req.user.id,
+      image: req.body.image,
       text: req.body.text,
       name: req.body.name,
       avatar: req.body.avatar,
-      user: req.user.id,
-      image: req.body.url,
-
     });
     console.log(newPost);
     newPost.save().then((post) => res.json(post));

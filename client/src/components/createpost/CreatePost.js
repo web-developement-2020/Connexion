@@ -3,10 +3,27 @@ import {Image, CloudinaryContext} from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/postActions';
+import classnames from 'classnames';
 
 class CreatePost extends Component {
   constructor(props) {
     super(props);
+
+    this.widget = window.cloudinary.createUploadWidget({
+      cloudName: 'socialconnexion',
+      uploadPreset: 'st8gcaqq',
+      // uploadSignature: this.state.user,
+      theme: 'minimal',
+      inlineContainer: document.getElementById('upload-widget')
+
+    }, (error, result) => {
+      if (!error && result && result.event === "success"){
+        this.setState({ image: result.info.secure_url }) 
+             
+        console.log(result.info.secure_url)
+       }
+     }
+    )
 
     //Local state
     this.state = {
@@ -18,20 +35,7 @@ class CreatePost extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
       
-    this.widget = window.cloudinary.createUploadWidget({
-      cloudName: 'socialconnexion',
-      uploadPreset: 'st8gcaqq',
-      uploadSignature: this.state.user,
-      theme: 'minimal',
-      inlineContainer: document.getElementById('upload-widget')
-
-    }, (error, result) => {
-      if (!error && result && result.event === "success"){
-        this.setState({ image: result.info.secure_url })      
-        console.log(result.info.secure_url)
-       }
-     }
-    )
+    
   }
 
   componentWillReceiveProps(newProps) {
@@ -44,16 +48,14 @@ class CreatePost extends Component {
     e.preventDefault();
 
     const { user } = this.props.auth;
-
     const newPost = {
+      image: this.state.image,
       text: this.state.text,
       name: user.name,
       avatar: user.avatar,
-      image: this.state.image,
     };
 
     this.props.addPost(newPost);
-    console.log('success');
     this.setState({image: '', text: ''});
   }
 
@@ -73,9 +75,7 @@ class CreatePost extends Component {
       <div className='container'>
 
         <div id="post-preview" className="">
-
           {/* <div className='card card-body mb-3 col-12'> */}
-          
           <p className='card-text mx-3'>
            {this.state.text}
           </p>
@@ -85,36 +85,39 @@ class CreatePost extends Component {
                     className="rounded mx-auto d-block col-11 mb-3"
                     alt={this.state.text}
                     id="upload-preview"
-                    />
+            />
           </div>
         {/* </div> */}
         </div>
         <div className='media-upload col-11 mx-auto'>
 
+        <form onSubmit={this.onSubmit}>
             <div id='upload-widget'></div>
             <button id="upload_widget" className="btn-light btn-lg bg-light btn-outline-dark btn-block col-3 mb-3 " onClick={() => this.widget.open()}>
               Upload image
             </button>
 
-        <form>
           <div className='form-group'>
-            <label htmlFor='inputCaption'>Caption</label>
+            <label htmlFor='inputText'>Caption</label>
             <textarea
-              className='form-control'
-              id='inputCaption'
+              className={classnames("form-control", {"is-invalid": errors.name,})} 
+              id='inputText'
               placeholder='Write a caption'
               name='text'
+              type='text'
               rows= '4'
               value={this.state.text}
               onChange={this.onChange}
             ></textarea>
           </div>
-        </form>
+
+
         <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
         <button type='submit' className='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'>
           Submit
         </button>
         </div>
+      </form>
       </div>
       </div>
 

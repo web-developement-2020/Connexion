@@ -18,14 +18,11 @@ const PostSchema = new Schema({
   name: {
     type: String,
   },
-  handle: {
-    type:String
-  },
+  // handle: {
+  //   type:String
+  // },
   avatar: {
     type: String,
-  },
-  image:{
-    type : String,
   },
   likes: [
     {
