@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
+import CreateProfile from './components/auth/CreateProfile'
 import Footer from './components/layout/Footer';
 import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
@@ -22,13 +23,15 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
 import CreatePost from './components/createpost/CreatePost';
-import Post from './components/post/Post';
+
+import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
+// import PostFeed from './components/PostFeed/Postfeed';
+import Post from './components/post/Post';
 import PostFeed from './components/post/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/post/Posts';
-
 
 if (localStorage.jwtToken) {
   //decode
@@ -88,9 +91,9 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path='/post/:id' component={Post} />
               </Switch>
-              <Switch>
+              {/* <Switch>
                 <PrivateRoute exact path='/postfeed' component={PostFeed} />
-              </Switch>
+              </Switch> */}
               <Switch>
                 <PrivateRoute exact path='/posts' component={Posts} />
               </Switch>

@@ -65,19 +65,18 @@ router.post(
     if (!isValid) {
       // If any errors, send 400 with errors object
       return res.status(400).json(errors);
-
     }
 
     const newPost = new Post({
-      caption: req.body.caption,
-      image: req.body.imageURL,
-      handle: req.user.handle,
-      avatar: req.body.avatar,
       user: req.user.id,
+      image: req.body.image,
+      text: req.body.text,
+      name: req.body.name,
+      avatar: req.body.avatar,
     });
-
-
+    console.log(newPost);
     newPost.save().then((post) => res.json(post));
+
   }
 );
 
@@ -267,44 +266,47 @@ router.get(
 //@desc     upload media
 //@access   private
 
-router.post(
-  '/media/upload',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    console.log(req.body.image);
-    const { errors, isValid } = validatePostInput(req.body);
-    if (!isValid) {
-      return res.json(400).json(errors);
-    }
-    cloudinary.config({
-      cloud_name: keys.cloudinary.cloud_name,
-      api_key: keys.cloudinary.api_key,
-      api_secret: keys.cloudinary.api_secret,
-    });
+// router.post(
+//   '/media/upload',
+//   passport.authenticate('jwt', { session: false }),
+//   (req, res) => {
+    // console.log(req.body.image);
+    // const { errors, isValid } = validatePostInput(req.body);
+    // if (!isValid) {
+    //   return res.json(400).json(errors);
+    // }
+    // cloudinary.config({
+    //   cloud_name: keys.cloudinary.cloud_name,
+    //   api_key: keys.cloudinary.api_key,
+    //   api_secret: keys.cloudinary.api_secret,
+    // });
 
-    if (!req.body.image) {
-      return res.status(400).json('Please add an image');
-    }
+    // if (!req.body.image) {
+    //   return res.status(400).json('Please add an image');
+    // }
 
-    cloudinary.v2.uploader.upload(
-      req.body.image,
-      { height: 400, crop: 'scale' },
-      (error, result) => {
-        console.log(result, error);
-        if (result) {
-          const newPost = new Post({
-            text: req.body.text,
-            name: req.body.name,
-            avatar: req.body.avatar,
-            user: req.user.id,
-            image: result.url,
-          });
-          console.log(newPost);
-          newPost.save().then((post) => res.json(post));
-        }
-      }
-    );
-  }
-);
+    // cloudinary.v2.uploader.upload(
+    //   req.body.image,
+    //   { height: 400, crop: 'scale' },
+    //   (error, result) => {
+    //     console.log(result, error);
+    //     if (result) {
+
+          // const newPost = new Post({
+          //   text: req.body.text,
+          //   name: req.body.name,
+          //   avatar: req.body.avatar,
+          //   user: req.user.id,
+          //   image: req.body.url,
+
+          // });
+          // console.log(newPost);
+          // newPost.save().then((post) => res.json(post));
+        // }
+    //   }
+    // );
+    
+//   }
+// );
 
 module.exports = router;

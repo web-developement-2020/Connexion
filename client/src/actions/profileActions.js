@@ -69,8 +69,6 @@ export const createProfile = (profileData, history) => dispatch => {
 
 // Get all profiles
 
-
-
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
