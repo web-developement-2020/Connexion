@@ -5,7 +5,6 @@ import Landing from './components/layout/Landing';
 import Footer from './components/layout/Footer';
 import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import ChangePassword from './components/changePassword/ChangePassword';
-
 import ForgotPassword from './components/auth/ForgotPassword';
 import Profile from './components/auth/Profile';
 import CreateProfile from './components/auth/CreateProfile';
@@ -14,18 +13,19 @@ import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
-//import CreateProfile from './components/auth/CreateProfile';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
-
-import CreatePost from './components/auth/CreatePost';
+import CreatePost from './components/createpost/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/editProfile/EditProfile';
+
+import PostFeed from './components/postFeed/PostFeed';
+
 
 if (localStorage.jwtToken) {
   //decode
@@ -57,19 +57,40 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <main className="site-content">
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/forgotPassword" component={ForgotPassword} />
 
-              <Route exact path="/post" component={Post} />
-              <Route exact path="/createpost" component={CreatePost} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/createProfile" component={CreateProfile} />
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/forgotPassword' component={ForgotPassword} />
+              <Route exact path='/profile/:handle' component={Profile} />
+              {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
+              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/post' component={Post} />
+              {/* END DEV ROUTES */}
+
+              <Switch>
+                <PrivateRoute exact path='/createprofile' component={CreateProfile} />
+              </Switch>
+              {/* <Switch>
+                <PrivateRoute exact path ='/editprofile' component={EditProfile} />
+              </Switch> */}
+              
+              <Switch>
+                <PrivateRoute exact path='/createpost' component={CreatePost} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/post/:id' component={Post} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/postfeed' component={PostFeed} />
+              </Switch>
               <Switch>
                 <PrivateRoute exact path="/settings" component={Settings} />
               </Switch>
-              <Switch>
+
+             {/* <Route exact path='/not-found' component={NotFound} /> */}
+              
+                            <Switch>
                 <PrivateRoute
                   exact
                   path="/changePassword"

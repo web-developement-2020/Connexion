@@ -110,12 +110,6 @@ class Login extends Component {
                     </button>
                   </Link>
                 </div>
-
-                <div className='container mx-auto d-flex justify-content-around align-items-center mt-5 rounded-lg'>
-                  <button id='facebook-login' onClick='fbLogin()'>
-                    Login with Facebook
-                  </button>
-                </div>
               </form>
             </div>
           </div>

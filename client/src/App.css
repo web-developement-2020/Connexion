@@ -341,3 +341,6 @@ img {
 /* Profile ending */
 
 /* Create post*/
+#inputCaption{
+  overflow: auto;
+}
