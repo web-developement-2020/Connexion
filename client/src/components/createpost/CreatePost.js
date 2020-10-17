@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Image, CloudinaryContext} from 'cloudinary-react';
+//import {Image, CloudinaryContext} from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/postActions';
-import {useDropzone} from 'react-dropzone'
+//import {useDropzone} from 'react-dropzone';
 
 
 class CreatePost extends Component {
