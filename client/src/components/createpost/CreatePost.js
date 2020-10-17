@@ -3,8 +3,6 @@ import {Image, CloudinaryContext} from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/postActions';
-import {useDropzone} from 'react-dropzone'
-
 
 class CreatePost extends Component {
   constructor(props) {
@@ -12,8 +10,8 @@ class CreatePost extends Component {
 
     //Local state
     this.state = {
-      imageURL: '',
-      caption: '',
+      image: '',
+      text: '',
       errors: {},
     };
 
@@ -29,7 +27,7 @@ class CreatePost extends Component {
 
     }, (error, result) => {
       if (!error && result && result.event === "success"){
-        this.setState({ imageURL: result.info.secure_url })      
+        this.setState({ image: result.info.secure_url })      
         console.log(result.info.secure_url)
        }
      }
@@ -48,20 +46,20 @@ class CreatePost extends Component {
     const { user } = this.props.auth;
 
     const newPost = {
-      caption: this.state.caption,
-      imageURL: this.state.imageURL,
-      handle: user.handle,
+      text: this.state.text,
+      name: user.name,
       avatar: user.avatar,
-      user: user
+      image: this.state.image,
     };
 
     this.props.addPost(newPost);
-    this.setState({imageURL: '', caption: ''});
+    console.log('success');
+    this.setState({image: '', text: ''});
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
 
 
@@ -79,13 +77,13 @@ class CreatePost extends Component {
           {/* <div className='card card-body mb-3 col-12'> */}
           
           <p className='card-text mx-3'>
-           {this.state.caption}
+           {this.state.text}
           </p>
           <div className='row justify-content-center mx-3 mt-3'>
 
-            <img src={this.state.imageURL}
+            <img src={this.state.image}
                     className="rounded mx-auto d-block col-11 mb-3"
-                    alt={this.state.caption}
+                    alt={this.state.text}
                     id="upload-preview"
                     />
           </div>
@@ -105,9 +103,9 @@ class CreatePost extends Component {
               className='form-control'
               id='inputCaption'
               placeholder='Write a caption'
-              name='caption'
+              name='text'
               rows= '4'
-              value={this.state.caption}
+              value={this.state.text}
               onChange={this.onChange}
             ></textarea>
           </div>

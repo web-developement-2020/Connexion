@@ -1,5 +1,9 @@
 import {
   ADD_POST,
+  GET_POSTS,
+  GET_POST,
+  DELETE_POST,
+  POST_LOADING
 } from '../actions/types';
 
 const initialState = {
