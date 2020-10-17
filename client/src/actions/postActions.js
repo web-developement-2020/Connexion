@@ -7,7 +7,7 @@ import {
   GET_POSTS,
   GET_POST,
   POST_LOADING,
-  DELETE_POST
+  DELETE_POST,
 } from './types';
 
 
@@ -35,12 +35,13 @@ export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading());
   axios
     .get("/api/posts")
-    .then((res) =>
+    .then((res) =>(
       dispatch({
         type: GET_POSTS,
         payload: res.data,
       })
-    )
+      )
+      )
     .catch((err) =>
       dispatch({
         type: GET_POSTS,
@@ -164,3 +165,24 @@ export const clearErrors = () => {
     type: CLEAR_ERRORS,
   };
 };
+
+// //get postfeed
+// export const getPostFeed = () => (dispatch) => {
+//   dispatch(setPostLoading());
+//   axios
+//     .get(`/api/posts/following/lists`)
+//     .then((res) =>
+//       console.log(res.data)
+
+//       // dispatch({
+//       //   type: GET_POST_FEED,
+//       //   payload: res.data,
+//       // })
+//     )
+//     .catch((err) =>
+//       dispatch({
+//         type: GET_POST,
+//         payload: null,
+//       })
+//     );
+// };
