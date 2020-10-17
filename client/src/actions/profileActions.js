@@ -92,34 +92,34 @@ export const getProfiles = () => (dispatch) => {
 
 // Delete account & profile
 
-// export const deleteAccount = () => (dispatch) => {
-//   if (window.confirm("Are you sure? This can NOT be undone!")) {
-//     axios
-//       .delete("/api/profile")
-//       .then((res) =>
-//         dispatch({
-//           type: SET_CURRENT_USER,
-//           payload: {},
-//         })
-//       )
-//       .catch((err) =>
-//         dispatch({
-//           type: GET_ERRORS,
-//           payload: err.response.data,
+export const deleteAccount = () => (dispatch) => {
+  if (window.confirm("Are you sure? This can NOT be undone!")) {
+    axios
+      .delete("/api/profile")
+      .then((res) =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {},
+        })
+      )
+      .catch((err) =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data,
+        })
+      );
+      window.location.href = "/register";
+  }
+};
 
-//         })
-//       );
-//   }
-// };
+// Profile loading
+export const setProfileLoading = () => {
+  return {
 
-// // Profile loading
-// export const setProfileLoading = () => {
-//   return {
+    type: PROFILE_LOADING,
 
-//     type: PROFILE_LOADING,
-
-//   };
-// };
+  };
+};
 
 // // Clear profile
 // export const clearCurrentProfile = () => {

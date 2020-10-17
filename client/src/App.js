@@ -8,6 +8,8 @@ import ChangePassword from './components/changePassword/ChangePassword';
 
 import ForgotPassword from './components/auth/ForgotPassword';
 import Profile from './components/auth/Profile';
+import CreateProfile from './components/auth/CreateProfile';
+import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
@@ -23,6 +25,7 @@ import CreatePost from './components/auth/CreatePost';
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
+import EditProfile from './components/editProfile/EditProfile';
 
 if (localStorage.jwtToken) {
   //decode
@@ -58,10 +61,11 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/forgotPassword" component={ForgotPassword} />
-             
+
               <Route exact path="/post" component={Post} />
               <Route exact path="/createpost" component={CreatePost} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/createProfile" component={CreateProfile} />
               <Switch>
                 <PrivateRoute exact path="/settings" component={Settings} />
               </Switch>
@@ -79,8 +83,20 @@ class App extends Component {
                   component={ChangeAvatar}
                 />
               </Switch>
-             
-             
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/deleteAccount"
+                  component={DeleteAccount}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/editProfile"
+                  component={EditProfile}
+                />
+              </Switch>
             </main>
             <Footer />
           </div>
