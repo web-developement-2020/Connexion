@@ -4,25 +4,34 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import CreateProfile from './components/auth/CreateProfile'
 import Footer from './components/layout/Footer';
-import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
+import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-import Profile from './components/auth/Profile';
+// import Profile from './components/auth/Profile';
+import CreateProfile from './components/auth/CreateProfile';
+import DeleteAccount from './components/deleteAccount/DeleteAccount';
+import TempProfile from './components/auth/TempProfile';
+import Profile from './components/profile/Profile';
+
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
-//import CreateProfile from './components/auth/CreateProfile';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
 import CreatePost from './components/createpost/CreatePost';
+
 import Post from './components/auth/Post';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 // import PostFeed from './components/PostFeed/Postfeed';
+import Post from './components/post/Post';
+import PostFeed from './components/post/PostFeed';
+import EditProfile from './components/editProfile/EditProfile';
+import Posts from './components/post/Posts';
 
 if (localStorage.jwtToken) {
   //decode
@@ -51,26 +60,31 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
+          <div className='App'>
             <Navbar />
-            <main className="site-content">
+            <main className='site-content'>
               <Route exact path='/' component={Landing} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/profile/:handle' component={Profile} />
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
+              <Route exact path='/tempProfile' component={TempProfile} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/post' component={Post} />
               {/* END DEV ROUTES */}
 
               <Switch>
-                <PrivateRoute exact path='/createprofile' component={CreateProfile} />
+                <PrivateRoute
+                  exact
+                  path='/createprofile'
+                  component={CreateProfile}
+                />
               </Switch>
               {/* <Switch>
                 <PrivateRoute exact path ='/editprofile' component={EditProfile} />
               </Switch> */}
-              
+
               <Switch>
                 <PrivateRoute exact path='/createpost' component={CreatePost} />
               </Switch>
@@ -81,27 +95,45 @@ class App extends Component {
                 <PrivateRoute exact path='/postfeed' component={PostFeed} />
               </Switch> */}
               <Switch>
-                <PrivateRoute exact path="/settings" component={Settings} />
+                <PrivateRoute exact path='/posts' component={Posts} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/settings' component={Settings} />
               </Switch>
 
-             {/* <Route exact path='/not-found' component={NotFound} /> */}
-              
-                            <Switch>
+              {/* <Route exact path='/not-found' component={NotFound} /> */}
+
+              <Switch>
                 <PrivateRoute
                   exact
-                  path="/changePassword"
+                  path='/changePassword'
                   component={ChangePassword}
                 />
               </Switch>
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/changeAvatar"
+                  path='/changeAvatar'
                   component={ChangeAvatar}
                 />
               </Switch>
-             
-             
+
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/deleteAccount"
+                  component={DeleteAccount}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/editProfile"
+                  component={EditProfile}
+                />
+              </Switch>
+
+
             </main>
             <Footer />
           </div>

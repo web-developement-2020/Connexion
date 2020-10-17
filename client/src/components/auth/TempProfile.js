@@ -9,6 +9,9 @@ class Profile extends Component {
           <div className='container'>
             <div className='row'>
               <div className='card card-body mb-3'>
+
+
+
                 <div className='row'>
                   <div className='col-md-2 profile-content'>
                     <Link to='profile.html'>
@@ -66,6 +69,11 @@ class Profile extends Component {
                     <small> following: 100</small>
                   </div>
                 </div>
+
+
+
+
+                
                 <span className='border border-warning rounded-sm'>
                   <div className='row'>
                     <div className='col-md-2 profile'>

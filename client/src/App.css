@@ -293,7 +293,6 @@ img {
   font-weight: bold;
 }
 .profile-content {
-  padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 0px;
@@ -344,3 +343,18 @@ img {
 #inputText{
   overflow: auto;
 }
+
+
+/* Post Feed beginning*/
+
+.postFeedImg{
+  width:50px;
+}
+.postfeed{
+  margin-top:15px;
+}
+.post-caption{
+  margin-bottom: 5px;
+}
+
+/* Post Feed Ending */
