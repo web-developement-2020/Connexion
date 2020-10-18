@@ -84,14 +84,14 @@ class CreatePost extends Component {
                   <h2 align='right' className='header'>
                     <i className='fas fa-photo-video'></i> Post
                   </h2>
-                  <h6 className='card-title'>{this.props.user.name}</h6>
+                  <h6 className='card-title'>{this.props.auth.user.name}</h6>
                   <p className='card-text'>
                     {this.state.text}
                   </p>
                 </div>
               </div>
               <div className='container'>
-                <div className='row justify-content-center post-img-card'>
+                <div className='row justify-content-center post-img-card my-3'>
                   <div className='col-8 post-img' align='center'>
                     <img
                       id='upload-preview'
