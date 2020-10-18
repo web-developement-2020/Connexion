@@ -38,6 +38,19 @@ class Dashboard extends Component {
         <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
       </Link>
       </div>
+      <br/>
+      <div className="btn-group mb-4" role="group">
+      <Link to="/createpost" className="btn btn-light">
+        <i className="fas fa-user-circle text-info mr-1" /> create a post!
+      </Link>
+      </div>
+      <br/>
+      <div className="btn-group mb-4" role="group">
+      <Link to="/PostFeed" className="btn btn-light">
+        <i className="fas fa-user-circle text-info mr-1" /> View posts
+      </Link>
+      </div>
+
       </div>
         );
       } else {

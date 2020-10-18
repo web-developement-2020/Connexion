@@ -94,7 +94,7 @@ class Navbar extends Component {
     return (
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
-          <Link className='navbar-brand' to='/'>
+          <Link className='navbar-brand' to='/dashboard'>
             <img
               src={logo}
               width='auto'

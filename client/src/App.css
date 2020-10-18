@@ -359,3 +359,9 @@ img {
 
 
 /* Post Feed Ending */
+
+/* dashboard */
+.dashboard{
+  color: #e69138;
+  text-align:center;
+}
