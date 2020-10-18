@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from "./components/dashboard/Dashboard";
 import store from './store';
 import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
@@ -72,7 +73,9 @@ class App extends Component {
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/post' component={Post} />
               {/* END DEV ROUTES */}
-
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
               <Switch>
                 <PrivateRoute
                   exact
