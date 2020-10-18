@@ -65,6 +65,8 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/profile/:handle' component={Profile} />
+              <Route exact path='/posts' component={Posts} />
+
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
               <Route exact path='/tempProfile' component={TempProfile} />
               <Route exact path='/profile' component={Profile} />
@@ -91,9 +93,9 @@ class App extends Component {
               {/* <Switch>
                 <PrivateRoute exact path='/postfeed' component={PostFeed} />
               </Switch> */}
-              <Switch>
+              {/* <Switch>
                 <PrivateRoute exact path='/posts' component={Posts} />
-              </Switch>
+              </Switch> */}
               <Switch>
                 <PrivateRoute exact path='/settings' component={Settings} />
               </Switch>
@@ -118,19 +120,17 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/deleteAccount"
+                  path='/deleteAccount'
                   component={DeleteAccount}
                 />
               </Switch>
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/editProfile"
+                  path='/editProfile'
                   component={EditProfile}
                 />
               </Switch>
-
-
             </main>
             <Footer />
           </div>
