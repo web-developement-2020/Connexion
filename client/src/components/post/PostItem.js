@@ -13,20 +13,20 @@ class PostItem extends Component {
     this.props.removeLike(id);
   }
 
-  findUserLike(likes) {
-    const { auth } = this.props;
-    if (likes.filter((like) => like.user === auth.user.id).length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//   findUserLike() {
+//     const { auth } = this.props;
+//     if (likes.filter((like) => like.user === auth.user.id).length > 0) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
 
-  renderLiking=()=>{
-const LikesDislikes = ``
+//   renderLiking=()=>{
+// const LikesDislikes = ''
 
 
-  }
+//   }
 
   render() {
     const { post, auth, showActions } = this.props;
