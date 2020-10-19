@@ -9,6 +9,8 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 // Load Validation
 const validateProfileInput = require("../../validation/profile");
+const { text } = require("body-parser");
+const { escapeRegExp } = require("lodash");
 
 
 // @route   GET api/profile
@@ -71,6 +73,39 @@ router.get("/handle/:handle", (req, res) => {
     })
     .catch((err) => res.status(404).json(err));
 });
+
+//@route GET api/profile/search/:searchparams
+//@desc Fuzzy search for handle
+//@desc Public
+
+router.get("/search", (req, res) => {
+  const errors = {};
+    if(req.query.search){
+      //create regex
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    Profile.find({handle: regex}, function(err, foundprofiles){
+      if(err){
+        console.log(err);
+      } else {
+        res.json(foundprofiles);
+      }
+    }
+    );
+      
+    }
+});
+
+//   Profile.fuzzySearch({ handle: `${req.params.searchparams}` })
+//     .then((profiles) => {
+//       if (!profiles){
+        
+//       }
+
+//       res.json(profiles);
+//     })
+//     .catch((err) => res.status(404).json(err));
+//   }
+// )
 
 // @route   GET api/profile/user/:user_id
 // @desc    Get profile by user ID
@@ -329,5 +364,9 @@ router.delete(
     });
   }
 );
+
+function escapeRegex(text){
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

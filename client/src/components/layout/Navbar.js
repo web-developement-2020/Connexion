@@ -31,9 +31,9 @@ class Navbar extends Component {
     const authLinks = (
             <ul className='navbar-nav ml-auto'>
               <li>
-                <form id='searchbar' action='' className='nav'>
-                  <input id='search-input' type='search' />
-                  <i className='fa fa-search' id='search-icon'></i>
+                <form id='searchbar' action='api/profile/search' method="GET" className='nav'>
+                  <input name="q" id='search-input' type='search' />
+                  <button type="submit" value="Search"><i className='fa fa-search' id='search-icon'></i></button>
                 </form>
               </li>
 
