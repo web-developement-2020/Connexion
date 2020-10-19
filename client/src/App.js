@@ -26,10 +26,10 @@ import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 // import PostFeed from './components/PostFeed/Postfeed';
-import Post from './components/post/Post';
-import PostFeed from './components/post/PostFeed';
+import Post from './components/posts/Post';
+import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
-import Posts from './components/post/Posts';
+import Posts from './components/posts/Posts';
 
 if (localStorage.jwtToken) {
   //decode
@@ -91,7 +91,7 @@ class App extends Component {
                 <PrivateRoute exact path='/createpost' component={CreatePost} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path='/post/:id' component={Post} />
+                <PrivateRoute exact path='/posts/:id' component={Post} />
               </Switch>
               {/* <Switch>
                 <PrivateRoute exact path='/postfeed' component={PostFeed} />
