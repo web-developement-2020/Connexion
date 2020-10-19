@@ -51,7 +51,7 @@ class ChangeAvatar extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Change avatar </h1>
               <p className="lead text-center">
-                change avatar of your F-Instagram app account
+                change avatar of your CONNEXION app account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
