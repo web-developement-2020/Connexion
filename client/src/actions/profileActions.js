@@ -36,6 +36,7 @@ export const getCurrentProfile = () => (dispatch) => {
 
 export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading());
+  let handle = document.getElementById("search-input");
   axios
     .get(`/api/profile/handle/${handle}`)
     .then((res) =>

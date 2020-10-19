@@ -6,7 +6,9 @@ import Footer from './components/layout/Footer';
 import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-import Profile from './components/auth/Profile';
+//import Profile from './components/auth/Profile';
+
+import GetProfileByHandle from "./components/getprofilebyhandle/GetProfileByHandle";
 import CreateProfile from './components/auth/CreateProfile';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import jwt_decode from 'jwt-decode';
@@ -15,6 +17,7 @@ import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import NotFound from "./components/not-found/NotFound";
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
@@ -24,6 +27,7 @@ import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/editProfile/EditProfile';
 import Post from './components/auth/Post';
+import { getProfileByHandle } from './actions/profileActions';
 
 //import PostFeed from './components/postFeed/PostFeed';
 
@@ -58,40 +62,44 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <main className="site-content">
-
-              <Route exact path='/' component={Landing} />
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/forgotPassword' component={ForgotPassword} />
-              <Route exact path='/profile/:handle' component={Profile} />
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/forgotPassword" component={ForgotPassword} />
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
-              <Route exact path='/profile' component={Profile} />
-              <Route exact path='/post' component={Post} />
+              
+              <Route exact path="/post" component={Post} />
+              <Route exact path="/not-found" component={NotFound} />
               {/* END DEV ROUTES */}
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/getprofilebyhandle"
+                  component={getProfileByHandle}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/createprofile"
+                  component={CreateProfile}
+                />
+              </Switch>
 
               <Switch>
-                <PrivateRoute exact path='/createprofile' component={CreateProfile} />
-              </Switch>
-              {/* <Switch>
-                <PrivateRoute exact path ='/editprofile' component={EditProfile} />
-              </Switch> */}
-              
-              <Switch>
-                <PrivateRoute exact path='/createpost' component={CreatePost} />
+                <PrivateRoute exact path="/createpost" component={CreatePost} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path='/post/:id' component={Post} />
+                <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path='/postfeed' component={PostFeed} />
+                <PrivateRoute exact path="/postfeed" component={PostFeed} />
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/settings" component={Settings} />
               </Switch>
 
-             {/* <Route exact path='/not-found' component={NotFound} /> */}
-              
-                            <Switch>
+              <Switch>
                 <PrivateRoute
                   exact
                   path="/changePassword"
