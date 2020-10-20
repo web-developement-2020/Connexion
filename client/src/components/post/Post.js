@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
+import CommentGallery from './CommentGallery';
 import Spinner from '../common/Spinner';
 import { getPost } from '../../actions/postActions';
+import { get } from '../../actions/postActions';
+import '../../App.css';
 
 class Post extends Component {
   componentDidMount() {
@@ -21,26 +24,42 @@ class Post extends Component {
       postContent = <Spinner />;
     } else {
       postContent = (
-        <div>
-          <PostItem post={post} showActions={false} />
+        <div className='card card-body mb-3'>
+          <div className='row'>
+            <div className='col-md-2 profile-content'></div>
+            <div className='col-md-10'>
+              <h2 align='right' className='header'>
+                <i className='fas fa-photo-video'></i> Post
+              </h2>
+            </div>
+          </div>
+
+          <Link to='/posts' class='back'>
+            <i
+              className='fas fa-arrow-circle-left'
+              style={{ color: 'orange' }}
+            ></i>
+            {/* <span> to posts</span> */}
+          </Link>
+          <CommentGallery
+            postId={post._id}
+            postImage={post.image}
+            likes={post.likes}
+          />
           <CommentForm postId={post._id} />
-          <CommentFeed postId={post._id} comments={post.comments} />
+          <div className='row'>
+            <div className='col-md-12'>
+            <ul className='list-group'>
+              <CommentFeed postId={post._id} comments={post.comments} /></ul>
+            </div>
+          </div>
         </div>
       );
     }
 
     return (
-      <div className='post'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-12'>
-              <Link to='/feed' className='btn btn-light mb-3'>
-                Back To Feed
-              </Link>
-              {postContent}
-            </div>
-          </div>
-        </div>
+      <div className='container'>
+        <div className='row'>{postContent}</div>
       </div>
     );
   }

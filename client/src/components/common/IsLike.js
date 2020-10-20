@@ -1,16 +1,14 @@
-// render Post item
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addLike, removeLike } from '../../actions/postActions';
 import Profile from '../profile/Profile';
 
-class PostItem extends Component {
+class IsLike extends Component {
   constructor() {
     super();
     this.state = {
-      // islike: true,
+      errors:{},
     };
   }
   onLikeClick = (e, id) => {
@@ -44,38 +42,18 @@ class PostItem extends Component {
       );
     }
   };
-
   render() {
-    const { post } = this.props;
-    const { profile } = this.props;
-
+    const { postId, likes } = this.props;
     return (
-      <li key={post._id} className='list-group-item'>
-        <div className='row'>
-          <div className='col-sm-2'>
-            <Link to={`/posts/${post._id}`}>
-              <img className='postFeedImg' src={post.image} alt='' />
-            </Link>
-          </div>
-          <div className='col-sm-10'>
-            <p className='post-caption'>
-              <b>{post.name}'s post: </b> {post.text}
-            </p>
-            <span className='postIcon'>
-              {this.isLike(post._id, post.likes)}
-              <Link to={`/posts/${post._id}`}>
-                <i className='far fa-comment-dots'></i>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </li>
+      <span>
+        {this.isLike(postId, likes)}
+      </span>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile,
+
 });
-export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike })(IsLike);
