@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
+import SearchBar from './SearchBar'
+
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -30,13 +32,7 @@ class Navbar extends Component {
 
     const authLinks = (
             <ul className='navbar-nav ml-auto'>
-              <li>
-                <form id='searchbar' action='api/profile/search' method="GET" className='nav'>
-                  <input name="q" id='search-input' type='search' />
-                  <button type="submit" value="Search"><i className='fa fa-search' id='search-icon'></i></button>
-                </form>
-              </li>
-
+              <SearchBar />
               <li className='nav-item nav'>
                 <Link
                   className='nav-link d-md-block '

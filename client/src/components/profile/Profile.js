@@ -6,6 +6,7 @@ import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 
 class Profile extends Component {
+
   componentDidMount() {
     this.props.getCurrentProfile();
   }
@@ -19,13 +20,16 @@ class Profile extends Component {
     console.log('p:', this.props.profile);
     console.log('prof:', profile);
     console.log('u', user);
+    // console.log(profile.following);
+    if(profile){
+      console.log(profile.following);
+    }
 
-    if(loading){
+    if(profile === null || loading){
       return(
         <Spinner />
       )
-    } else {
-
+    } else if (Object.keys(profile).length > 0) {
       return (
         <div>
         <div className='post'>
@@ -35,7 +39,7 @@ class Profile extends Component {
              <div>
                 <div className='row'>
                   <div className='col-md-2 profile-content'>
-                    <Link to='profile'>
+                    <Link to='/profile'>
                       <img
                         className='profile-img rounded-circle d-none d-md-block'
                         src={user.avatar}
@@ -67,7 +71,8 @@ class Profile extends Component {
                         d='M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z'
                       />
                     </svg>
-                    <small> followers: </small>
+                    <small> followers: {profile.followers.length}
+                      </small>
                   </div>
                   <div className='col-md-3'>
                     <svg
@@ -83,10 +88,27 @@ class Profile extends Component {
                         d='M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'
                       />
                     </svg>
-      <small> following: </small>
+                  <small> following:{profile.following.length} </small>
                   </div>
-                </div></div>
-                </div></div></div></div></div>)
+                  </div>
+                  <div className='card card-body mb-3 pl-5'>
+                  <div className='row location'>
+                    <h5 className="mr-1">Location:</h5>
+                      <p>{profile.location}</p>
+                  </div>
+                  <div className='row bio'>
+                    <h5 className="mr-1">Bio:</h5>
+                      <p>{profile.bio}</p>
+                  </div>
+                  <div className='row website'>
+                    {/* fix link */}
+                    <h5 className="mr-1">Website:</h5>
+                      <a target="_blank" href={profile.website}>{profile.website}</a>
+                  </div>
+            </div>
+            </div>
+        </div>
+        </div></div></div></div>)
       }
    }
 }
