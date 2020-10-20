@@ -183,12 +183,13 @@ img {
   text-align: center;
 }
 #post {
-  max-width: 30%;
+  max-width: 60%;
   height: auto;
 }
 
 .post-img {
   margin-top: 15px;
+  margin-bottom: 15px;
 
 }
 .post-img-card {
@@ -354,9 +355,9 @@ img {
 
 /* Post Feed beginning*/
 
-.postFeedImg{
+/* .postFeedImg{
   width:50px;
-}
+} */
 .postfeed{
   margin-top:15px;
 }
@@ -364,6 +365,10 @@ img {
   margin-bottom: 5px;
 }
 
+.back:hover{
+  /* color:; */
+  text-decoration: none;
+}
 
 /* Post Feed Ending */
 

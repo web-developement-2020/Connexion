@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {getPost} from '../../actions/postActions';
-import { map } from 'lodash';
 
 class Post extends Component {
 
@@ -102,7 +101,7 @@ class Post extends Component {
                       <textarea
                         className='form-control'
                         aria-label='With textarea'
-                        Placeholder='Add your comment!'
+                        placeholder='Add your comment!'
                       ></textarea>
                       <button type='submit' className='btn btn-secondary'>
                         Add

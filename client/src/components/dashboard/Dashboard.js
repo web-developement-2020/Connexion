@@ -46,7 +46,7 @@ class Dashboard extends Component {
       </div>
       <br/>
       <div className="btn-group mb-4" role="group">
-      <Link to="/PostFeed" className="btn btn-light">
+      <Link to="/posts" className="btn btn-light">
         <i className="fas fa-user-circle text-info mr-1" /> View posts
       </Link>
       </div>
