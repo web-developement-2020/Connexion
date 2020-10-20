@@ -26,7 +26,7 @@ import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 // import PostFeed from './components/PostFeed/Postfeed';
-import Post from './components/posts/Post';
+import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/posts/Posts';

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -9,25 +8,22 @@ const TextAreaFieldGroup = ({
   value,
   error,
   info,
-  onChange
-
+  onChange,
 }) => {
   return (
-    <div className="form-group">
+    <Fragment>
       <textarea
-
         className={classnames('form-control form-control-lg', {
-          'is-invalid': error
-
+          'is-invalid': error,
         })}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
       />
-      {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
-    </div>
+      {info && <small className='form-text text-muted'>{info}</small>}
+      {error && <div className='invalid-feedback'>{error}</div>}
+    </Fragment>
   );
 };
 
@@ -38,8 +34,7 @@ TextAreaFieldGroup.propTypes = {
   info: PropTypes.string,
   error: PropTypes.string,
 
-  onChange: PropTypes.func.isRequired
-
+  onChange: PropTypes.func.isRequired,
 };
 
 export default TextAreaFieldGroup;
