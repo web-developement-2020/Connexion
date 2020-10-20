@@ -164,6 +164,9 @@ img {
 .profile-img {
   width: 90px;
 }
+.profile-img-lg{
+  width: 200px;
+}
 #profile-mini {
   width: 40px;
 }
@@ -297,6 +300,10 @@ img {
   padding-right: 15px;
   padding-bottom: 0px;
 }
+.profile-name{
+  font-family: 'Abel';
+  font-size: 4em;
+}
 
 .fa-user {
   color: #e69138;
@@ -364,4 +371,13 @@ img {
 .dashboard{
   color: #e69138;
   text-align:center;
+}
+
+/* View Profile */
+.social-links{
+  font-size: 3em; 
+}
+
+.fa-globe{
+  color: grey;
 }

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
+import { isEmpty } from 'lodash';
 
 class Profile extends Component {
 
@@ -30,18 +31,82 @@ class Profile extends Component {
         <Spinner />
       )
     } else if (Object.keys(profile).length > 0) {
+
+      const href = window.open.href=(`${profile.website}`);
+
+      const profileCard=(
+        <div className='card card-body mb-3 pl-5'>
+          {isEmpty(profile.location) ? null : (
+          <div className='row location'>
+            <h5 className="mr-1">Location:</h5>
+            <p>{profile.location}</p>
+          </div>
+          )}  
+          {isEmpty(profile.bio) ? null : (
+          <div className='row bio'>
+            <h5 className="mr-1">Bio:</h5>
+            <p>{profile.bio}</p>
+          </div>)}
+          {isEmpty(profile.website) ? null : (
+          <div className='row website'>
+            {/* fix link */}
+            <h5 className="mr-1">Website:</h5>
+              <a target="_blank" href={href}>{profile.website}</a>
+          </div>
+          )}
+        </div>
+        );
+
+      const socialLinks = (
+        <div className='card card-body mb-3 pl-5'>
+          <div className='row social-links d-flex justify-content-around'>
+          
+          {isEmpty(profile.social && profile.social.facebook) ? null : (
+            <a className="social-link" href={profile.social.facebook}>
+              <i className="fab fa-facebook-square"></i>
+            </a>
+          )}
+          {isEmpty(profile.social && profile.social.twitter) ? null : (
+            <a className="social-link" href={profile.social.twitter}>
+              <i className="fab fa-twitter"></i>
+            </a>
+          )}
+          {isEmpty(profile.social && profile.social.instagram) ? null : (
+            <a className="social-link" href={profile.social.instagram}>
+              <i className="fab fa-instagram"></i>
+            </a>
+          )}
+          {isEmpty(profile.social && profile.social.linkedin) ? null : (
+            <a className="social-link" href={profile.social.linkedin}>
+              <i className="fab fa-linkedin"></i>
+            </a>
+          )}
+          {isEmpty(profile.social && profile.social.youtube) ? null : (
+            <a className="social-link" href={profile.social.youtube}>
+              <i className="fab fa-youtube"></i>
+            </a>
+          )}
+          {isEmpty(profile.website) ? null :(
+            <a className="social-link" href={profile.website}>
+            <i class="fas fa-globe"></i>
+          </a>
+          )}
+          </div>
+        </div>
+      )
+
       return (
         <div>
         <div className='post'>
           <div className='container'>
             <div className='row'>
-            <div className='card card-body mb-3'>
+            <div className='card card-body mb-3 bg-light'>
              <div>
                 <div className='row'>
                   <div className='col-md-2 profile-content'>
                     <Link to='/profile'>
                       <img
-                        className='profile-img rounded-circle d-none d-md-block'
+                        className='prof-img-lg rounded-circle d-none d-md-block'
                         src={user.avatar}
                         alt=''
                       />
@@ -51,7 +116,7 @@ class Profile extends Component {
                     <h2 className='header' align='right'>
                       <i className='fas fa-user'></i> Profile
                     </h2>
-                    <h6 className='card-title'>{user.name}</h6>
+                    <h3 className='card-title profile-name'>{user.name}</h3><h5 className='card-title profile-handle'>( {profile.handle} )</h5>
 
                   </div>
                 </div>
@@ -91,21 +156,14 @@ class Profile extends Component {
                   <small> following:{profile.following.length} </small>
                   </div>
                   </div>
-                  <div className='card card-body mb-3 pl-5'>
-                  <div className='row location'>
-                    <h5 className="mr-1">Location:</h5>
-                      <p>{profile.location}</p>
-                  </div>
-                  <div className='row bio'>
-                    <h5 className="mr-1">Bio:</h5>
-                      <p>{profile.bio}</p>
-                  </div>
-                  <div className='row website'>
-                    {/* fix link */}
-                    <h5 className="mr-1">Website:</h5>
-                      <a target="_blank" href={profile.website}>{profile.website}</a>
-                  </div>
-            </div>
+                
+                {isEmpty(profile.bio && profile.location)? null : (profileCard )}
+
+
+
+                {isEmpty(profile.social && profile.website) ? null : 
+                (socialLinks)}  
+
             </div>
         </div>
         </div></div></div></div>)

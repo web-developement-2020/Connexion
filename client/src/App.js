@@ -66,6 +66,7 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/profile/:handle' component={Profile} />
+              
               <Route exact path='/posts' component={Posts} />
 
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
