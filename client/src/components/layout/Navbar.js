@@ -34,9 +34,9 @@ class Navbar extends Component {
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item nav'>
                 <Link
-                  className='nav-link d-md-block 
+                  className='nav-link d-md-block '
                  
-                  to='/postfeed'
+                  to='/posts'
                   id='nav-link'
                   data-toggle="tooltip"
                   title="Post Feed"
