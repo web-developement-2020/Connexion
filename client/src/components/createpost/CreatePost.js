@@ -2,28 +2,31 @@ import React, { Component } from 'react';
 //import {Image, CloudinaryContext} from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addPost } from '../../actions/postActions';
+import { addPost, getCurrentPost } from '../../actions/postActions';
 import classnames from 'classnames';
+import Spinner from '../common/Spinner';
+import CurrentPost from './CurrentPost';
 
 
 class CreatePost extends Component {
   constructor(props) {
     super(props);
 
-    this.widget = window.cloudinary.createUploadWidget({
-      cloudName: 'socialconnexion',
-      uploadPreset: 'st8gcaqq',
-      theme: 'minimal',
-      inlineContainer: document.getElementById('upload-widget')
+    this.widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'socialconnexion',
+        uploadPreset: 'st8gcaqq',
+        theme: 'minimal',
+        inlineContainer: document.getElementById('upload-widget'),
+      },
+      (error, result) => {
+        if (!error && result && result.event === 'success') {
+          this.setState({ image: result.info.secure_url });
 
-    }, (error, result) => {
-      if (!error && result && result.event === "success"){
-        this.setState({ image: result.info.secure_url }) 
-             
-        console.log(result.info.secure_url)
-       }
-     }
-    )
+          console.log(result.info.secure_url);
+        }
+      }
+    );
 
     //Local state
     this.state = {
@@ -34,12 +37,14 @@ class CreatePost extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-      
-    
+  }
+
+  componentDidMount() {
+    this.props.getCurrentPost();
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.errors) {
+    if (newProps.errors) {
       this.setState({ errors: newProps.errors });
     }
   }
@@ -57,95 +62,113 @@ class CreatePost extends Component {
     };
 
     this.props.addPost(newPost);
-    this.setState({image: '', text: ''});
+    this.setState({ image: '', text: '' });
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
-
-  
   render() {
+    const {posts, loading} = this.props.post;
+    const {auth} = this.props;
+    // if (posts === null || post ===null || loading) return <Spinner />;
+    // else {
+    //   console.log('****posts');
+    //   console.log(posts);
+    //   console.log("***post");
+    //   console.log(post);
+    // }
 
-    const postPreview = (        
-      <div id="post-preview" className="">
+    //     const {posts}=this.props.post
+    // if(posts){
+    //   console.log('***** create posts');
+    //   console.log(posts);
+    // }
+    const postPreview = (
+      <div id='post-preview' className=''>
         <div className='card card-body mb-3 col-md-10 mx-auto'>
-        <div className='row'>
-                <div className='col-md-2 profile-content'>
+          <div className='row'>
+            <div className='col-md-2 profile-content'>
+              <img
+                className='profile-img rounded-circle d-none d-md-block'
+                src={this.props.auth.user.avatar}
+                alt=''
+              />
+            </div>
+            <div className='col-md-10'>
+              <h2 align='right' className='header'>
+                <i className='fas fa-photo-video'></i> Post
+              </h2>
+              <h6 className='card-title'>{this.props.auth.user.name}</h6>
+              <p className='card-text'>{this.state.text}</p>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='row justify-content-center post-img-card my-3'>
+              <div className='col-8 post-img' align='center'>
                 <img
-                      className='profile-img rounded-circle d-none d-md-block'
-                      src={this.props.auth.user.avatar}
-                      alt=''
-                    />
-                </div>
-          <div className='col-md-10'>
-                  <h2 align='right' className='header'>
-                    <i className='fas fa-photo-video'></i> Post
-                  </h2>
-                  <h6 className='card-title'>{this.props.auth.user.name}</h6>
-                  <p className='card-text'>
-                    {this.state.text}
-                  </p>
-                </div>
+                  id='upload-preview'
+                  src={this.state.image}
+                  style={{ width: '400px', maxWidth: '100%' }}
+                  className='card-img-bottom'
+                  alt={this.state.text}
+                />
               </div>
-              <div className='container'>
-                <div className='row justify-content-center post-img-card my-3'>
-                  <div className='col-8 post-img' align='center'>
-                    <img
-                      id='upload-preview'
-                      src={this.state.image}
-                      style={{width: '400px', maxWidth: '100%'}}
-                      className='card-img-bottom'
-                      alt={this.state.text}
-                    />
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
         </div>
-        );
+      </div>
+    );
 
     const { errors } = this.state;
 
     return (
-
       <div className='container'>
-      {this.state.image || this.state.text? postPreview : null}
+        {this.state.image || this.state.text ? postPreview : null}
 
         <div className='media-upload col-11 mx-auto'>
-
-        <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
             <div id='upload-widget'></div>
-            <button id="upload_widget" className="btn-light btn-lg bg-light btn-outline-dark btn-block col-3 mb-3 " onClick={() => this.widget.open()}>
+            <button
+              id='upload_widget'
+              className='btn-light btn-lg bg-light btn-outline-dark btn-block col-3 mb-3 '
+              onClick={() => this.widget.open()}
+            >
               Upload image
             </button>
 
-          <div className='form-group'>
-            <label htmlFor='inputText'>Caption</label>
-            <textarea
-              className={classnames("form-control", {"is-invalid": errors.name,})} 
-              id='inputText'
-              placeholder='Write a caption'
-              name='text'
-              type='text'
-              rows= '4'
-              value={this.state.text}
-              onChange={this.onChange}
-            ></textarea>
-          </div>
+            <div className='form-group'>
+              <label htmlFor='inputText'>Caption</label>
+              <textarea
+                className={classnames('form-control', {
+                  'is-invalid': errors.name,
+                })}
+                id='inputText'
+                placeholder='Write a caption'
+                name='text'
+                type='text'
+                rows='4'
+                value={this.state.text}
+                onChange={this.onChange}
+              ></textarea>
+            </div>
 
-
-        <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
-        <button type='submit' className='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'>
-          Submit
-        </button>
+            <div className='container mx-auto d-flex justify-content-around align-items-center mt-4'>
+              <button
+                type='submit'
+                className='btn btn-light btn-lg bg-light btn-outline-dark btn-block mt-4 col-5 align-self-center'
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-      </div>
-      </div>
 
+        <div className="container">
+          <ul className="list-group"><CurrentPost posts={posts} loading={loading} auth={auth}/></ul>
+        </div>
+      </div>
     );
   }
 }
@@ -153,13 +176,17 @@ class CreatePost extends Component {
 CreatePost.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-}
+  errors: PropTypes.object.isRequired,
+  getCurrentPost: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
+  post: state.post,
 });
 
-
-export default connect(mapStateToProps, { addPost })(CreatePost);
+export default connect(mapStateToProps, { addPost, getCurrentPost })(
+  CreatePost
+);
