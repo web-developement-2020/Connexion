@@ -11,7 +11,7 @@ import ForgotPassword from './components/auth/ForgotPassword';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import TempProfile from './components/auth/TempProfile';
 import Profile from './components/profile/Profile';
-
+import Profiles from './components/profiles/Profiles';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
@@ -30,6 +30,7 @@ import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/posts/Posts';
+
 
 if (localStorage.jwtToken) {
   //decode
@@ -66,7 +67,7 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/profile/:handle' component={Profile} />
-              
+              <Route exact path="/profiles" component={Profiles} />
               <Route exact path='/posts' component={Posts} />
 
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}

@@ -36,13 +36,13 @@ export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading());
   axios
     .get(`/api/profile/handle/${handle}`)
-    .then((res) =>
+    .then(res=>
       dispatch({
         type: GET_PROFILE,
         payload: res.data,
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_PROFILE,
         payload: null,
@@ -83,10 +83,10 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
-// Get all profiles
 
+// Get all profiles
 export const getProfiles = () => dispatch => {
-  // dispatch(setProfileLoading());
+  dispatch(setProfileLoading());
   axios
     .get('/api/profile/all')
     .then(res =>
@@ -99,12 +99,9 @@ export const getProfiles = () => dispatch => {
       dispatch({
         type: GET_PROFILES,
         payload: null
-
-
       })
     );
 };
-
 
 
 // Delete account & profile

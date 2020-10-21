@@ -36,7 +36,7 @@ class Navbar extends Component {
               <li className='nav-item nav'>
                 <Link
                   className='nav-link d-md-block '
-                  to='/searchByHandle'
+                  to='/profiles'
                   id='nav-link'
                 >
                   <i className='fas fa-home'></i>
