@@ -1,120 +1,61 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileActions';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import Spinner from '../common/Spinner';
-import { isEmpty } from 'lodash';
+import { getProfileByHandle } from '../../actions/profileActions';
+import isEmpty from '../../validation/is-empty';
 
 class Profile extends Component {
-
   componentDidMount() {
-    this.props.getCurrentProfile();
+    if (this.props.match.params.handle) {
+      this.props.getProfileByHandle(this.props.match.params.handle);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push('/not-found');
+    }
   }
 
   render() {
-    const { user } = this.props.auth;
-    const { loading } = this.props.profile;
-    const { profile } = this.props.profile;
-    
-    // console.log(this.props.profile.profile);
-    console.log('p:', this.props.profile);
-    console.log('prof:', profile);
-    console.log('u', user);
-    // console.log(profile.following);
-    if(profile){
-      console.log(profile.following);
-    }
+    const { profile, loading } = this.props.profile;
+    const firstName = profile.user.name.trim().split(' ')[0];
+    let profileContent;
 
-    if(profile === null || loading){
-      return(
-        <Spinner />
-      )
-    } else if (Object.keys(profile).length > 0) {
-
-      const href = window.open.href=(`${profile.website}`);
-
-      const profileCard=(
-        <div className='card card-body mb-3 pl-5'>
-          {isEmpty(profile.location) ? null : (
-          <div className='row location'>
-            <h5 className="mr-1">Location:</h5>
-            <p>{profile.location}</p>
-          </div>
-          )}  
-          {isEmpty(profile.bio) ? null : (
-          <div className='row bio'>
-            <h5 className="mr-1">Bio:</h5>
-            <p>{profile.bio}</p>
-          </div>)}
-         
-        </div>
-        );
-
-      const socialLinks = (
-        <div className='card card-body mb-3 pl-5'>
-          <div className='row social-links d-flex justify-content-around'>
-          
-          {isEmpty(profile.social && profile.social.facebook) ? null : (
-            <a className="social-link" href={profile.social.facebook} rel="noopener noreferrer">
-              <i className="fab fa-facebook-square"></i>
-            </a>
-          )}
-          {isEmpty(profile.social && profile.social.twitter) ? null : (
-            <a className="social-link" rel="noopener noreferrer" href={profile.social.twitter}>
-              <i className="fab fa-twitter"></i>
-            </a>
-          )}
-          {isEmpty(profile.social && profile.social.instagram) ? null : (
-            <a className="social-link" rel="noopener noreferrer" href={profile.social.instagram}>
-              <i className="fab fa-instagram"></i>
-            </a>
-          )}
-          {isEmpty(profile.social && profile.social.linkedin) ? null : (
-            <a className="social-link" rel="noopener noreferrer" href={profile.social.linkedin}>
-              <i className="fab fa-linkedin"></i>
-            </a>
-          )}
-          {isEmpty(profile.social && profile.social.youtube) ? null : (
-            <a className="social-link" rel="noopener noreferrer" href={profile.social.youtube}>
-              <i className="fab fa-youtube"></i>
-            </a>
-          )}
-          {isEmpty(profile.website) ? null :(
-            <a className="social-link" rel="noopener noreferrer" href={profile.website}>
-            <i class="fas fa-globe"></i>
-          </a>
-          )}
-          </div>
-        </div>
-      )
-
-      return (
+    if (profile === null || loading) {
+      profileContent = <Spinner />;
+    } else {
+      profileContent = (
         <div>
-        <div className='post'>
-          <div className='container'>
-            <div className='row'>
-            <div className='card card-body mb-3 bg-light'>
-             <div>
-                <div className='row'>
-                  <div className='col-md-2 profile-content'>
-                    <Link to='/profile'>
-                      <img
-                        className='prof-img-lg rounded-circle d-none d-md-block'
-                        src={user.avatar}
-                        alt=''
-                      />
-                    </Link>
-                  </div>
-                  <div className='col-md-10'>
-                    <h2 className='header' align='right'>
-                      <i className='fas fa-user'></i> Profile
-                    </h2>
-                    <h3 className='card-title profile-name'>{user.name}</h3><h5 className='card-title profile-handle'>( {profile.handle} )</h5>
+          <div className="row">
+            <div className="col-md-6">
+              <Link to="/profiles" className="btn btn-light mb-3 float-left">
+                Back To Profiles
+              </Link>
+            </div>
+            <div className="col-md-6" />
+          </div>
+          <div className="row">
+              <div className="col-4 col-md-3 m-auto">
+                <img
+                  className="rounded-circle"
+                  src={profile.user.avatar}
+                  alt=""
+                />
+              </div>
+            </div>
+            <div className="text-center">
+              <h1 className="display-4 text-center">{profile.user.name}</h1>
+              
 
-                  </div>
-                </div>
-                <div className='row followers-following'>
+              <p className="lead text-center">
+                
+            </p>
+            {/* followers and following */}
+            <div className='row followers-following'>
                   <div className='col-md-2'></div>
                   <div className='col-md-3'>
                     <svg
@@ -150,33 +91,108 @@ class Profile extends Component {
                   <small> following:{profile.following.length} </small>
                   </div>
                   </div>
-                
-                {isEmpty(profile.bio && profile.location)? null : (profileCard )}
+            {/* followers and following */}
+              {isEmpty(profile.location) ? null : <p>{profile.location}</p>}
+              <p>
+                {isEmpty(profile.website) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.website}
+                    target="_blank"
+                  >
+                    <i className="fas fa-globe fa-2x" />
+                  </a>
+                )}
 
+                {isEmpty(profile.social && profile.social.twitter) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.social.twitter}
+                    target="_blank"
+                  >
+                    <i className="fab fa-twitter fa-2x" />
+                  </a>
+                )}
 
+                {isEmpty(profile.social && profile.social.facebook) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.social.facebook}
+                    target="_blank"
+                  >
+                    <i className="fab fa-facebook fa-2x" />
+                  </a>
+                )}
 
-                {isEmpty(profile.social && profile.website) ? null : 
-                (socialLinks)}  
+                {isEmpty(profile.social && profile.social.linkedin) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.social.linkedin}
+                    target="_blank"
+                  >
+                    <i className="fab fa-linkedin fa-2x" />
+                  </a>
+                )}
 
+                {isEmpty(profile.social && profile.social.youtube) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.social.youtube}
+                    target="_blank"
+                  >
+                    <i className="fab fa-youtube fa-2x" />
+                  </a>
+                )}
+
+                {isEmpty(profile.social && profile.social.instagram) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.social.instagram}
+                    target="_blank"
+                  >
+                    <i className="fab fa-instagram fa-2x" />
+                  </a>
+                )}
+              </p>
             </div>
+            <div className="card card-body bg-light mb-3">
+            <h3 className="text-center text-info">{firstName}'s Bio</h3>
+            <p className="lead">
+              {isEmpty(profile.bio) ? (
+                <span>{firstName} does not have a bio</span>
+              ) : (
+                <span>{profile.bio}</span>
+              )}
+            </p>
+            <hr />
+            
+            
+          </div>
+          
+          
         </div>
-        </div></div></div></div>)
-      }
-   }
+      );
+    }
+
+    return (
+      <div className="profile">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">{profileContent}</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-
 Profile.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
+  getProfileByHandle: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile,
-  auth: state.auth,
+const mapStateToProps = state => ({
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(
-  Profile
-);
+export default connect(mapStateToProps, { getProfileByHandle })(Profile);

@@ -30,7 +30,7 @@ import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/posts/Posts';
-import ProfileResults from './components/profile/ProfileResults'
+//import ProfileResults from './components/profile/ProfileResults'
 
 
 
