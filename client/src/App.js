@@ -30,6 +30,8 @@ import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/posts/Posts';
+import ProfileResults from './components/profile/ProfileResults'
+
 
 if (localStorage.jwtToken) {
   //decode
@@ -66,7 +68,7 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/profile/:handle' component={Profile} />
-              
+              <Route path='/profiles/search' component={ProfileResults} />
               <Route exact path='/posts' component={Posts} />
 
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}

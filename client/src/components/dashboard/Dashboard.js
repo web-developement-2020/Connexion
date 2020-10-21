@@ -35,19 +35,19 @@ class Dashboard extends Component {
            
             <div className="btn-group mb-4" role="group">
       <Link to="/editProfile" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
+        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> Edit Profile
       </Link>
       </div>
       <br/>
       <div className="btn-group mb-4" role="group">
       <Link to="/createpost" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1" /> create a post!
+        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> Create a Post!
       </Link>
       </div>
       <br/>
       <div className="btn-group mb-4" role="group">
       <Link to="/posts" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1" /> View posts
+        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> View posts
       </Link>
       </div>
 

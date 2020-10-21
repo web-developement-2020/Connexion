@@ -47,13 +47,7 @@ class Profile extends Component {
             <h5 className="mr-1">Bio:</h5>
             <p>{profile.bio}</p>
           </div>)}
-          {isEmpty(profile.website) ? null : (
-          <div className='row website'>
-            {/* fix link */}
-            <h5 className="mr-1">Website:</h5>
-              <a target="_blank" href={href}>{profile.website}</a>
-          </div>
-          )}
+         
         </div>
         );
 
@@ -62,32 +56,32 @@ class Profile extends Component {
           <div className='row social-links d-flex justify-content-around'>
           
           {isEmpty(profile.social && profile.social.facebook) ? null : (
-            <a className="social-link" href={profile.social.facebook}>
+            <a className="social-link" href={profile.social.facebook} rel="noopener noreferrer">
               <i className="fab fa-facebook-square"></i>
             </a>
           )}
           {isEmpty(profile.social && profile.social.twitter) ? null : (
-            <a className="social-link" href={profile.social.twitter}>
+            <a className="social-link" rel="noopener noreferrer" href={profile.social.twitter}>
               <i className="fab fa-twitter"></i>
             </a>
           )}
           {isEmpty(profile.social && profile.social.instagram) ? null : (
-            <a className="social-link" href={profile.social.instagram}>
+            <a className="social-link" rel="noopener noreferrer" href={profile.social.instagram}>
               <i className="fab fa-instagram"></i>
             </a>
           )}
           {isEmpty(profile.social && profile.social.linkedin) ? null : (
-            <a className="social-link" href={profile.social.linkedin}>
+            <a className="social-link" rel="noopener noreferrer" href={profile.social.linkedin}>
               <i className="fab fa-linkedin"></i>
             </a>
           )}
           {isEmpty(profile.social && profile.social.youtube) ? null : (
-            <a className="social-link" href={profile.social.youtube}>
+            <a className="social-link" rel="noopener noreferrer" href={profile.social.youtube}>
               <i className="fab fa-youtube"></i>
             </a>
           )}
           {isEmpty(profile.website) ? null :(
-            <a className="social-link" href={profile.website}>
+            <a className="social-link" rel="noopener noreferrer" href={profile.website}>
             <i class="fas fa-globe"></i>
           </a>
           )}
