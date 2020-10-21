@@ -60,79 +60,14 @@ img {
   height: 42px;
 }
 
+#nav-img{
+  margin-top:-.15em;
+}
+
 #nav-img:hover{
-  border: .15em #8b5822 solid;
-  overflow: hidden;
-  height: 95%;
-  z-index: 2;
-  border-radius: 50%;
+  box-shadow: 0 0 .15em #8b5822 solid;
+  transform: scale(1.1);
 }
-
-#searchbar{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  transition: all 1s;
-  width: 50px;
-  height: 50px;
-  background: white;
-  box-sizing: border-box;
-  border-radius: 25px;
-  border: 4px solid #e69138;
-  padding: 5px;
-}
-
-#searchbar:hover{
-  border: 4px solid #8b5822;
-}
-
-#search-input{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;;
-  height: 42.5px;
-  line-height: 30px;
-  outline: 0;
-  border: 0;
-  display: none;
-  font-size: 1em;
-  border-radius: 20px;
-  padding: 0 20px;
-}
-
-#search-icon
-{
-  box-sizing: border-box;
-  padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  color: #343A40;
-  text-align: center;
-  font-size: 1.2em;
-  transition: all 1s;
-}
-
-#searchbar:hover{
-  width: 200px;
-  cursor: pointer;
-}
-
-#searchbar:hover input{
-  display: block;
-}
-
-#searchbar:hover .fa{
-  background: #343A40;
-  color: white;
-  border: 1px black solid;
-}
-
 /*POST*/
 .card-header {
   background: #dddddd;

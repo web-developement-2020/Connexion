@@ -80,6 +80,8 @@ router.get("/handle/:handle", (req, res) => {
 
 router.get("/search", (req, res) => {
   const errors = {};
+  console.log(req.query);
+  
     if(req.query.search){
       //create regex
       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -87,7 +89,7 @@ router.get("/search", (req, res) => {
       if(err){
         console.log(err);
       } else {
-        res.json(foundprofiles);
+        console.log(foundprofiles);
       }
     }
     );
@@ -95,21 +97,6 @@ router.get("/search", (req, res) => {
     }
 });
 
-//   Profile.fuzzySearch({ handle: `${req.params.searchparams}` })
-//     .then((profiles) => {
-//       if (!profiles){
-        
-//       }
-
-//       res.json(profiles);
-//     })
-//     .catch((err) => res.status(404).json(err));
-//   }
-// )
-
-// @route   GET api/profile/user/:user_id
-// @desc    Get profile by user ID
-// @access  Public
 
 router.get("/user/:user_id", (req, res) => {
   const errors = {};

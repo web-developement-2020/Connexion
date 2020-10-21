@@ -7,12 +7,7 @@ import { addLike, removeLike } from '../../actions/postActions';
 import Profile from '../profile/Profile';
 
 class PostItem extends Component {
-  constructor() {
-    super();
-    this.state = {
-      // islike: true,
-    };
-  }
+
   onLikeClick = (e, id) => {
     e.preventDefault();
     this.props.addLike(id);

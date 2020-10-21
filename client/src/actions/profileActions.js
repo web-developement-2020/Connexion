@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 
 import {
@@ -50,13 +51,14 @@ export const getProfileByHandle = (handle) => (dispatch) => {
     );
 };
 
-export const getProfileBySearch = (handle) => (dispatch) => {
+export const getProfilesBySearch = (query) => (dispatch) => {
   dispatch(setProfileLoading());
+
   axios
-    .get(`/api/profile/search?=${handle}`)
+    .get(`/api/profile/search?q=${query}`)
     .then((res) =>
       dispatch({
-        type: GET_PROFILE,
+        type: GET_PROFILES,
         payload: res.data,
       })
     )

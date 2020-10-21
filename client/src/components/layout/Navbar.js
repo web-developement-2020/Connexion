@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
-import SearchBar from './SearchBar'
 
 
 class Navbar extends Component {
@@ -14,6 +13,7 @@ class Navbar extends Component {
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    
 
     const guestLinks = (
       <ul className='navbar-nav ml-auto'>
@@ -32,22 +32,36 @@ class Navbar extends Component {
 
     const authLinks = (
             <ul className='navbar-nav ml-auto'>
-              <SearchBar />
+              <li className='nav-item nav'>
+                <Link
+                  className='nav-link d-md-block 
+                 
+                  to='/postfeed'
+                  id='nav-link'
+                  data-toggle="tooltip"
+                  title="Post Feed"
+                >
+                  <i className='fas fa-home'></i>
+                </Link>
+              </li>
               <li className='nav-item nav'>
                 <Link
                   className='nav-link d-md-block '
                   to='/profiles'
                   id='nav-link'
+                  data-toggle="tooltip"
+                  title="All Profiles"
                 >
-                  <i className='fas fa-home'></i>
+                  <i class="fas fa-users"></i>
                 </Link>
               </li>
-
               <li className='nav-item nav'>
                 <Link
                   className='nav-link d-md-block '
                   to='/CreatePost'
                   id='nav-link'
+                  data-toggle="tooltip"
+                  title="Create a Post"
                 >
                   <i className='fas fa-pencil-alt'></i>
                 </Link>
@@ -59,19 +73,24 @@ class Navbar extends Component {
                 
                   to='/settings'
                   id='nav-link'
+                  data-toggle="tooltip"
+                  title="Account Settings"
                 >
                   <i className='fa fa-cog'></i>
                 </Link>
               </li>
 
               <li className='nav-item nav'>
-                <Link className='nav-link' to='/profile' id='nav-img'>
+                <Link className='nav-link' 
+                to='/profile' 
+                id='nav-img'
+                data-toggle="tooltip"
+                title="Your Profile">
                 <img
               className="rounded-circle"
               src={user.avatar}
               alt={user.name}
               style={{ width: "1.5em", }}
-              title="You must have a gravatar connected to your email to display an image"
             />
                 </Link>
               </li>

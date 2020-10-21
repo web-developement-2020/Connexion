@@ -38,7 +38,7 @@ class CommentItem extends Component {
               <span>
                 <i
                   onClick={this.onDeleteClick.bind(this, postId, comment._id)}
-                  class='fas fa-trash-alt'
+                  className='fas fa-trash-alt'
                   style={{ color: 'red' }}
                 />
               </span>
