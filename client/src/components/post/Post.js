@@ -34,7 +34,7 @@ class Post extends Component {
             </div>
           </div>
 
-          <Link to='/posts' class='back'>
+          <Link to='/posts' className='back'>
             <i
               className='fas fa-arrow-circle-left'
               style={{ color: 'orange' }}
