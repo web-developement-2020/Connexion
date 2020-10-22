@@ -10,7 +10,7 @@ import ForgotPassword from './components/auth/ForgotPassword';
 
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import TempProfile from './components/auth/TempProfile';
-import Profile from './components/profile/Profile';
+import currentUserProfile from './components/profile/currentUserProfile';
 import Profiles from './components/profiles/Profiles';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
@@ -26,7 +26,7 @@ import store from './store';
 
 import AllProfiles from './components/allprofiles/AllProfiles'
 
-//import CreatePost from './components/createpost/CreatePost';
+import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 
@@ -75,15 +75,18 @@ class App extends Component {
               <Route exact path="/forgotPassword" component={ForgotPassword} />
               <Route exact path="/not-found" component={NotFound} />
               <Route exact path='/posts' component={Posts} />
-              <Route exact path='/tempProfile' component={TempProfile} />
               <Route exact path='/post' component={Post} />
               {/* END DEV ROUTES */}
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>
               <Switch>
+                <PrivateRoute exact path="/profile" component={currentUserProfile} />
+              </Switch>
+              
+              <Switch>
                 <PrivateRoute exact path="/allprofiles/:handle" component={AllProfiles} />
-        </Switch>
+              </Switch>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -92,6 +95,13 @@ class App extends Component {
                   exact
                   path='/createprofile'
                   component={CreateProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path='/createpost'
+                  component={CreatePost}
                 />
               </Switch>
               <Switch>
