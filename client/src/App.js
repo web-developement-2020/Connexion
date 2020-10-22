@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-// import Profile from './components/auth/Profile';
+
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import TempProfile from './components/auth/TempProfile';
 import Profile from './components/profile/Profile';
@@ -18,19 +18,25 @@ import setAuthToken from './utils/setAuthToken';
 import { SET_USER } from './actions/types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import NotFound from "./components/not-found/NotFound";
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
 import store from './store';
-import CreatePost from './components/createpost/CreatePost';
+
+import AllProfiles from './components/allprofiles/AllProfiles'
+
+//import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
-// import PostFeed from './components/PostFeed/Postfeed';
+
 import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
+
 import Posts from './components/posts/Posts';
-//import ProfileResults from './components/profile/ProfileResults'
+
+
 
 
 
@@ -63,22 +69,22 @@ class App extends Component {
         <Router>
           <div className='App'>
             <Navbar />
-            <main className='site-content'>
-              <Route exact path='/' component={Landing} />
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/forgotPassword' component={ForgotPassword} />
-              <Route exact path='/profile/:handle' component={Profile} />
-
-              <Route exact path="/profiles" component={Profiles} />
-      {/* <Route path='/profiles/search' component={ProfileResults} />*/}
+            <main className="site-content">
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/forgotPassword" component={ForgotPassword} />
+              <Route exact path="/not-found" component={NotFound} />
               <Route exact path='/posts' component={Posts} />
-
-              {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
               <Route exact path='/tempProfile' component={TempProfile} />
-              <Route exact path='/profile' component={Profile} />
               <Route exact path='/post' component={Post} />
               {/* END DEV ROUTES */}
+              <Switch>
+                <PrivateRoute exact path="/profiles" component={Profiles} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/allprofiles/:handle" component={AllProfiles} />
+        </Switch>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -89,29 +95,10 @@ class App extends Component {
                   component={CreateProfile}
                 />
               </Switch>
-              {/* <Switch>
-                <PrivateRoute exact path ='/editprofile' component={EditProfile} />
-              </Switch> */}
-
-              <Switch>
-                <PrivateRoute exact path='/createpost' component={CreatePost} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path='/posts/:id' component={Post} />
-              </Switch>
-              {/* <Switch>
-                <PrivateRoute exact path='/postfeed' component={PostFeed} />
-              </Switch> */}
-              {/* <Switch>
-                <PrivateRoute exact path='/posts' component={Posts} />
-              </Switch> */}
               <Switch>
                 <PrivateRoute exact path='/settings' component={Settings} />
               </Switch>
-
-              {/* <Route exact path='/not-found' component={NotFound} /> */}
-
-              <Switch>
+             <Switch>
                 <PrivateRoute
                   exact
                   path='/changePassword'

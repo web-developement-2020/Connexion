@@ -1,3 +1,4 @@
+
 import {
   ADD_POST,
   GET_POSTS,
@@ -6,11 +7,10 @@ import {
   POST_LOADING
 
 } from '../actions/types';
-
 const initialState = {
   posts: [],
   post: {},
-  loading: false
+  loading: false,
 };
 
 export default function(state = initialState, action) {
@@ -50,3 +50,4 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+

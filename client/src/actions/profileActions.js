@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 
-
 import {
   GET_PROFILE,
   GET_PROFILES,
@@ -27,7 +26,6 @@ export const getCurrentProfile = () => (dispatch) => {
       dispatch({
         type: GET_PROFILE,
         payload: {},
-
       })
     );
 };
@@ -47,6 +45,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
       dispatch({
         type: GET_PROFILE,
         payload: null,
+
       })
     );
 };
@@ -66,48 +65,46 @@ export const getProfilesBySearch = (query) => (dispatch) => {
       dispatch({
         type: GET_PROFILES,
         payload: null,
+
       })
     );
 };
 
 // Create Profile
-
-export const createProfile = (profileData, history) => dispatch => {
+export const createProfile = (profileData, history) => (dispatch) => {
   axios
+
     .post('/api/profile', profileData)
     .then(res => history.push('/dashboard'))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
-
+        payload: err.response.data,
       })
     );
 };
-
-
 // Get all profiles
 export const getProfiles = () => dispatch => {
+
   dispatch(setProfileLoading());
   axios
-    .get('/api/profile/all')
-    .then(res =>
+    .get("/api/profile/all")
+    .then((res) =>
       dispatch({
         type: GET_PROFILES,
-        payload: res.data
+        payload: res.data,
       })
     )
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_PROFILES,
         payload: null
+
       })
     );
 };
 
-
 // Delete account & profile
-
 export const deleteAccount = () => (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     axios
@@ -124,24 +121,19 @@ export const deleteAccount = () => (dispatch) => {
           payload: err.response.data,
         })
       );
-      window.location.href = "/register";
   }
 };
 
 // Profile loading
 export const setProfileLoading = () => {
   return {
-
     type: PROFILE_LOADING,
-
   };
 };
 
-// // Clear profile
-// export const clearCurrentProfile = () => {
-//   return {
-
-//     type: CLEAR_CURRENT_PROFILE,
-
-//   };
-// };
+// Clear profile
+export const clearCurrentProfile = () => {
+  return {
+    type: CLEAR_CURRENT_PROFILE,
+  };
+};
