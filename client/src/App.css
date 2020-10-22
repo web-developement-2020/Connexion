@@ -26,6 +26,12 @@ img {
   width: 100%;
 }
 
+.btn-orange {
+  background: #e69138;
+  color: white;
+
+}
+
 /*NAVBAR*/
 @media only screen and (max-width: 400px) {
   #logo {

@@ -19,10 +19,7 @@ class CurrentPost extends Component {
       postContent = <Spinner />;
     } else {
       postContent = posts.map((post) => {
-        // console.log("****post.user");
-        // console.log(post.user);
-        // console.log("****user");
-        // console.log(user);
+        
         return (
           <li key={post._id} className='list-group-item'>
             <div className='row'>
