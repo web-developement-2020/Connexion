@@ -26,7 +26,7 @@ import store from './store';
 
 import AllProfiles from './components/allprofiles/AllProfiles'
 
-import CreatePost from './components/createpost/CreatePost';
+//import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 
