@@ -89,6 +89,7 @@ class Profile extends Component {
         </div>
       )
 
+
       return (
         <div>
         <div className='post'>
@@ -102,7 +103,7 @@ class Profile extends Component {
                       <img
                         className='prof-img-lg rounded-circle d-none d-md-block'
                         src={user.avatar}
-                        alt=''
+                        alt='user avatar'
                       />
                     </Link>
                   </div>
@@ -110,7 +111,9 @@ class Profile extends Component {
                     <h2 className='header' align='right'>
                       <i className='fas fa-user'></i> Profile
                     </h2>
-                    <h3 className='card-title profile-name'>{user.name}</h3><h5 className='card-title profile-handle'>( {profile.handle} )</h5>
+                    <h3 className='card-title profile-name'>{profile.user.name}</h3>
+        
+                    <h5 className='card-title profile-handle'>( {profile.handle} )</h5>
 
                   </div>
                 </div>
