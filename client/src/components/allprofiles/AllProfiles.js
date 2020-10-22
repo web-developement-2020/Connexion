@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import ProfileHeader from "./ProfileHeader";
-import ProfileAbout from "./ProfileAbout";
-
-
+import AllProfileHeader from "./AllProfileHeader";
+import AllProfileAbout from "./AllProfileAbout";
 import Spinner from "../common/Spinner";
 import { getProfileByHandle } from "../../actions/profileActions";
 
 class Profile extends Component {
   componentDidMount() {
-    let handle = document.getElementById("search-input");
-    //if (this.props.match.params.handle) {
+    if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
-    //}
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,8 +37,8 @@ class Profile extends Component {
             </div>
             <div className="col-md-6" />
           </div>
-          <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
+          <AllProfileHeader profile={profile} />
+          <AllProfileAbout profile={profile} />
         </div>
       );
     }

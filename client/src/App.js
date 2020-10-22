@@ -6,10 +6,8 @@ import Footer from './components/layout/Footer';
 import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-//import Profile from './components/auth/Profile';
 
-import GetProfileByHandle from "./components/getprofilebyhandle/GetProfileByHandle";
-import CreateProfile from './components/auth/CreateProfile';
+//import CreateProfile from './components/auth/CreateProfile';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
@@ -21,13 +19,15 @@ import NotFound from "./components/not-found/NotFound";
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import store from './store';
-import CreatePost from './components/createpost/CreatePost';
-import PostFeed from './components/PostFeed/PostFeed';
+import Profiles from './components/profiles/Profiles';
+import AllProfiles from './components/allprofiles/AllProfiles'
+//import CreatePost from './components/createpost/CreatePost';
+//import PostFeed from './components/PostFeed/PostFeed';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/editProfile/EditProfile';
-import Post from './components/auth/Post';
-import { getProfileByHandle } from './actions/profileActions';
+//import Post from './components/auth/Post';
+
 
 //import PostFeed from './components/postFeed/PostFeed';
 
@@ -67,26 +67,25 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/forgotPassword" component={ForgotPassword} />
               {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
-              
-              <Route exact path="/post" component={Post} />
+
+              {/* <Route exact path="/post" component={Post} /> */}
               <Route exact path="/not-found" component={NotFound} />
               {/* END DEV ROUTES */}
               <Switch>
-                <PrivateRoute
-                  exact
-                  path="/getprofilebyhandle"
-                  component={getProfileByHandle}
-                />
+                <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>
               <Switch>
+                <PrivateRoute exact path="/allprofiles/:handle" component={AllProfiles} />
+              </Switch>
+              {/* <Switch>
                 <PrivateRoute
                   exact
                   path="/createprofile"
                   component={CreateProfile}
                 />
-              </Switch>
+              </Switch> */}
 
-              <Switch>
+              {/* <Switch>
                 <PrivateRoute exact path="/createpost" component={CreatePost} />
               </Switch>
               <Switch>
@@ -94,7 +93,7 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/postfeed" component={PostFeed} />
-              </Switch>
+              </Switch> */}
               <Switch>
                 <PrivateRoute exact path="/settings" component={Settings} />
               </Switch>
