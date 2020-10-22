@@ -87,7 +87,7 @@ class App extends Component {
               
               <Switch>
                 <PrivateRoute exact path="/allprofiles/:handle" component={AllProfiles} />
-        </Switch>
+              </Switch>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

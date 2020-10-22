@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
-import { isEmpty } from 'lodash';
+import isEmpty from "../../validation/is-empty";
 
 class Profile extends Component {
 
@@ -30,6 +30,7 @@ class Profile extends Component {
       return(
         <Spinner />
       )
+
     } else if (Object.keys(profile).length > 0) {
 
       const href = window.open.href=(`${profile.website}`);
