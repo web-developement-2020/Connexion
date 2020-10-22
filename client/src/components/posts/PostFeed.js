@@ -13,6 +13,7 @@ class PostFeed extends Component {
           if (follow.user_id === post.user) {
             return <PostItem post={post} />;
           }
+          return null;
         });
       });
     } else {

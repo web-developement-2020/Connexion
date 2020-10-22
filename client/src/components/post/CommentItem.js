@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { deleteComment, addComment } from '../../actions/postActions';
+import { deleteComment } from '../../actions/postActions';
 
 class CommentItem extends Component {
   onDeleteClick(postId, commentId) {
