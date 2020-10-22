@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 import {
   ADD_POST,
@@ -7,25 +7,24 @@ import {
   GET_POSTS,
   GET_POST,
   POST_LOADING,
-  DELETE_POST
+  DELETE_POST,
 } from './types';
 
-
 // Add Post
-export const addPost = postData => dispatch => {
+export const addPost = (postData) => (dispatch) => {
   dispatch(clearErrors());
   axios
     .post('/api/posts', postData)
-    .then(res =>
+    .then((res) =>
       dispatch({
         type: ADD_POST,
-        payload: res.data
+        payload: res.data,
       })
     )
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data,
       })
     );
 };
@@ -34,7 +33,7 @@ export const addPost = postData => dispatch => {
 export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading());
   axios
-    .get("/api/posts")
+    .get('/api/posts')
     .then((res) =>
       dispatch({
         type: GET_POSTS,
@@ -49,7 +48,7 @@ export const getPosts = () => (dispatch) => {
     );
 };
 
-// Get Post
+// Get Post by post id
 
 export const getPost = (id) => (dispatch) => {
   dispatch(setPostLoading());
@@ -64,6 +63,21 @@ export const getPost = (id) => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: GET_POST,
+        payload: null,
+      })
+    );
+};
+
+//Get Posts by current user's id
+
+export const getCurrentPost = () => (dispatch) => {
+  dispatch(setPostLoading());
+  axios
+    .get('/api/posts/user/id')
+    .then((res) => dispatch({ type: GET_POSTS, payload: res.data }))
+    .catch((err) =>
+      dispatch({
+        type: GET_POSTS,
         payload: null,
       })
     );

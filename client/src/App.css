@@ -60,79 +60,14 @@ img {
   height: 42px;
 }
 
+#nav-img{
+  margin-top:-.15em;
+}
+
 #nav-img:hover{
-  border: .15em #8b5822 solid;
-  overflow: hidden;
-  height: 95%;
-  z-index: 2;
-  border-radius: 50%;
+  box-shadow: 0 0 .15em #8b5822 solid;
+  transform: scale(1.1);
 }
-
-#searchbar{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  transition: all 1s;
-  width: 50px;
-  height: 50px;
-  background: white;
-  box-sizing: border-box;
-  border-radius: 25px;
-  border: 4px solid #e69138;
-  padding: 5px;
-}
-
-#searchbar:hover{
-  border: 4px solid #8b5822;
-}
-
-#search-input{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;;
-  height: 42.5px;
-  line-height: 30px;
-  outline: 0;
-  border: 0;
-  display: none;
-  font-size: 1em;
-  border-radius: 20px;
-  padding: 0 20px;
-}
-
-#search-icon
-{
-  box-sizing: border-box;
-  padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  color: #343A40;
-  text-align: center;
-  font-size: 1.2em;
-  transition: all 1s;
-}
-
-#searchbar:hover{
-  width: 200px;
-  cursor: pointer;
-}
-
-#searchbar:hover input{
-  display: block;
-}
-
-#searchbar:hover .fa{
-  background: #343A40;
-  color: white;
-  border: 1px black solid;
-}
-
 /*POST*/
 .card-header {
   background: #dddddd;
@@ -164,6 +99,9 @@ img {
 .profile-img {
   width: 90px;
 }
+.profile-img-lg{
+  width: 200px;
+}
 #profile-mini {
   width: 40px;
 }
@@ -180,12 +118,13 @@ img {
   text-align: center;
 }
 #post {
-  max-width: 30%;
+  max-width: 60%;
   height: auto;
 }
 
 .post-img {
   margin-top: 15px;
+  margin-bottom: 15px;
 
 }
 .post-img-card {
@@ -293,10 +232,13 @@ img {
   font-weight: bold;
 }
 .profile-content {
-  padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 0px;
+}
+.profile-name{
+  font-family: 'Abel';
+  font-size: 4em;
 }
 
 .fa-user {
@@ -341,6 +283,41 @@ img {
 /* Profile ending */
 
 /* Create post*/
-#inputCaption{
+#inputText{
   overflow: auto;
+}
+
+
+/* Post Feed beginning*/
+
+/* .postFeedImg{
+  width:50px;
+} */
+.postfeed{
+  margin-top:15px;
+}
+.post-caption{
+  margin-bottom: 5px;
+}
+
+.back:hover{
+  /* color:; */
+  text-decoration: none;
+}
+
+/* Post Feed Ending */
+
+/* dashboard */
+.dashboard{
+  color: #e69138;
+  text-align:center;
+}
+
+/* View Profile */
+.social-links{
+  font-size: 3em; 
+}
+
+.fa-globe{
+  color: grey;
 }

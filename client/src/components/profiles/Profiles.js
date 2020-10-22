@@ -5,6 +5,7 @@ import Spinner from "../common/Spinner";
 import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profileActions";
 
+
 class Profiles extends Component {
   componentDidMount() {
     this.props.getProfiles();
@@ -19,6 +20,7 @@ class Profiles extends Component {
     } else {
       if (profiles.length > 0) {
         profileItems = profiles.map((profile) => (
+
           <ProfileItem key={profile._id} profile={profile} />
         ));
       } else {
@@ -34,6 +36,7 @@ class Profiles extends Component {
               <h1 className="display-4 text-center">Connextion Profiles</h1>
               <p className="lead text-center">
                 Browse and connect with Connextion
+
               </p>
               {profileItems}
             </div>
@@ -51,6 +54,7 @@ Profiles.propTypes = {
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
+
 });
 
 export default connect(mapStateToProps, { getProfiles })(Profiles);

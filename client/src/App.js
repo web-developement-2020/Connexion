@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
+import CreateProfile from './components/auth/CreateProfile'
 import Footer from './components/layout/Footer';
-import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
+import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 
-//import CreateProfile from './components/auth/CreateProfile';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
+import TempProfile from './components/auth/TempProfile';
+import Profile from './components/profile/Profile';
+import Profiles from './components/profiles/Profiles';
 import jwt_decode from 'jwt-decode';
 import { logoutUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
@@ -18,18 +21,23 @@ import './App.css';
 import NotFound from "./components/not-found/NotFound";
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from "./components/dashboard/Dashboard";
 import store from './store';
-import Profiles from './components/profiles/Profiles';
+
 import AllProfiles from './components/allprofiles/AllProfiles'
-//import CreatePost from './components/createpost/CreatePost';
-//import PostFeed from './components/PostFeed/PostFeed';
+
+import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
+
+import Post from './components/post/Post';
+import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
-//import Post from './components/auth/Post';
+
+import Posts from './components/posts/Posts';
 
 
-//import PostFeed from './components/postFeed/PostFeed';
+
 
 
 if (localStorage.jwtToken) {
@@ -59,70 +67,63 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
+          <div className='App'>
             <Navbar />
             <main className="site-content">
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/forgotPassword" component={ForgotPassword} />
-              {/* LEAVING THESE HERE FOR DEV; THERE ARE UPDATED ONES FOR DEPLOYMENT */}
-
-              {/* <Route exact path="/post" component={Post} /> */}
               <Route exact path="/not-found" component={NotFound} />
+              <Route exact path='/posts' component={Posts} />
+              <Route exact path='/tempProfile' component={TempProfile} />
+              <Route exact path='/post' component={Post} />
               {/* END DEV ROUTES */}
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/allprofiles/:handle" component={AllProfiles} />
+        </Switch>
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
-              {/* <Switch>
+              <Switch>
                 <PrivateRoute
                   exact
-                  path="/createprofile"
+                  path='/createprofile'
                   component={CreateProfile}
                 />
-              </Switch> */}
-
-              {/* <Switch>
-                <PrivateRoute exact path="/createpost" component={CreatePost} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/post/:id" component={Post} />
+                <PrivateRoute exact path='/settings' component={Settings} />
               </Switch>
-              <Switch>
-                <PrivateRoute exact path="/postfeed" component={PostFeed} />
-              </Switch> */}
-              <Switch>
-                <PrivateRoute exact path="/settings" component={Settings} />
-              </Switch>
-
-              <Switch>
+             <Switch>
                 <PrivateRoute
                   exact
-                  path="/changePassword"
+                  path='/changePassword'
                   component={ChangePassword}
                 />
               </Switch>
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/changeAvatar"
+                  path='/changeAvatar'
                   component={ChangeAvatar}
                 />
               </Switch>
+
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/deleteAccount"
+                  path='/deleteAccount'
                   component={DeleteAccount}
                 />
               </Switch>
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/editProfile"
+                  path='/editProfile'
                   component={EditProfile}
                 />
               </Switch>

@@ -1,11 +1,11 @@
-import logo from "../../img/connexion-app.svg";
-import React, { Component } from "react";
-import classnames from "classnames";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import {} from "../../actions/profileActions";
+
+import logo from '../../img/connexion-app.svg';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
+
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
@@ -14,6 +14,7 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
@@ -31,58 +32,87 @@ class Navbar extends Component {
     );
 
     const authLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item nav">
-          <Link className="nav-link d-md-block " to="/profiles" id="nav-link">
-            Connexion Users
-          </Link>
-        </li>
 
-        <li className="nav-item nav">
-          <Link className="nav-link d-md-block " to="/home" id="nav-link">
-            <i className="fas fa-home"></i>
-          </Link>
-        </li>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item nav'>
+                <Link
+                  className='nav-link d-md-block '
+                 
+                  to='/posts'
+                  id='nav-link'
+                  data-toggle="tooltip"
+                  title="Post Feed"
+                >
+                  <i className='fas fa-home'></i>
+                </Link>
+              </li>
+              <li className='nav-item nav'>
+                <Link
+                  className='nav-link d-md-block '
+                  to='/profiles'
+                  id='nav-link'
+                  data-toggle="tooltip"
+                  title="All Profiles"
+                >
+                  <i class="fas fa-users"></i>
+                </Link>
+              </li>
+              <li className='nav-item nav'>
+                <Link
+                  className='nav-link d-md-block '
+                  to='/CreatePost'
+                  id='nav-link'
+                  data-toggle="tooltip"
+                  title="Create a Post"
+                >
+                  <i className='fas fa-pencil-alt'></i>
+                </Link>
+              </li>
 
-        <li className="nav-item nav">
-          <Link className="nav-link d-md-block " to="/CreatePost" id="nav-link">
-            <i className="fas fa-pencil-alt"></i>
-          </Link>
-        </li>
+              <li className='nav-item nav'>
+                <Link
+                  className='nav-link d-md-block '
+                
+                  to='/settings'
+                  id='nav-link'
+                  data-toggle="tooltip"
+                  title="Account Settings"
+                >
+                  <i className='fa fa-cog'></i>
+                </Link>
+              </li>
 
-        <li className="nav-item nav">
-          <Link className="nav-link d-md-block " to="/settings" id="nav-link">
-            <i className="fa fa-cog"></i>
-          </Link>
-        </li>
-
-        <li className="nav-item nav">
-          <Link className="nav-link" to="/profile" id="nav-img">
-            <img
+              <li className='nav-item nav'>
+                <Link className='nav-link' 
+                to='/profile' 
+                id='nav-img'
+                data-toggle="tooltip"
+                title="Your Profile">
+                <img
               className="rounded-circle"
               src={user.avatar}
               alt={user.name}
-              style={{ width: "1.5em" }}
-              title="You must have a gravatar connected to your email to display an image"
+              style={{ width: "1.5em", }}
             />
-          </Link>
-        </li>
-        <li className="nav-item nav">
-          <a
-            href=""
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link"
-          >
-            Logout
-          </a>
-        </li>
-      </ul>
+                </Link>
+              </li>
+              <li className='nav-item nav'>
+                <a
+                  href=""
+                  onClick={this.onLogoutClick.bind(this)}
+                  className="nav-link"
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
+      <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
+        <div className='container'>
+          <Link className='navbar-brand' to='/dashboard'>
+
             <img
               src={logo}
               width="auto"
