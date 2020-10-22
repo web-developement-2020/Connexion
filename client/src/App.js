@@ -31,7 +31,7 @@ import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 import Posts from './components/posts/Posts';
 //import ProfileResults from './components/profile/ProfileResults'
-
+import ProfileCard from './components/profile/ProfileCard';
 
 
 if (localStorage.jwtToken) {
@@ -78,6 +78,7 @@ class App extends Component {
               <Route exact path='/tempProfile' component={TempProfile} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/post' component={Post} />
+             
               {/* END DEV ROUTES */}
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -140,6 +141,9 @@ class App extends Component {
                   component={EditProfile}
                 />
               </Switch>
+              <switch>
+              <PrivateRoute exact path='/ProfileCard' component={ProfileCard} />
+              </switch>
             </main>
             <Footer />
           </div>
