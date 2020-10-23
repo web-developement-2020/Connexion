@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 class CommentGallery extends Component {
   render() {
-    const { postId, postImage, likes } = this.props;
+    const { postImage } = this.props;
 
     const renderPost = () => {
       if (postImage) {

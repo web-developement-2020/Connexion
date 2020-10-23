@@ -39,7 +39,6 @@ class Post extends Component {
               className='fas fa-arrow-circle-left'
               style={{ color: 'orange' }}
             ></i>
-            {/* <span> to posts</span> */}
           </Link>
           <CommentGallery
             postId={post._id}

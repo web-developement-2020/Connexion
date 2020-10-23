@@ -39,7 +39,7 @@ class CommentItem extends Component {
                 <i
                   onClick={this.onDeleteClick.bind(this, postId, comment._id)}
                   className='fas fa-trash-alt'
-                  style={{ color: 'red' }}
+                  style={{ color: '#e69138' }}
                 />
               </span>
             ) : null}
