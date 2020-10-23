@@ -54,7 +54,7 @@ class Navbar extends Component {
                   data-toggle="tooltip"
                   title="All Profiles"
                 >
-                  <i class="fas fa-users"></i>
+                  <i className="fas fa-users"></i>
                 </Link>
               </li>
               <li className='nav-item nav'>
