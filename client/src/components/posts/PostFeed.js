@@ -11,14 +11,14 @@ class PostFeed extends Component {
       return profile.following.map((follow) => {
         return posts.map((post) => {
           if (follow.user_id === post.user) {
-            return <PostItem post={post} />;
+            return <PostItem key={post._id} post={post} />;
           }
           return null;
         });
       });
     } else {
       return posts.map((post) => {
-        return <PostItem post={post} />;
+        return <PostItem key={post._id} post={post} />;
       });
     }
   };

@@ -16,6 +16,8 @@ class Post extends Component {
 
   render() {
     const { post, loading } = this.props.post;
+
+
     let postContent;
 
     if (post === null || loading || Object.keys(post).length === 0) {
@@ -54,7 +56,6 @@ class Post extends Component {
         </div>
       );
     }
-
     return (
       <div className='container'>
         <div className='row'>{postContent}</div>
