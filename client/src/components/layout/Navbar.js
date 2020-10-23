@@ -84,7 +84,7 @@ class Navbar extends Component {
 
               <li className='nav-item nav'>
                 <Link className='nav-link' 
-                to='/changeAvatar' 
+                to='/profile' 
                 id='nav-img'
                 data-toggle="tooltip"
                 title="Your Profile">

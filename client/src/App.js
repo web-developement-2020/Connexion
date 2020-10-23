@@ -4,7 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import CreateProfile from './components/auth/CreateProfile'
 import Footer from './components/layout/Footer';
-import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
+
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 
@@ -100,7 +100,7 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path="/createpost"
-                  component={CurrentPost}
+                  component={CreatePost}
                 />
               </Switch>
               <Switch>
@@ -128,14 +128,7 @@ class App extends Component {
                   component={ChangePassword}
                 />
               </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/changeAvatar"
-                  component={ChangeAvatar}
-                />
-              </Switch>
-
+             
               <Switch>
                 <PrivateRoute
                   exact

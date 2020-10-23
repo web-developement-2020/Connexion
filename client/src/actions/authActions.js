@@ -72,15 +72,3 @@ export const changePassword = (userData, history) => (dispatch) => {
    
 };
 
-export const changeAvatar = (userData, history) => (dispatch) => {
-  axios
-    .post("/api/users/changeAvatar", userData)
-    .then((res) => history.push("/postfeed"))
-    .catch();
-  // .catch((err) =>
-  //   dispatch({
-  //     type: SET_ERROR,
-  //     payload: err.response.data,
-  //   })
-  // );
-};

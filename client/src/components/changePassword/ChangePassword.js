@@ -52,9 +52,11 @@ class ChangePassword extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Change password</h1>
+              <h2 className="display-5 text-center">Change password</h2>
               <p className="lead text-center">
-                change password of your Connexion account
+                <p className="lead text-muted">
+                  Change password of your CONNEXION account
+                </p>
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">

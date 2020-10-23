@@ -327,3 +327,27 @@ img {
 .fa-globe{
   color: grey;
 }
+.settings{
+   color: #e69138;
+  text-align:center;
+   
+}
+.deleteAccount{
+  text-align: center;
+}
+.changePassword{
+  color: #e69138;
+  text-align:center;
+}
+.changeAvatar{
+   color: #e69138;
+  text-align:center;
+}
+.create-profile{
+   color: #e69138;
+  text-align:center;
+}
+.deleteAccount{
+    color: #e69138;
+  text-align:center;
+}

@@ -177,9 +177,9 @@ class CreateProfile extends Component {
               <Link to="/dashboard" className="btn btn-light">
                 Go Back
               </Link>
-              <h1 className="display-4 text-center">Edit Profile</h1>
+              <h2 className="display-5 text-center">Edit profile</h2>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmit} >
                 <TextFieldGroup
                   placeholder="* Profile Handle"
                   name="handle"
@@ -213,10 +213,7 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="City or city & state suggested (eg. Boston, MA)"
                 />
-                
-                
-               
-
+              
                 <div className="mb-3">
                   <button
                     type="button"
@@ -228,7 +225,7 @@ class CreateProfile extends Component {
                     className="btn btn-light"
                   >
                     Add Social Network Links
-                  </button>
+                  </button><span>__</span>
                   <span className="text-muted">Optional</span>
                 </div>
                 {socialInputs}
