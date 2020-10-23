@@ -56,7 +56,7 @@ class CommentForm extends Component {
                   <i className='fas fa-comment-dots'></i>
                 </span>
               </div>
-                <TextAreaFieldGroup
+              <TextAreaFieldGroup
                 className='form-control'
                 aria-label='With textarea'
                 placeholder='Add your comment!'
@@ -65,11 +65,6 @@ class CommentForm extends Component {
                 onChange={this.onChange}
                 error={errors.text}
               />
-              {/* <textarea
-                className='form-control'
-                aria-label='With textarea'
-                Placeholder='Add your comment!'
-              ></textarea> */}
               <button type='submit' className='btn btn-secondary'>
                 Add
               </button>

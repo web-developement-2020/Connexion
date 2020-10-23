@@ -31,7 +31,6 @@ import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
 
 import Post from './components/post/Post';
-import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
 
 import Posts from './components/posts/Posts';
@@ -76,9 +75,8 @@ class App extends Component {
               <Route exact path="/forgotPassword" component={ForgotPassword} />
               <Route exact path="/not-found" component={NotFound} />
 
-              <Route exact path="/posts" component={Posts} />
-              <Route exact path="/tempProfile" component={TempProfile} />
-              <Route exact path="/post" component={Post} />
+              <Route exact path='/posts' component={Posts} />
+              {/* <Route exact path='/post' component={Post} /> */}
 
               {/* END DEV ROUTES */}
               <Switch>
@@ -117,6 +115,10 @@ class App extends Component {
                   path='/createpost'
                   component={CreatePost}
                 />
+              </Switch>
+              <Switch>
+              <PrivateRoute exact path='/posts/:id' component={Post} />
+
               </Switch>
               <Switch>
                 <PrivateRoute exact path='/settings' component={Settings} />
