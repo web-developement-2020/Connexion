@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { deleteComment, addComment } from '../../actions/postActions';
+import { deleteComment } from '../../actions/postActions';
 
 class CommentItem extends Component {
   onDeleteClick(postId, commentId) {
@@ -39,7 +39,7 @@ class CommentItem extends Component {
                 <i
                   onClick={this.onDeleteClick.bind(this, postId, comment._id)}
                   className='fas fa-trash-alt'
-                  style={{ color: 'red' }}
+                  style={{ color: '#e69138' }}
                 />
               </span>
             ) : null}
