@@ -225,16 +225,6 @@ class AllProfiles extends Component {
         </div>
         </div></div></div></div>
       </div>
-<<<<<<< HEAD
-=======
-    // </div>
-
-
-
-
-
-     
->>>>>>> 4c3aa296395d85c37d393e29b3ef0a6e0a264522
     );
   }
 }
