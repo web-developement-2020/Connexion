@@ -6,10 +6,11 @@ import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 import isEmpty from "../../validation/is-empty";
 
-class Profile extends Component {
+class currentUserProfile extends Component {
 
   componentDidMount() {
     this.props.getCurrentProfile();
+    
   }
 
   render() {
@@ -22,9 +23,7 @@ class Profile extends Component {
     console.log('prof:', profile);
     console.log('u', user);
     // console.log(profile.following);
-    if(profile){
-      console.log(profile.following);
-    }
+   
 
     if(profile === null || loading){
       return(
@@ -83,7 +82,7 @@ class Profile extends Component {
           )}
           {isEmpty(profile.website) ? null :(
             <a className="social-link" rel="noopener noreferrer" href={profile.website}>
-            <i class="fas fa-globe"></i>
+            <i className="fas fa-globe"></i>
           </a>
           )}
           </div>
@@ -155,7 +154,7 @@ class Profile extends Component {
                   </div>
                   </div>
                 
-                {isEmpty(profile.bio && profile.location)? null : (profileCard )}
+                {isEmpty(profile.bio && profile.location)? null : (profileCard)}
 
 
 
@@ -170,7 +169,7 @@ class Profile extends Component {
 }
 
 
-Profile.propTypes = {
+currentUserProfile.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -182,5 +181,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getCurrentProfile })(
-  Profile
+  currentUserProfile
 );

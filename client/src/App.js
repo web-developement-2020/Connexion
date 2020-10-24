@@ -32,7 +32,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 
 import Post from './components/post/Post';
 import EditProfile from './components/editProfile/EditProfile';
-
+import FollowUnfollow from './components/allprofiles/FollowUnfollow'
 import Posts from './components/posts/Posts';
 
 

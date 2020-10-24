@@ -1,4 +1,3 @@
-
 import logo from '../../img/connexion-app.svg';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
