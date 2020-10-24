@@ -174,7 +174,7 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-light">
+              <Link id="gobackineditprofile" to="/dashboard" className="btn btn-light">
                 Go Back
               </Link>
               <h2 className="display-5 text-center">Edit profile</h2>

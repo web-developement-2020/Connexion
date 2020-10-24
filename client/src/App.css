@@ -351,3 +351,19 @@ img {
     color: #e69138;
   text-align:center;
 }
+#signup{
+  color: #e69138;
+  text-align:center;
+}
+#login{
+  color: #e69138;
+  text-align:center;
+}
+#connexionprofile{
+  color: #e69138;
+  text-align:center;
+}
+#gobackineditprofile{
+  position: relative;
+  margin-right: 33rem;
+}

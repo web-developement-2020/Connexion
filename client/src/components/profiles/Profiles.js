@@ -33,9 +33,11 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-5 text-center">Connexion Profiles</h1>
+              <h1 id="connexionprofile" className="display-5 text-center">Connexion Profiles</h1>
               <p className="lead text-center">
-                Browse and connect with other Connexion users
+                <p className="lead text-muted">
+                  Browse and connect with other Connexion users
+                </p>
               </p>
               {profileItems}
             </div>

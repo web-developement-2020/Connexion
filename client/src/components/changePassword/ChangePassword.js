@@ -35,11 +35,7 @@ class ChangePassword extends Component {
 
     this.props.changePassword(user, this.props.history);
   }
-  // componentDidMount() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push("/feedpost");
-  //   }
-  // }
+  
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -54,9 +50,7 @@ class ChangePassword extends Component {
             <div className="col-md-8 m-auto">
               <h2 className="display-5 text-center">Change password</h2>
               <p className="lead text-center">
-                <p className="lead text-muted">
-                  Change password of your CONNEXION account
-                </p>
+                
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
