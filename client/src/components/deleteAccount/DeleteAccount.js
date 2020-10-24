@@ -29,8 +29,8 @@ class DeleteAccount extends Component {
       if (Object.keys(profile).length > 0) {
         deleteAccountContent = (
           <div>
-            <p className="lead text-muted">
-              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            <p  className="lead text-muted">
+              Welcome<Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
           
@@ -50,7 +50,7 @@ class DeleteAccount extends Component {
             <p className="lead text-muted">Welcome {user.name}</p>
             <p>You have not yet setup a profile, please add some info</p>
             <Link to="/createProfile" className="btn btn-lg btn-info">
-              Create Profile
+              Create profile
             </Link>
           </div>
         );
@@ -62,7 +62,7 @@ class DeleteAccount extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Delete Account</h1>
+              <h2 className="display-5">Delete account</h2>
               {deleteAccountContent}
             </div>
           </div>

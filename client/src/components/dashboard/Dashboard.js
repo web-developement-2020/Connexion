@@ -30,28 +30,30 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <p className="lead text-muted">
-              Welcome <Link to={`/profile`}>{user.name}</Link>
+              Welcome<Link to={`/profile`}>{user.name}</Link>
             </p>
-           
-            <div className="btn-group mb-4" role="group">
-      <Link to="/editProfile" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> Edit Profile
-      </Link>
-      </div>
-      <br/>
-      <div className="btn-group mb-4" role="group">
-      <Link to="/createpost" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> Create a Post!
-      </Link>
-      </div>
-      <br/>
-      <div className="btn-group mb-4" role="group">
-      <Link to="/posts" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1 dashboard-icon" /> View posts
-      </Link>
-      </div>
 
-      </div>
+            <div className="btn-group mb-4" role="group">
+              <Link to="/editProfile" className="btn btn-light">
+                <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                Edit profile!&nbsp;&nbsp;&nbsp;
+              </Link>
+            </div>
+
+            <div className="btn-group mb-4" role="group">
+              <Link to="/createpost" className="btn btn-light">
+                <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                Create a post!&nbsp;&nbsp;&nbsp;
+              </Link>
+            </div>
+
+            <div className="btn-group mb-4" role="group">
+              <Link to="/posts" className="btn btn-light">
+                <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                View posts!&nbsp;&nbsp;&nbsp;
+              </Link>
+            </div>
+          </div>
         );
       } else {
         // User is logged in but has no profile
@@ -72,7 +74,7 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h2 className="display-5">Dashboard</h2>
               {dashboardContent}
             </div>
           </div>

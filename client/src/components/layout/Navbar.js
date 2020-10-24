@@ -56,7 +56,7 @@ class Navbar extends Component {
               <li className='nav-item nav'>
                 <Link
                   className='nav-link d-md-block '
-                  to='/CreatePost'
+                  to='/createpost'
                   id='nav-link'
                   data-toggle="tooltip"
                   title="Create a Post"
