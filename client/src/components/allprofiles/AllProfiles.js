@@ -12,13 +12,13 @@ class AllProfiles extends Component {
   onFollowClick = (e, _id) => {
     e.preventDefault();
     this.props.followUser(this.props.profile.profile.user._id);
-    window.location.reload(false);
+    // window.location.reload(false);
   }
 
   onUnfollowClick = (e, user_id) => {
   e.preventDefault();
   this.props.unfollowUser(this.props.profile.profile.user._id);
-  window.location.reload(false);
+  // window.location.reload(false);
 }
   
   componentDidMount() {
