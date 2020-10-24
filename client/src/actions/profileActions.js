@@ -11,6 +11,8 @@ import {
   SET_CURRENT_USER,
 } from "./types";
 
+
+
 // Get current profile
 export const getCurrentProfile = () => (dispatch) => {
   dispatch(setProfileLoading());
@@ -50,25 +52,25 @@ export const getProfileByHandle = (handle) => (dispatch) => {
     );
 };
 
-export const getProfilesBySearch = (query) => (dispatch) => {
-  dispatch(setProfileLoading());
+// export const getProfilesBySearch = (query) => (dispatch) => {
+//   dispatch(setProfileLoading());
 
-  axios
-    .get(`/api/profile/search?q=${query}`)
-    .then((res) =>
-      dispatch({
-        type: GET_PROFILES,
-        payload: res.data,
-      })
-    )
-    .catch((err) =>
-      dispatch({
-        type: GET_PROFILES,
-        payload: null,
+//   axios
+//     .get(`/api/profile/search?q=${query}`)
+//     .then((res) =>
+//       dispatch({
+//         type: GET_PROFILES,
+//         payload: res.data,
+//       })
+//     )
+//     .catch((err) =>
+//       dispatch({
+//         type: GET_PROFILES,
+//         payload: null,
 
-      })
-    );
-};
+//       })
+//     );
+// };
 
 // Create Profile
 export const createProfile = (profileData, history) => (dispatch) => {
@@ -123,6 +125,35 @@ export const deleteAccount = () => (dispatch) => {
       );
   }
 };
+
+//Follow profile
+export const followUser = (_id) => (dispatch) => {
+  axios
+    .post(`/api/profile/user/${_id}/follow`)
+    .then((res) => dispatch(getProfiles()))
+    .catch((err) => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+}
+
+
+//Unfollow profile
+export const unfollowUser = (_id) => (dispatch) => {
+  axios
+    .delete(`/api/profile/user/${_id}/unfollow`)
+    .then((res) => dispatch(getProfiles()))
+    .catch((err) => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }));
+}
+
+
+
 
 // Profile loading
 export const setProfileLoading = () => {

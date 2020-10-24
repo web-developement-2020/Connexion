@@ -3,12 +3,15 @@ import spinner from './spinner.gif';
 
 export default () => {
   return (
-    <div>
+    <div className="align-item-center mt-5">
+      <div className="mx-auto text-secondary" style={{fontFamily: 'Abel', fontSize: '2em', textAlign: 'center'}}>Loading</div>
+    
       <img
         src={spinner}
-        style={{ width: '200px', margin: 'auto', display: 'block' }}
+        style={{ width: '80px', margin: 'auto', display: 'block' }}
         alt="Loading..."
       />
-    </div>
+      </div>
+      
   );
 };

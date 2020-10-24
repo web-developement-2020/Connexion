@@ -260,16 +260,16 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 //@route  POST  api/profile/user/:user_id/follow
-//@desc   Add user to current user's 'following' list
+//@desc   Add user to current user's 'following' list & current profile's 'follower' list
 //@access Private
 
 router.post(
   '/user/:user_id/follow', 
   passport.authenticate('jwt', { session: false }), (req, res) => {
-
     const errors = {};
 Profile.findOne({user: req.params.user_id})
     .then(profile =>{
+    console.log(profile);
    Profile.findOne({user: req.user.id})
       .then((profile) => {
         if (!profile)
@@ -286,14 +286,16 @@ Profile.findOne({user: req.params.user_id})
           profile.followers.unshift({user_id: req.user.id });
           profile.save().then((profile) => console.log(profile));
         })
-        
     })
-        .catch(err => res.status(404).json({profilenotfound: 'Cannot find your profile'}));
+      .catch(err => res.status(404).json({profilenotfound: 'Cannot find your profile'}));
     })
     .catch(err => console.log(err));
   }
 )
 
+// @route  POST  api/profile/user/:user_id/unfollow
+// @desc   Remove user from current user's 'following' list & current profile's 'followers' list
+// @access Private
 // @route  DELETE  api/profile/user/:user_id/unfollow
 // @desc   Remove user from current user's 'following' list
 // @access Private
@@ -327,7 +329,8 @@ router.delete(
               .map((item) => item.user_id.toString())
               .indexOf(req.params.user_id);
             profile.following.splice(removeIndex, 1);
-            profile.save().then((profile) => res.json(profile));
+            profile.save()
+            .then((profile) => res.json(profile));
           })
           .catch((err) =>
             res
@@ -336,8 +339,45 @@ router.delete(
           );
       })
       .catch((err) => console.log(err));
+
+      Profile.findOne({ user: req.user.id })
+      .then((profile) => {
+        Profile.findOne({ user: req.params.user_id })
+          .then((profile) => {
+            if (!profile)
+              res
+                .status(404)
+                .json({ profilenotfound: "Cannot find this profile" });
+
+            if (
+              profile.followers.filter(
+                (followers) =>
+                  followers.user_id.toString() === req.user.id
+              ).length === 0
+            ) {
+              return res.status(400).json({
+                notfollowing: "Cannot remove from followers",
+              });
+            }
+
+            const removeIndex = profile.followers
+              .map((item) => item.user_id.toString())
+              .indexOf(req.user.id);
+            profile.followers.splice(removeIndex, 1);
+            profile.save()
+              .then((profile) => res.json(profile))
+              .catch((err) => console.log(err));
+          })
+          .catch((err) =>
+            res
+              .status(404)
+              .json({ profilenotfound: "Cannot find this profile" })
+          );
+      })
+      .catch((err) => console.log(err));
   }
 );
+  
 
 // @route   DELETE api/profile
 // @desc    Delete profile

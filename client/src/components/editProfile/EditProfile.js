@@ -18,9 +18,6 @@ class CreateProfile extends Component {
       bio: '',
       website: '',
       location: '',
-    
-      
-     
       twitter: '',
       facebook: '',
       linkedin: '',

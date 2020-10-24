@@ -32,6 +32,10 @@ img {
 
 }
 
+.btn-bg-orange {
+  border: #e69138 1px solid;
+}
+
 /*NAVBAR*/
 @media only screen and (max-width: 400px) {
   #logo {

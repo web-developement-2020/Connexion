@@ -7,7 +7,6 @@ import Footer from './components/layout/Footer';
 
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import currentUserProfile from './components/profile/currentUserProfile';
 import Profiles from './components/profiles/Profiles';
@@ -22,16 +21,16 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
 import store from './store';
-
 import AllProfiles from './components/allprofiles/AllProfiles'
+<<<<<<< HEAD
 import CurrentPost from './components/createpost/CurrentPost';
+=======
+>>>>>>> 4c3aa296395d85c37d393e29b3ef0a6e0a264522
 import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
-
 import Post from './components/post/Post';
 import EditProfile from './components/editProfile/EditProfile';
-
 import Posts from './components/posts/Posts';
 
 
@@ -75,9 +74,12 @@ class App extends Component {
               <Route exact path="/not-found" component={NotFound} />
 
               <Route exact path='/posts' component={Posts} />
+<<<<<<< HEAD
               {/* <Route exact path='/post' component={Post} /> */}
 
               {/* END DEV ROUTES */}
+=======
+>>>>>>> 4c3aa296395d85c37d393e29b3ef0a6e0a264522
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>
