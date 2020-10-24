@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addLike, removeLike } from '../../actions/postActions';
-import Profile from '../profile/Profile';
 
 class PostItem extends Component {
 

@@ -166,11 +166,9 @@ class CreatePost extends Component {
               </h2>
             </div>
 
-      <div className='card card-body mt-5 col-10 mx-auto'>  
         <div className="container mt-2">
           <ul className="list-group"><CurrentPost posts={posts} loading={loading} auth={auth}/></ul>
         </div>
-      </div>
      </div>
     </div>
     </div>
