@@ -7,7 +7,6 @@ import Footer from './components/layout/Footer';
 import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
-
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
 import TempProfile from './components/auth/TempProfile';
 import currentUserProfile from './components/profile/currentUserProfile';
@@ -23,16 +22,12 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
 import store from './store';
-
 import AllProfiles from './components/allprofiles/AllProfiles'
-
 import CreatePost from './components/createpost/CreatePost';
 import Settings from './components/settings/Settings';
 import PrivateRoute from "./components/common/PrivateRoute";
-
 import Post from './components/post/Post';
 import EditProfile from './components/editProfile/EditProfile';
-import FollowUnfollow from './components/allprofiles/FollowUnfollow'
 import Posts from './components/posts/Posts';
 
 
@@ -75,8 +70,6 @@ class App extends Component {
               <Route exact path="/forgotPassword" component={ForgotPassword} />
               <Route exact path="/not-found" component={NotFound} />
               <Route exact path='/posts' component={Posts} />
-              {/* <Route exact path='/post' component={Post} /> */}
-              {/* END DEV ROUTES */}
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>

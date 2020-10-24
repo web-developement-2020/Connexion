@@ -8,17 +8,19 @@ import isEmpty from "../../validation/is-empty";
 import { followUser, unfollowUser } from '../../actions/profileActions';
 
 class AllProfiles extends Component {
-
+  
   onFollowClick = (e, _id) => {
     e.preventDefault();
     this.props.followUser(this.props.profile.profile.user._id);
-   }
+    window.location.reload(false);
+  }
 
   onUnfollowClick = (e, user_id) => {
   e.preventDefault();
   this.props.unfollowUser(this.props.profile.profile.user._id);
-  }
-
+  window.location.reload(false);
+}
+  
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
@@ -32,7 +34,6 @@ class AllProfiles extends Component {
   }
 
   isFollowing = () =>{
-
     let isFollow =
       this.props.profile.profile.followers.filter((follower) => follower.user_id === this.props.auth.user.id).length > 0
         ? true
@@ -238,12 +239,14 @@ class AllProfiles extends Component {
  AllProfiles.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  isFollow: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth
+  auth: state.auth,
+  isFollow: state.isFollow,
 });
 
 export default connect(mapStateToProps, { getProfileByHandle, followUser, unfollowUser })(AllProfiles);

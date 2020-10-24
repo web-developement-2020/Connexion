@@ -329,7 +329,8 @@ router.delete(
               .map((item) => item.user_id.toString())
               .indexOf(req.params.user_id);
             profile.following.splice(removeIndex, 1);
-            profile.save().then((profile) => res.json(profile));
+            profile.save()
+            .then((profile) => res.json(profile));
           })
           .catch((err) =>
             res
@@ -363,7 +364,9 @@ router.delete(
               .map((item) => item.user_id.toString())
               .indexOf(req.user.id);
             profile.followers.splice(removeIndex, 1);
-            profile.save().then((profile) => res.json(profile));
+            profile.save()
+              .then((profile) => res.json(profile))
+              .catch((err) => console.log(err));
           })
           .catch((err) =>
             res
