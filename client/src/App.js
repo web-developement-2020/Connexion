@@ -100,14 +100,6 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
-
-                <PrivateRoute
-                  exact
-                  path='/createpost'
-                  component={CreatePost}
-                />
-              </Switch>
-              <Switch>
               <PrivateRoute exact path='/posts/:id' component={Post} />
 
               </Switch>
