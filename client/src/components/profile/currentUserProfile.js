@@ -32,8 +32,6 @@ class currentUserProfile extends Component {
 
     } else if (Object.keys(profile).length > 0) {
 
-      const href = window.open.href=(`${profile.website}`);
-
       const profileCard=(
         <div className='card card-body mb-3 pl-5'>
           {isEmpty(profile.location) ? null : (

@@ -41,7 +41,6 @@ class PostItem extends Component {
 
   render() {
     const { post } = this.props;
-    const { profile } = this.props;
 
     return (
       <li key={post._id} className='list-group-item'>

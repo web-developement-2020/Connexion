@@ -8,7 +8,6 @@ import ChangeAvatar from './components/changeAvatar/ChangeAvatar';
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
-import TempProfile from './components/auth/TempProfile';
 import currentUserProfile from './components/profile/currentUserProfile';
 import Profiles from './components/profiles/Profiles';
 import jwt_decode from 'jwt-decode';

@@ -62,8 +62,6 @@ class AllProfiles extends Component {
 
   render() {
     const { profile, loading } = this.props.profile;
-    const { user } = this.props.profile;
-    let profileContent;
     let profileCard;
     let socialLinks;
 
@@ -74,9 +72,7 @@ class AllProfiles extends Component {
 
       console.log('profile:', this.props.profile.profile)
       console.log('followers', this.props.profile.profile.followers)
-      
-      const href = window.open.href=(`${profile.website}`);
-        
+              
       profileCard=(
         <div className='card card-body mb-3 pl-5'>
           {isEmpty(profile.location) ? null : (

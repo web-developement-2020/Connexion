@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost, getCurrentPost } from '../../actions/postActions';
 import classnames from 'classnames';
-import Spinner from '../common/Spinner';
 import CurrentPost from './CurrentPost';
 
 

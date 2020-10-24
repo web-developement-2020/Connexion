@@ -92,13 +92,12 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className='nav-item nav'>
-                <a
-                  href=""
+                <button
                   onClick={this.onLogoutClick.bind(this)}
-                  className="nav-link"
+                  className="nav-link btn bg-transparent outline-transparent"
                 >
                   Logout
-                </a>
+                </button>
               </li>
             </ul>
     );
