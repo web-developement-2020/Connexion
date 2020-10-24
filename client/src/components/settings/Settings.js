@@ -5,24 +5,31 @@ class settings extends Component {
   render() {
     return (
       <div className="settings">
-        <div className="dark-overlay landing-inner text-light">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Settings</h1>
-                <p className="lead">You can modify your settings here</p>
-                <hr />
-                <Link to="/changePassword" className="btn btn-lg btn-info mr-2">
-                  Change Password
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="display-5">Settings</h1>
+              <p className="lead text-muted">
+                You can modify your settings here
+              </p>
+              <hr />
+              <div className="btn-group mb-4" role="group">
+                <Link to="/changePassword" className="btn btn-light">
+                  <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                  Change password!&nbsp;&nbsp;&nbsp;
                 </Link>
-                <Link to="/changeAvatar" className="btn btn-lg btn-info mr-2">
-                  Change Avatar
+              </div>
+             
+              <div className="btn-group mb-4" role="group">
+                <Link to="/editProfile" className="btn btn-light">
+                  <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                  Edit profile!&nbsp;&nbsp;&nbsp;
                 </Link>
-                <Link to="/editProfile" className="btn btn-lg btn-info mr-2">
-                  Edit Profile
-                </Link>
-                <Link to="/deleteAccount" className="btn btn-lg btn-info mr-2">
-                  Delete Account
+              </div>
+              <div className="btn-group mb-4" role="group">
+                <Link to="/deleteAccount" className="btn btn-light">
+                  <i className="fas fa-user-circle text-info mr-1 dashboard-icon" />{" "}
+                  Delete account!&nbsp;&nbsp;&nbsp;
                 </Link>
               </div>
             </div>

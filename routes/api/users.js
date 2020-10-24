@@ -227,7 +227,6 @@ router.post(
   (req, res) => {
     const email = req.body.email;
     const avatar = req.body.avatar;
-
     User.findOne({ email })
       .then((user) => {
         if (!user) {

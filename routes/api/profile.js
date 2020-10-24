@@ -387,7 +387,9 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-        res.json({ success: true })
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>  
+      res.json({ success: true })
+      );
     });
   }
 );
