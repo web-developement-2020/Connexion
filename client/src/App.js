@@ -33,7 +33,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import Post from './components/post/Post';
 import PostFeed from './components/posts/PostFeed';
 import EditProfile from './components/editProfile/EditProfile';
-
+import FollowUnfollow from './components/allprofiles/FollowUnfollow'
 import Posts from './components/posts/Posts';
 
 
@@ -77,6 +77,7 @@ class App extends Component {
               <Route exact path="/not-found" component={NotFound} />
               <Route exact path='/posts' component={Posts} />
               <Route exact path='/post' component={Post} />
+              <Route exact path='/allprofiles/:user_id/followunfollow' component = {FollowUnfollow} />
               {/* END DEV ROUTES */}
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
