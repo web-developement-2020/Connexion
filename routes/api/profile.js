@@ -79,9 +79,7 @@ router.get("/handle/:handle", (req, res) => {
 //@desc Public
 
 router.get("/search", (req, res) => {
-  const errors = {};
-  console.log(req.query);
-  
+  const errors = {};  
     if(req.query.search){
       //create regex
       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -269,7 +267,6 @@ router.post(
     const errors = {};
 Profile.findOne({user: req.params.user_id})
     .then(profile =>{
-    console.log(profile);
    Profile.findOne({user: req.user.id})
       .then((profile) => {
         if (!profile)

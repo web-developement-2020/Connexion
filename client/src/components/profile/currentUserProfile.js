@@ -18,12 +18,6 @@ class currentUserProfile extends Component {
     const { loading } = this.props.profile;
     const { profile } = this.props.profile;
     
-    // console.log(this.props.profile.profile);
-    console.log('p:', this.props.profile);
-    console.log('prof:', profile);
-    console.log('u', user);
-    // console.log(profile.following);
-   
 
     if(profile === null || loading){
       return(

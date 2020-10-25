@@ -152,6 +152,8 @@ export const addComment = (postId, commentData) => (dispatch) => {
 
 // Delete Comment
 export const deleteComment = (postId, commentId) => (dispatch) => {
+  if(window.confirm('Are you sure?')){
+
   axios
     .delete(`/api/posts/comment/${postId}/${commentId}`)
     .then((res) =>
@@ -167,6 +169,7 @@ export const deleteComment = (postId, commentId) => (dispatch) => {
       })
     );
 };
+}
 
 // Set loading state
 export const setPostLoading = () => {
