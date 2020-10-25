@@ -74,7 +74,6 @@ router.post(
       name: req.body.name,
       avatar: req.body.avatar,
     });
-    console.log(newPost);
     newPost.save().then((post) => res.json(post));
 
   }
@@ -117,7 +116,6 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then((profile) => {
-      console.log(profile);
       Post.findById(req.params.id)
         .then((post) => {
           if (

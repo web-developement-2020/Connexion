@@ -20,8 +20,6 @@ class CreatePost extends Component {
       (error, result) => {
         if (!error && result && result.event === 'success') {
           this.setState({ image: result.info.secure_url });
-
-          console.log(result.info.secure_url);
         }
       }
     );

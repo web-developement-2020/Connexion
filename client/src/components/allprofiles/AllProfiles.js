@@ -39,9 +39,6 @@ class AllProfiles extends Component {
         ? true
         : false;
 
-    console.log('isFollow:', isFollow);
-    console.log(this.props.auth.user.id)
-
     if (isFollow) {
       return (
         <div className="mb-4">
@@ -69,9 +66,6 @@ class AllProfiles extends Component {
       return(
       <Spinner />);
     } else if (Object.keys(profile).length > 0){
-
-      console.log('profile:', this.props.profile.profile)
-      console.log('followers', this.props.profile.profile.followers)
               
       profileCard=(
         <div className='card card-body mb-3 pl-5'>

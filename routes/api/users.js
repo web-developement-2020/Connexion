@@ -18,18 +18,14 @@ const router = express.Router();
 // @access Public
 
 router.post("/register", (req, res) => {
-  // console.log('req: ', req.body);
-  // console.log('res: ', res);
+
   const { errors, isValid } = validateRegisterInput(req.body);
-  console.log("errors: ", errors);
-  console.log("isValid: ", isValid);
 
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
-    console.log("user: ", user);
     if (user) {
       return res.status(400).json({ email: "Email already exist" });
     } else {
@@ -47,11 +43,9 @@ router.post("/register", (req, res) => {
 
       bcrypt.genSalt(10, (err, salt) => {
         if (err) throw err;
-        console.log("salt: ", salt);
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          console.log("newUser: ", newUser);
           newUser
             .save()
             .then((user) => res.json(user))
@@ -98,7 +92,6 @@ router.post("/login", (req, res) => {
               keys.secretOrKey,
               { expiresIn: 3600 },
               (err, token) => {
-                console.log(token);
                 return res.json({ token: `Bearer ` + token });
               }
             );
