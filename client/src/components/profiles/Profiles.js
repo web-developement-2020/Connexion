@@ -32,7 +32,7 @@ class Profiles extends Component {
       <div className="profiles">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 col-xs-12">
               <h1 id="connexionprofile" className="display-5 text-center">Connexion Profiles</h1>
               <p className="lead text-center">
                 <p className="lead text-muted">

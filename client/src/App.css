@@ -186,6 +186,7 @@ img {
 .landing-inner {
   padding-top: 5vh;
 }
+
 .lead {
   font-weight: 500;
   width: 30vw;
@@ -196,6 +197,13 @@ img {
   flex-wrap: nowrap;
   justify-content: space-evenly;
 }
+
+@media only screen and (max-width: 425px) {
+  .lead {
+    width: 60vw;
+  }
+}
+
 .lead span {
   display: flex;
   justify-content: space-around;
