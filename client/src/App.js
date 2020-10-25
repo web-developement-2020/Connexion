@@ -4,7 +4,6 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import CreateProfile from './components/auth/CreateProfile'
 import Footer from './components/layout/Footer';
-
 import ChangePassword from './components/changePassword/ChangePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 import DeleteAccount from './components/deleteAccount/DeleteAccount';
@@ -56,6 +55,7 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+
   render() {
     return (
       <Provider store={store}>

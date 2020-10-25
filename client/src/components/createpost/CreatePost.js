@@ -116,12 +116,12 @@ class CreatePost extends Component {
         {this.state.image || this.state.text ? postPreview : null}
 
         <div className='media-upload mx-auto'>
-        <div className='card card-body mt-3 col-md-10 mx-auto'>
+        <div className='card card-body mt-3 col-md-10 col mx-auto'>
           <form onSubmit={this.onSubmit}>
             <div id='upload-widget'></div>
             <button
               id='upload_widget'
-              className='btn-light btn-lg bg-light btn-outline-dark btn-block col-3 mb-3 mx-auto'
+              className='btn-light btn btn-lg bg-light btn-outline-dark btn-block text-nowrap text-truncate col-6 col-lg-3 mb-3 mx-auto'
               onClick={() => this.widget.open()}
             >
               Upload image
