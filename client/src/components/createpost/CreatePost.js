@@ -113,6 +113,7 @@ class CreatePost extends Component {
 
 
       <div className='container'>
+        <h1 className="display-5 settings mb-4">Create a Post</h1>
         {this.state.image || this.state.text ? postPreview : null}
 
         <div className='media-upload mx-auto'>
