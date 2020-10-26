@@ -5,12 +5,11 @@ import PostItem from './PostItem';
 
 class PostFeed extends Component {
   feedPost = () => {
-    const { posts, profile } = this.props;
-
+    const { posts, profile, user } = this.props;
     if (profile.following.length > 0) {
       return profile.following.map((follow) => {
         return posts.map((post) => {
-          if (follow.user_id === post.user) {
+          if (follow.user_id === post.user && post.user !== user.id) {
             return <PostItem key={post._id} post={post} />;
           }
           return null;
