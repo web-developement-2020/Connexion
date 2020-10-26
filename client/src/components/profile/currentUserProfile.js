@@ -146,12 +146,11 @@ class currentUserProfile extends Component {
                   </div>
                   </div>
                 
-                {isEmpty(profile.bio && profile.location)? null : (profileCard)}
+                {(profileCard)}
 
 
 
-                {isEmpty(profile.social && profile.website) ? null : 
-                (socialLinks)}  
+                {(socialLinks)}  
 
             </div>
         </div>
