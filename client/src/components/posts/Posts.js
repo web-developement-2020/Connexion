@@ -17,10 +17,12 @@ class Posts extends Component {
   renderContent = () => {
     const { posts, loading } = this.props.post;
     const { profile } = this.props.profile;
+    const { user } = this.props.auth;
 
-    if (posts === null || profile === null || loading) return <Spinner />;
+    if (posts === null || profile === null || user === null || loading)
+      return <Spinner />;
     else {
-      return <PostFeed posts={posts} profile={profile} />;
+      return <PostFeed posts={posts} profile={profile} user={user} />;
     }
   };
 
@@ -52,12 +54,13 @@ class Posts extends Component {
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  post:PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-}
+};
 
 const mapStateToProps = (state) => ({
   post: state.post,
   profile: state.profile,
+  auth: state.auth,
 });
 export default connect(mapStateToProps, { getPosts, getCurrentProfile })(Posts);
