@@ -1,2 +1,4 @@
+Client-side walk-through: Complete video forthcoming. Preview: https://youtu.be/DKGNvU73oKY
 
-https://youtu.be/yiLIjqIbj2g
+
+Server-side walk-through: https://youtu.be/yiLIjqIbj2g
