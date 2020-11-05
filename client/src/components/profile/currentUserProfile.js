@@ -150,7 +150,8 @@ class currentUserProfile extends Component {
 
 
 
-                {(socialLinks)}  
+                {
+                (socialLinks)}  
 
             </div>
         </div>
