@@ -1,4 +1,4 @@
-Deploy: https://limitless-bayou-76936.herokuapp.com/ 
+Deployed Project: https://limitless-bayou-76936.herokuapp.com/ 
 
 Client-side walk-through: https://www.youtube.com/watch?v=VjJGImwj6V8
 
