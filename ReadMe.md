@@ -1,4 +1,5 @@
-![ConnexionMockup](connexion_mockup.png)
+<img src="connexion_mockup.png" alt="Connexion Mockup" width="60%">
+
 
 # CONNEXION
 Connexion is a photo sharing social media web app. Built by Kanchan Sharma, Juyean Lee, Lishitha Karnati, and Teal Larson.
